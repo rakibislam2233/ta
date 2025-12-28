@@ -1,5 +1,4 @@
 "use client";
-
 import CreatePostModal from "@/components/modals/CreatePostModal";
 import { useAuth } from "@/context/AuthContext";
 import {
@@ -10,7 +9,6 @@ import {
   Info,
   MessageCircle,
   PlusCircle,
-  PlusSquare,
   Settings,
   Sparkles,
   User,
