@@ -67,7 +67,7 @@ export default function Post({
 
       {/* Media */}
       {mediaUrl && (
-        <div className="relative w-full aspect-[4/5] bg-[#2a2330]">
+        <div className="relative w-full aspect-4/5 bg-[#2a2330]">
           {mediaType === "video" ? (
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
@@ -75,7 +75,7 @@ export default function Post({
               </div>
             </div>
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#9419e6]/20 to-[#7a14c4]/20"></div>
+            <div className="w-full h-full bg-linear-to-br from-[#9419e6]/20 to-[#7a14c4]/20"></div>
           )}
         </div>
       )}

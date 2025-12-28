@@ -202,6 +202,8 @@ const VideoPlayer = ({ src }: { src: string }) => {
         muted={isMuted}
         onTimeUpdate={handleTimeUpdate}
         onClick={togglePlay}
+        onContextMenu={(e) => e.preventDefault()}
+        controlsList="nodownload"
       />
 
       {/* Custom Controls Overlay */}

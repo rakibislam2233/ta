@@ -116,6 +116,8 @@ export default function CreatePostMedia({
                     src={currentFile.url}
                     controls
                     className="max-w-full max-h-full object-contain"
+                    onContextMenu={(e) => e.preventDefault()}
+                    controlsList="nodownload"
                   />
                 )}
               </motion.div>
@@ -267,7 +269,7 @@ export default function CreatePostMedia({
             className="bg-primary hover:bg-primary-hover text-white rounded-xl px-6 py-4 md:px-8 md:py-6 text-base font-medium cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all "
           >
             Select from Computer
-          </Button> 
+          </Button>
         </div>
       )}
       <input
