@@ -481,7 +481,7 @@ export default function Hire() {
             ].map((order) => (
               <div
                 key={order.id}
-                onClick={() => router.push(`/hiring/${order.id}`)}
+                onClick={() => router.push(`/hiring/my-requests/${order.id}`)}
                 className="bg-surface-dark rounded-3xl p-6 border border-border-dark/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">
