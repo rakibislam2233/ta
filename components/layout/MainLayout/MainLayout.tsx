@@ -11,11 +11,11 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  // Hide right sidebar on messages and hiring pages
+  // Hide right sidebar on specific full-width or focused pages
   const hideRightSidebar =
     pathname.includes("/messages") ||
-    pathname.includes("/hiring") ||
-    pathname.includes("/discover");
+    pathname.includes("/settings") ||
+    pathname.includes("/auth");
 
   return (
     <div className="flex min-h-screen bg-background-dark text-white font-display selection:bg-primary selection:text-white overflow-hidden md:pl-64">
