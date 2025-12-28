@@ -334,107 +334,353 @@ export default function Hire() {
           </Button>
         </div>
 
-        {/* Talent Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-          {talents.map((talent, i) => (
-            <div
-              key={i}
-              onClick={() => router.push(`/hiring/84920`)}
-              className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden cursor-pointer"
-            >
-              <div className="flex items-start justify-between mb-6 relative z-10">
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <div className="size-14 sm:size-16 rounded-2xl overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
-                      <Image
-                        src={talent.image || ""}
-                        alt={talent.name}
-                        fill
-                        className="object-cover"
-                      />
+        {/* Talent Grid - All Freelancers Tab */}
+        {activeTab === "all" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+            {talents.map((talent, i) => (
+              <div
+                key={i}
+                onClick={() => router.push(`/hiring/84920`)}
+                className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden cursor-pointer"
+              >
+                <div className="flex items-start justify-between mb-6 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="relative">
+                      <div className="size-14 sm:size-16 rounded-2xl overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
+                        <Image
+                          src={talent.image || ""}
+                          alt={talent.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1.5 mb-0.5">
-                      <h3 className="text-white font-black text-base sm:text-lg tracking-tight uppercase">
-                        {talent.name}
-                      </h3>
-                      <div className="bg-blue-500 p-0.5 rounded-full">
-                        <svg
-                          className="size-2.5 text-white"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                        </svg>
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <h3 className="text-white font-black text-base sm:text-lg tracking-tight uppercase">
+                          {talent.name}
+                        </h3>
+                        <div className="bg-blue-500 p-0.5 rounded-full">
+                          <svg
+                            className="size-2.5 text-white"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <p className="text-primary font-bold text-[10px] sm:text-xs tracking-tight">
+                        {talent.username}
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="bg-yellow-500/10 text-yellow-500 text-[10px] font-black px-2 py-0.5 rounded flex items-center gap-1">
+                          <Star className="size-2.5 fill-current" />
+                          {talent.rating}
+                        </span>
+                        <span className="text-gray-500 text-[10px] font-bold uppercase tracking-tighter">
+                          {talent.jobs} JOBS
+                        </span>
                       </div>
                     </div>
-                    <p className="text-primary font-bold text-[10px] sm:text-xs tracking-tight">
-                      {talent.username}
-                    </p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="bg-yellow-500/10 text-yellow-500 text-[10px] font-black px-2 py-0.5 rounded flex items-center gap-1">
-                        <Star className="size-2.5 fill-current" />
-                        {talent.rating}
-                      </span>
-                      <span className="text-gray-500 text-[10px] font-bold uppercase tracking-tighter">
-                        {talent.jobs} JOBS
-                      </span>
-                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex flex-wrap gap-2 mb-6 relative z-10">
-                {talent.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-background-dark/80 text-gray-400 text-[10px] sm:text-xs px-3 py-1 rounded-lg border border-border-dark/50 font-bold uppercase tracking-tight"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed font-medium">
-                {talent.bio}
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 py-6 border-t border-border-dark/30 relative z-10">
-                <div className="text-left">
-                  <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
-                    Audience
-                  </p>
-                  <p className="text-white font-black text-lg tracking-tight">
-                    {talent.followers}
-                  </p>
+                <div className="flex flex-wrap gap-2 mb-6 relative z-10">
+                  {talent.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-background-dark/80 text-gray-400 text-[10px] sm:text-xs px-3 py-1 rounded-lg border border-border-dark/50 font-bold uppercase tracking-tight"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
-                    Starting At
-                  </p>
-                  <p className="text-white font-black text-lg tracking-tight">
-                    {talent.rate}
-                  </p>
-                </div>
-              </div>
 
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  router.push(`/hiring/84920`);
-                }}
-                className="w-full h-12 bg-primary hover:bg-primary-hover text-white text-sm font-black uppercase tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10"
+                <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed font-medium">
+                  {talent.bio}
+                </p>
+
+                <div className="grid grid-cols-2 gap-4 py-6 border-t border-border-dark/30 relative z-10">
+                  <div className="text-left">
+                    <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
+                      Audience
+                    </p>
+                    <p className="text-white font-black text-lg tracking-tight">
+                      {talent.followers}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
+                      Starting At
+                    </p>
+                    <p className="text-white font-black text-lg tracking-tight">
+                      {talent.rate}
+                    </p>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    router.push(`/hiring/84920`);
+                  }}
+                  className="w-full h-12 bg-primary hover:bg-primary-hover text-white text-sm font-black uppercase tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10"
+                >
+                  Hire Now
+                </Button>
+
+                {/* Subtle background aesthetic */}
+                <div className="absolute top-0 right-0 size-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* My Hire Requests Tab */}
+        {activeTab === "my-requests" && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {[
+              {
+                id: "84920",
+                title: "Video Editing for Campaign Q3",
+                freelancer: "Sarah Jenkins",
+                username: "@sarahcreative",
+                avatar:
+                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200",
+                status: "IN PROGRESS",
+                progress: 60,
+                budget: 500,
+                dueDate: "Oct 20, 2023",
+                category: "Video Editing",
+              },
+              {
+                id: "84915",
+                title: "Logo Design for Startup",
+                freelancer: "Davide Rossi",
+                username: "@davide_design",
+                avatar:
+                  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200",
+                status: "COMPLETED",
+                progress: 100,
+                budget: 350,
+                dueDate: "Oct 15, 2023",
+                category: "Design",
+              },
+              {
+                id: "84910",
+                title: "Music Production for Podcast",
+                freelancer: "GuitarMaster",
+                username: "@guitarmaster",
+                avatar:
+                  "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=200",
+                status: "PENDING",
+                progress: 20,
+                budget: 800,
+                dueDate: "Nov 5, 2023",
+                category: "Music",
+              },
+            ].map((order) => (
+              <div
+                key={order.id}
+                onClick={() => router.push(`/hiring/${order.id}`)}
+                className="bg-surface-dark rounded-3xl p-6 border border-border-dark/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
               >
-                Hire Now
-              </Button>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs text-gray-500 font-medium">
+                        Order #{order.id}
+                      </span>
+                      <span
+                        className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
+                          order.status === "COMPLETED"
+                            ? "bg-green-500/20 text-green-500"
+                            : order.status === "IN PROGRESS"
+                            ? "bg-primary/20 text-primary"
+                            : "bg-orange-500/20 text-orange-500"
+                        }`}
+                      >
+                        {order.status}
+                      </span>
+                    </div>
+                    <h3 className="text-white font-black text-lg mb-2 uppercase tracking-tight">
+                      {order.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs font-medium">
+                      {order.category} • Due: {order.dueDate}
+                    </p>
+                  </div>
+                </div>
 
-              {/* Subtle background aesthetic */}
-              <div className="absolute top-0 right-0 size-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
-            </div>
-          ))}
-        </div>
+                <div className="flex items-center gap-4 mb-4 pb-4 border-b border-border-dark/30">
+                  <div className="size-12 rounded-xl overflow-hidden border-2 border-border-dark">
+                    <Image
+                      src={order.avatar}
+                      alt={order.freelancer}
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm">
+                      {order.freelancer}
+                    </p>
+                    <p className="text-primary text-xs font-medium">
+                      {order.username}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold text-gray-400 uppercase">
+                      Progress
+                    </span>
+                    <span className="text-sm font-black text-primary">
+                      {order.progress}%
+                    </span>
+                  </div>
+                  <div className="h-2 bg-background-dark rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-linear-to-r from-primary to-purple-600 transition-all"
+                      style={{ width: `${order.progress}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-gray-500 text-xs font-medium">
+                      Total Budget
+                    </p>
+                    <p className="text-white font-black text-xl">
+                      ${order.budget}
+                    </p>
+                  </div>
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/hiring/${order.id}`);
+                    }}
+                    className="bg-white text-primary hover:bg-white/90 rounded-xl h-10 px-6 font-black uppercase text-xs"
+                  >
+                    View Details
+                  </Button>
+                </div>
+
+                <div className="absolute top-0 right-0 size-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Who Hired Me Tab */}
+        {activeTab === "hired-me" && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {[
+              {
+                id: "84925",
+                title: "Website Redesign Project",
+                client: "Tech Startup Inc",
+                username: "@techstartup",
+                avatar:
+                  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200",
+                status: "ACTIVE",
+                budget: 1200,
+                startDate: "Oct 25, 2023",
+                category: "Web Design",
+              },
+              {
+                id: "84922",
+                title: "Brand Identity Package",
+                client: "Coffee Shop",
+                username: "@coffeeshop",
+                avatar:
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200",
+                status: "PENDING APPROVAL",
+                budget: 650,
+                startDate: "Oct 28, 2023",
+                category: "Branding",
+              },
+            ].map((hire) => (
+              <div
+                key={hire.id}
+                onClick={() => router.push(`/hiring/${hire.id}`)}
+                className="bg-surface-dark rounded-3xl p-6 border border-border-dark/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs text-gray-500 font-medium">
+                        Request #{hire.id}
+                      </span>
+                      <span
+                        className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
+                          hire.status === "ACTIVE"
+                            ? "bg-green-500/20 text-green-500"
+                            : "bg-orange-500/20 text-orange-500"
+                        }`}
+                      >
+                        {hire.status}
+                      </span>
+                    </div>
+                    <h3 className="text-white font-black text-lg mb-2 uppercase tracking-tight">
+                      {hire.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs font-medium">
+                      {hire.category} • Started: {hire.startDate}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-border-dark/30">
+                  <div className="size-12 rounded-xl overflow-hidden border-2 border-border-dark">
+                    <Image
+                      src={hire.avatar}
+                      alt={hire.client}
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm">
+                      {hire.client}
+                    </p>
+                    <p className="text-primary text-xs font-medium">
+                      {hire.username}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-gray-500 text-xs font-medium">
+                      Project Budget
+                    </p>
+                    <p className="text-white font-black text-xl">
+                      ${hire.budget}
+                    </p>
+                  </div>
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/hiring/${hire.id}`);
+                    }}
+                    className="bg-primary hover:bg-primary-hover text-white rounded-xl h-10 px-6 font-black uppercase text-xs shadow-lg shadow-primary/20"
+                  >
+                    View Request
+                  </Button>
+                </div>
+
+                <div className="absolute top-0 right-0 size-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="flex justify-center mt-12 pb-12 relative z-10">
           <Button
