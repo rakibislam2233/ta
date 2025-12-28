@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Select } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Check, ChevronDown, MessageSquare, Search } from "lucide-react";
 import Image from "next/image";
@@ -8,6 +9,10 @@ import { useState } from "react";
 
 export default function DiscoverPeople() {
   const [filter] = useState("Recommended");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedLocation, setSelectedLocation] = useState("all");
+  const [selectedSkill, setSelectedSkill] = useState("all");
+  const [selectedExperience, setSelectedExperience] = useState("all");
 
   // Mock data matching the screenshot
   const profiles = [
@@ -175,10 +180,57 @@ export default function DiscoverPeople() {
           </div>
 
           <div className="flex gap-3 overflow-x-auto scrollbar-hide py-1">
-            <Dropdown label="All Categories" />
-            <Dropdown label="Location" />
-            <Dropdown label="Skills" />
-            <Dropdown label="Experience" />
+            <Select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              options={[
+                { value: "all", label: "All Categories" },
+                { value: "musician", label: "Musicians" },
+                { value: "dancer", label: "Dancers" },
+                { value: "designer", label: "Designers" },
+                { value: "photographer", label: "Photographers" },
+                { value: "artist", label: "Artists" },
+              ]}
+              className="min-w-[150px]"
+            />
+            <Select
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
+              options={[
+                { value: "all", label: "Location" },
+                { value: "us", label: "United States" },
+                { value: "uk", label: "United Kingdom" },
+                { value: "ca", label: "Canada" },
+                { value: "au", label: "Australia" },
+                { value: "de", label: "Germany" },
+              ]}
+              className="min-w-[140px]"
+            />
+            <Select
+              value={selectedSkill}
+              onChange={(e) => setSelectedSkill(e.target.value)}
+              options={[
+                { value: "all", label: "Skills" },
+                { value: "guitar", label: "Guitar" },
+                { value: "piano", label: "Piano" },
+                { value: "vocals", label: "Vocals" },
+                { value: "production", label: "Production" },
+                { value: "mixing", label: "Mixing" },
+              ]}
+              className="min-w-[130px]"
+            />
+            <Select
+              value={selectedExperience}
+              onChange={(e) => setSelectedExperience(e.target.value)}
+              options={[
+                { value: "all", label: "Experience" },
+                { value: "beginner", label: "Beginner (0-2 years)" },
+                { value: "intermediate", label: "Intermediate (2-5 years)" },
+                { value: "advanced", label: "Advanced (5-10 years)" },
+                { value: "expert", label: "Expert (10+ years)" },
+              ]}
+              className="min-w-[150px]"
+            />
           </div>
         </div>
 
@@ -331,14 +383,5 @@ export default function DiscoverPeople() {
         </Button>
       </div>
     </div>
-  );
-}
-
-function Dropdown({ label }: { label: string }) {
-  return (
-    <button className="flex items-center gap-2 bg-background-dark hover:bg-[#2a2330] border border-border-dark/30 px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white whitespace-nowrap transition-colors min-w-[120px] justify-between">
-      {label}
-      <ChevronDown className="h-4 w-4 opacity-50" />
-    </button>
   );
 }

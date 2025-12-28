@@ -1,10 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Bookmark, MapPin, Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Hire() {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<
+    "all" | "my-requests" | "hired-me"
+  >("all");
   const categories = [
     { name: "Music & Audio", checked: true },
     { name: "Dance & Performance", checked: false },
@@ -256,12 +262,12 @@ export default function Hire() {
               <div className="flex items-start justify-between mb-6 relative z-10">
                 <div className="flex items-center gap-4">
                   <div className="relative">
-                    <div className="size-14 sm:size-16 rounded-2xl overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
+                    <div className="size-14 sm:size-16 rounded-full overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
                       <Image
                         src={talent.image || ""}
                         alt={talent.name}
                         fill
-                        className="object-cover"
+                        className="object-cover rounded-full"
                       />
                     </div>
                     <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
@@ -295,9 +301,6 @@ export default function Hire() {
                     </div>
                   </div>
                 </div>
-                <button className="p-2.5 rounded-xl bg-background-dark/50 border border-border-dark text-gray-500 hover:text-white hover:border-primary/50 transition-all">
-                  <Bookmark className="size-4" />
-                </button>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-6 relative z-10">

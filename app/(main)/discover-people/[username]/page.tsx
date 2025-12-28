@@ -143,15 +143,14 @@ export default function UserProfilePage() {
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-3 mb-2 text-white w-full md:w-auto">
             <Button
               onClick={() => toast.follow(usernameParam)}
-              className="flex-1 md:flex-none bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              className="flex-1 md:flex-none bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow transition-all cursor-pointer hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               <UserPlus className="h-4 w-4" />
               Follow
             </Button>
             <Button
               variant="outline"
-              onClick={() => toast.comment(usernameParam)}
-              className="flex-1 md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
+              className="flex-1 cursor-pointer md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
             >
               <MessageSquare className="h-4 w-4 mr-2" />
               Message
@@ -159,7 +158,7 @@ export default function UserProfilePage() {
             <Button
               variant="outline"
               onClick={() => toast.hire(usernameParam)}
-              className="flex-1 md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
+              className="flex-1 cursor-pointer md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
             >
               <Gift className="h-4 w-4 mr-2" />
               Hire

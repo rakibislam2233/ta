@@ -16,6 +16,7 @@ import {
   Settings,
   Share,
   Star,
+  Verified,
 } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -125,7 +126,7 @@ export default function ProfilePage() {
               Alex Talent
             </h1>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />
+              <Verified className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />
               <span className="px-3 py-1 bg-green-500/10 text-green-500 text-[10px] font-bold rounded-full border border-green-500/20 uppercase tracking-tighter">
                 HIRING
               </span>
