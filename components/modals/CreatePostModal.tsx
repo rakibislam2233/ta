@@ -1,35 +1,25 @@
 "use client";
-
 import CreatePostForm from "@/components/create-post/CreatePostForm";
 import CreatePostMedia from "@/components/create-post/CreatePostMedia";
 import { MediaItem } from "@/components/create-post/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 interface CreatePostModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-/**
- * Main Modal Container for the Create Post feature.
- * Uses React Portal to render outside the main DOM hierarchy (solving Z-index overlap).
- * Orchestrates state between Media Handling and Form Input.
- */
 export default function CreatePostModal({
   isOpen,
   onClose,
 }: CreatePostModalProps) {
-  // Portal target state
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
 
-  // Data State
   const [selectedFiles, setSelectedFiles] = useState<MediaItem[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Form State
   const [isHiring, setIsHiring] = useState(false);
   const [allowComments, setAllowComments] = useState(true);
   const [allowDownloads, setAllowDownloads] = useState(false);
@@ -38,12 +28,6 @@ export default function CreatePostModal({
   );
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Ensure portal target exists on client
-  useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
-  }, []);
 
   // Handle Esc key to close
   useEffect(() => {
@@ -54,12 +38,11 @@ export default function CreatePostModal({
     return () => window.removeEventListener("keydown", handleEsc);
   }, [isOpen, onClose]);
 
-  // File Handlers
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const newFiles = Array.from(e.target.files).map((file) => ({
         id: Math.random().toString(36).substr(2, 9),
-        url: URL.createObjectURL(file), // Note: Should revoke URL in real app on unmount/remove
+        url: URL.createObjectURL(file),
         type: file.type.startsWith("video")
           ? ("video" as const)
           : ("image" as const),
@@ -152,5 +135,15 @@ export default function CreatePostModal({
       )}
     </AnimatePresence>,
     document.body
+  );
+}
+
+const subscribe = () => () => {};
+
+function useMounted() {
+  return useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false
   );
 }

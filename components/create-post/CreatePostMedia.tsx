@@ -29,10 +29,6 @@ interface CreatePostMediaProps {
   setCurrentSlide: (index: number) => void;
 }
 
-/**
- * Component responsible for media upload, preview, cropping, and filtering.
- * Follows Single Responsibility Principle by handling only media-related UI.
- */
 export default function CreatePostMedia({
   selectedFiles,
   currentSlide,
@@ -292,7 +288,7 @@ function ToolButton({
   tooltip,
   onClick,
 }: {
-  icon: any;
+  icon: React.ElementType;
   tooltip: string;
   onClick: () => void;
 }) {

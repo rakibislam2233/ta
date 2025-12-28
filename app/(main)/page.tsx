@@ -64,22 +64,3 @@ export default function Home() {
     </div>
   );
 }
-
-function ActionButton({
-  icon: Icon,
-  label,
-  color,
-}: {
-  icon: any;
-  label: string;
-  color: string;
-}) {
-  return (
-    <button className="flex items-center gap-2 hover:bg-background-dark px-3 py-2 rounded-lg transition-colors group">
-      <Icon className={`h-4 w-4 ${color}`} />
-      <span className="text-gray-400 font-medium text-xs group-hover:text-white transition-colors">
-        {label}
-      </span>
-    </button>
-  );
-}

@@ -288,7 +288,7 @@ export default function ProfilePage() {
               <span>Visual Arts</span>
             </div>
           </div>
-          <div className="flex gap-8 p-4 bg-surface-dark rounded-xl border border-border-dark inline-flex">
+          <div className="flex gap-8 p-4 bg-surface-dark rounded-xl border border-border-dark">
             <div className="text-center">
               <p className="text-white font-bold text-lg">142</p>
               <p className="text-gray-500 text-xs font-bold tracking-wider">
@@ -394,7 +394,7 @@ export default function ProfilePage() {
                       onClick={() => setSelectedCollection(collection)}
                       className="group cursor-pointer"
                     >
-                      <div className="aspect-[4/5] relative bg-surface-dark rounded-xl overflow-hidden border border-border-dark mb-3">
+                      <div className="aspect-4/5 relative bg-surface-dark rounded-xl overflow-hidden border border-border-dark mb-3">
                         <Image
                           src={collection.cover}
                           alt={collection.name}
@@ -458,7 +458,7 @@ export default function ProfilePage() {
                       </div>
                     ))}
                     {/* Add Item Placeholder */}
-                    <div className="aspect-[3/4] bg-surface-dark rounded-xl border-2 border-dashed border-border-dark flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-primary/50 hover:bg-white/5 transition-all group">
+                    <div className="aspect-3/4 bg-surface-dark rounded-xl border-2 border-dashed border-border-dark flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-primary/50 hover:bg-white/5 transition-all group">
                       <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors text-gray-400">
                         <Plus className="h-6 w-6" />
                       </div>

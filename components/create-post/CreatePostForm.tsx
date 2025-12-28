@@ -35,10 +35,6 @@ interface CreatePostFormProps {
   setPrivacy: (val: "public" | "connections" | "private") => void;
 }
 
-/**
- * Component responsible for the post details form.
- * Handles caption rich-text editing, location, categorization, and privacy settings.
- */
 export default function CreatePostForm({
   onClose,
   isHiring,
@@ -99,19 +95,7 @@ export default function CreatePostForm({
               <h4 className="text-white font-bold text-base">Alex Talent</h4>
               {/* Privacy Dropdown */}
               <div className="relative mt-0.5 group">
-                <select
-                  value={privacy}
-                  onChange={(e) =>
-                    setPrivacy(
-                      e.target.value as "public" | "connections" | "private"
-                    )
-                  }
-                  className="appearance-none bg-transparent text-gray-400 text-xs font-medium pr-4 cursor-pointer focus:outline-none hover:text-white transition-colors"
-                >
-                  <option value="public">Public</option>
-                  <option value="connections">Connections</option>
-                  <option value="private">Only Me</option>
-                </select>
+
                 <div className="absolute top-0 left-0 pointer-events-none flex items-center gap-1 text-gray-400 text-xs font-medium">
                   {privacy === "public" && <Globe className="h-3 w-3" />}
                   {privacy === "connections" && <Users className="h-3 w-3" />}
@@ -275,7 +259,7 @@ function ToolbarButton({
 }: {
   active?: boolean;
   onClick: () => void;
-  icon: any;
+  icon: React.ElementType;
 }) {
   return (
     <button
@@ -284,7 +268,7 @@ function ToolbarButton({
         active ? "bg-white/10 text-primary" : "text-gray-400 hover:text-white"
       }`}
     >
-      <Icon className="h-4 w-4" />
+      <Icon className="w-5 h-5" />
     </button>
   );
 }
