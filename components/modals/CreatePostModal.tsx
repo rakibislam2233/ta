@@ -151,6 +151,6 @@ export default function CreatePostModal({
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body // Portal Target
+    document.body 
   );
 }

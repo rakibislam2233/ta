@@ -77,13 +77,17 @@ export default function Sidebar() {
           {currentNavItems.map((item) => {
             const active = isActive(item.href);
             return (
+              //               <a class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gradient-to-r from-primary/20 to-transparent border-l-4 border-primary text-white group transition-all" href="#">
+              // <span class="material-symbols-outlined !text-[28px] group-hover:scale-110 transition-transform" data-weight="fill">explore</span>
+              // <span class="text-sm font-semibold">Explore</span>
+              // </a>
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-all group ${
+                className={`flex items-center gap-4 px-4 py-3.5 rounded-xl   to-transparent border-l-[6px]  text-white group transition-all ${
                   active
-                    ? "bg-surface-dark text-white  border-border-dark/50 shadow-sm"
-                    : "text-text-secondary hover:bg-surface-dark hover:text-white border border-transparent"
+                    ? "bg-surface-dark text-white  border-primary shadow-sm"
+                    : "text-text-secondary hover:bg-surface-dark hover:text-white border-transparent"
                 }`}
               >
                 <item.icon
@@ -107,10 +111,10 @@ export default function Sidebar() {
             {isAuthenticated && (
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className="w-full bg-linear-to-tl from-primary to-purple-400 flex items-center gap-3 px-5 py-3 rounded-lg cursor-pointer"
+                className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-linear-to-r from-primary to-purple-600  text-white font-bold rounded-xl shadow-lg shadow-purple-900/20 transition-all cursor-pointer"
               >
                 <PlusCircle className="h-6 w-6 transition-colors group-hover:text-primary" />
-                <span className="font-semibold">Create Post</span>
+                Create Post
               </button>
             )}
           </div>
