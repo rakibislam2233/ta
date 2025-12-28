@@ -15,11 +15,11 @@ export default function AuthLayout({
   showCreateAccount = false 
 }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1b1121] via-[#2d1b3d] to-[#1b1121] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-background-dark via-[#2d1b3d] to-background-dark flex items-center justify-center p-4">
       <div className="w-full max-w-6xl">
         <div className="flex justify-between items-center mb-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#9419e6] rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">T</span>
             </div>
             <span className="text-white text-xl font-semibold">Talenzy</span>
@@ -29,7 +29,7 @@ export default function AuthLayout({
               <span className="text-white text-sm">New here?</span>
               <Link 
                 href="/auth/register"
-                className="px-4 py-2 bg-[#221c26] text-white rounded-lg hover:bg-[#2a2330] transition-colors"
+                className="px-4 py-2 bg-surface-dark text-white rounded-lg hover:bg-[#2a2330] transition-colors"
               >
                 Create Account
               </Link>
@@ -38,7 +38,7 @@ export default function AuthLayout({
           {showBackToLogin && (
             <Link 
               href="/auth/login"
-              className="text-white text-sm hover:text-[#9419e6] transition-colors"
+              className="text-white text-sm hover:text-primary transition-colors"
             >
               Help
             </Link>

@@ -1,4 +1,4 @@
-import Register from "@/components/layout/Register/Register"
+import Register from "@/components/layout/AuthLayout/Register/Register"
 
 export default function RegisterPage() {
   return <Register />

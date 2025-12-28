@@ -1,6 +1,6 @@
 "use client"
 
-import AuthLayout from "@/components/layout/AuthLayout"
+import AuthLayout from "@/components/layout/AuthLayout/AuthLayout"
 import { usePathname } from "next/navigation"
 
 export default function AuthLayoutWrapper({
