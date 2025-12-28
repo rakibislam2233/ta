@@ -64,7 +64,7 @@ export default function Header() {
   const currentNavItems = isAuthenticated ? authNavItems : publicNavItems;
 
   return (
-    <header className="sticky top-0 w-full glass-panel border-b border-border-dark">
+    <header className="sticky top-0 w-full glass-panel border-b border-border-dark z-10">
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-4">
         {/* Main Header Row */}
         <div className="flex items-center justify-between gap-6">
@@ -191,7 +191,7 @@ export default function Header() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute z-10 top-full left-0 w-full bg-background-dark border-b border-border-dark py-4 px-4 shadow-xl animate-in slide-in-from-top-2">
+          <div className="md:hidden absolute  top-full left-0 w-full bg-background-dark border-b border-border-dark py-4 px-4 shadow-xl animate-in slide-in-from-top-2">
             <nav className="flex flex-col gap-2">
               {currentNavItems.map((item) => (
                 <Link
