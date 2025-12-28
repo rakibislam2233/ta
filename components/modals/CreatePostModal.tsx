@@ -88,12 +88,12 @@ export default function CreatePostModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-10 flex items-center justify-center p-4 md:p-8 bg-black/40 backdrop-blur-sm"
+          className="fixed inset-0 z-70 flex items-center justify-center p-0 lg:p-4 bg-black/60 backdrop-blur-md"
         >
-          {/* Close Button */}
+          {/* Close Button - Hidden on mobile, shown on desktop outside */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors  cursor-pointer"
+            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors cursor-pointer z-50 hidden lg:block"
           >
             <X className="h-6 w-6" />
           </button>
@@ -103,7 +103,7 @@ export default function CreatePostModal({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="bg-background-dark w-full max-w-6xl h-[90vh] rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl border border-border-dark relative"
+            className="bg-background-dark w-full max-w-6xl h-full lg:h-[90vh] rounded-none lg:rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl border-none lg:border border-border-dark relative"
           >
             {/* Left Column: Media (Upload/Review) */}
             <CreatePostMedia

@@ -36,41 +36,41 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       </div>
 
       {/* Right Interaction Rail */}
-      <div className="absolute right-4 bottom-24 flex flex-col gap-5 items-center ">
+      <div className="absolute right-2 md:right-4 bottom-20 md:bottom-24 flex flex-col gap-3 md:gap-5 items-center">
         <button
           onClick={() => setLiked(!liked)}
           className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
         >
           <div
-            className={`p-3 rounded-full backdrop-blur-sm transition-all ${
+            className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
               liked ? "bg-red-500/30" : "bg-white/10 hover:bg-white/20"
             }`}
           >
             <Heart
-              className={`h-7 w-7 transition-colors ${
+              className={`h-5 w-5 md:h-7 md:w-7 transition-colors ${
                 liked ? "text-red-500 fill-current" : "text-white"
               }`}
             />
           </div>
-          <span className="text-xs font-bold text-white drop-shadow-md">
+          <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
             {liked ? "1.3k" : post.likes}
           </span>
         </button>
 
         <button className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none">
-          <div className="p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
-            <MessageCircle className="h-7 w-7 text-white" />
+          <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
+            <MessageCircle className="h-5 w-5 md:h-7 md:w-7 text-white" />
           </div>
-          <span className="text-xs font-bold text-white drop-shadow-md">
+          <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
             {post.comments}
           </span>
         </button>
 
         <button className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none">
-          <div className="p-3 rounded-full bg-primary/80 backdrop-blur-sm shadow-glow hover:scale-110 transition-all">
-            <Gift className="h-7 w-7 text-white" />
+          <div className="p-2 md:p-3 rounded-full bg-primary/80 backdrop-blur-sm shadow-glow hover:scale-110 transition-all">
+            <Gift className="h-5 w-5 md:h-7 md:w-7 text-white" />
           </div>
-          <span className="text-xs font-bold text-white drop-shadow-md">
+          <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
             Gift
           </span>
         </button>
@@ -80,34 +80,36 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
         >
           <div
-            className={`p-3 rounded-full backdrop-blur-sm transition-all ${
+            className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
               saved ? "bg-primary/30" : "bg-white/10 hover:bg-white/20"
             }`}
           >
             <Bookmark
-              className={`h-7 w-7 text-white ${saved ? "fill-current" : ""}`}
+              className={`h-5 w-5 md:h-7 md:w-7 text-white ${
+                saved ? "fill-current" : ""
+              }`}
             />
           </div>
-          <span className="text-xs font-bold text-white drop-shadow-md">
+          <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
             Save
           </span>
         </button>
 
         <button className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none">
-          <div className="p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
-            <Share2 className="h-7 w-7 text-white" />
+          <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
+            <Share2 className="h-5 w-5 md:h-7 md:w-7 text-white" />
           </div>
-          <span className="text-xs font-bold text-white drop-shadow-md">
+          <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
             Share
           </span>
         </button>
       </div>
 
       {/* Bottom Info Overlay */}
-      <div className="absolute bottom-0 left-0 w-full p-6 pr-20 text-left">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-full border-2 border-primary p-0.5 pointer-events-none relative">
+      <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 pr-16 md:pr-20 text-left">
+        <div className="flex items-center justify-between mb-2 md:mb-3">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="size-8 md:size-10 rounded-full border-2 border-primary p-0.5 pointer-events-none relative">
               <div className="w-full h-full rounded-full overflow-hidden relative">
                 <Image
                   src={post.avatarUrl}
@@ -118,20 +120,20 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               </div>
             </div>
             <div className="flex flex-col text-left">
-              <h3 className="text-white font-bold text-base shadow-black drop-shadow-md">
+              <h3 className="text-white font-bold text-sm md:text-base shadow-black drop-shadow-md">
                 {post.username}
               </h3>
-              <span className="text-xs text-gray-300 font-medium">
+              <span className="text-[10px] md:text-xs text-gray-300 font-medium">
                 {post.audioName || "Original Audio"} • {post.timestamp}
               </span>
             </div>
           </div>
-          <button className="bg-white/20 hover:bg-primary backdrop-blur-md border border-white/10 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
-            <Briefcase className="h-3.5 w-3.5" />
+          <button className="bg-white/20 hover:bg-primary backdrop-blur-md border border-white/10 text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-lg transition-colors flex items-center gap-1">
+            <Briefcase className="h-3 w-3 md:h-3.5 md:w-3.5" />
             Hire Me
           </button>
         </div>
-        <p className="text-white text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 text-left">
+        <p className="text-white text-xs md:text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 text-left">
           {post.caption.split(" ").map((word, i) =>
             word.startsWith("#") ? (
               <span key={i} className="text-primary font-bold">

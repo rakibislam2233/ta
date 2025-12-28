@@ -18,6 +18,7 @@ import {
   ListOrdered,
   MapPin,
   Smile,
+  X,
 } from "lucide-react";
 
 interface CreatePostFormProps {
@@ -65,31 +66,41 @@ export default function CreatePostForm({
   });
 
   return (
-    <div className="w-full md:w-[40%] bg-surface-dark flex flex-col h-full overflow-y-auto custom-scrollbar relative z-20">
+    <div className="w-full lg:w-[40%] bg-surface-dark flex flex-col flex-1 lg:h-full overflow-y-auto custom-scrollbar relative z-20">
       {/* Header */}
-      <div className="p-4 border-b border-border-dark flex items-center justify-between sticky top-0 bg-surface-dark/95 backdrop-blur-md z-10">
-        <h2 className="text-white font-bold text-lg">New Post</h2>
+      <div className="p-4 border-b border-border-dark flex items-center justify-between sticky top-0 bg-surface-dark/95 backdrop-blur-md z-30">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onClose}
+            className="lg:hidden text-gray-400 hover:text-white transition-colors"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <h2 className="text-white font-bold text-lg">New Post</h2>
+        </div>
         <button
           onClick={onClose}
-          className="text-primary font-bold text-sm hover:text-primary-hover"
+          className="text-primary font-bold text-sm hover:text-primary-hover transition-colors"
         >
           Save Draft
         </button>
       </div>
 
-      <div className="p-6 flex flex-col gap-6 flex-1">
+      <div className="p-4 md:p-6 flex flex-col gap-4 md:gap-6 flex-1">
         {/* User Info & Privacy Selector */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary to-purple-400 p-[2px]">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-primary to-purple-400 p-[2px]">
               <div className="w-full h-full rounded-full bg-surface-dark relative overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white font-bold text-sm">
+                <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white font-bold text-xs md:text-sm">
                   AT
                 </div>
               </div>
             </div>
             <div>
-              <h4 className="text-white font-bold text-base">Alex Talent</h4>
+              <h4 className="text-white font-bold text-sm md:text-base">
+                Alex Talent
+              </h4>
               {/* Privacy Dropdown */}
               <div className="relative mt-0.5 group">
                 <select
@@ -155,17 +166,17 @@ export default function CreatePostForm({
 
         {/* Location Input */}
         <div className="relative group">
-          <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
+          <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
           <input
             placeholder="Add Location"
-            className="bg-background-dark border border-border-dark pl-12 text-white placeholder:text-gray-500 h-12 rounded-xl focus:border-primary/50 transition-all hover:border-gray-600 w-full"
+            className="bg-background-dark border border-border-dark pl-10 md:pl-12 text-white placeholder:text-gray-500 h-10 md:h-12 rounded-xl focus:border-primary/50 transition-all hover:border-gray-600 w-full text-sm"
           />
         </div>
 
         {/* Category Selection */}
         <div className="relative group">
-          <Layers className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
-          <select className="w-full bg-background-dark border border-border-dark text-white rounded-xl h-12 pl-12 pr-4 appearance-none focus:outline-none focus:border-primary/50 transition-all hover:border-gray-600 cursor-pointer text-sm font-medium">
+          <Layers className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
+          <select className="w-full bg-background-dark border border-border-dark text-white rounded-xl h-10 md:h-12 pl-10 md:pl-12 pr-4 appearance-none focus:outline-none focus:border-primary/50 transition-all hover:border-gray-600 cursor-pointer text-sm font-medium">
             <option value="" disabled className="text-gray-500">
               Select Category
             </option>
@@ -174,7 +185,7 @@ export default function CreatePostForm({
             <option value="video">Video</option>
             <option value="tech">Technology</option>
           </select>
-          <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 rotate-90" />
+          <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 h-3 w-3 md:h-4 md:w-4 text-gray-400 rotate-90" />
         </div>
 
         {/* Hiring Switch */}
@@ -230,16 +241,16 @@ export default function CreatePostForm({
       </div>
 
       {/* Action Buttons */}
-      <div className="p-4 border-t border-border-dark bg-surface-dark sticky bottom-0 z-10 flex gap-3">
+      <div className="p-4 border-t border-border-dark bg-surface-dark sticky bottom-0 z-30 flex gap-3">
         <Button
           variant="outline"
           onClick={onClose}
-          className="flex-1 bg-transparent border-gray-700 text-white hover:bg-white/5 hover:text-white hover:border-gray-500 h-11 rounded-xl font-semibold transition-all hover:scale-[1.02]"
+          className="hidden md:flex flex-1 bg-transparent border-gray-700 text-white hover:bg-white/5 hover:text-white hover:border-gray-500 h-11 rounded-xl font-semibold transition-all hover:scale-[1.02]"
         >
           Cancel
         </Button>
         <Button className="flex-1 bg-primary hover:bg-primary-hover text-white h-11 rounded-xl font-bold shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] active:scale-95">
-          Post
+          Share Post
           <ChevronRight className="ml-1 h-4 w-4" />
         </Button>
       </div>

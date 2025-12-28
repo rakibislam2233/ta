@@ -3,6 +3,7 @@
 import RightSidebar from "@/components/RightSidebar";
 import { usePathname } from "next/navigation";
 import Header from "./Header";
+import MobileBottomNav from "./MobileBottomNav";
 import Sidebar from "./Sidebar";
 
 export default function MainLayout({
@@ -20,12 +21,15 @@ export default function MainLayout({
   return (
     <div className="flex min-h-screen bg-background-dark text-white font-display selection:bg-primary selection:text-white overflow-hidden md:pl-64">
       <Sidebar />
+      <MobileBottomNav />
       <main className="flex-1 flex flex-col h-screen overflow-hidden relative group/main w-full">
         {/* Sticky Header */}
         <Header />
 
         {/* Main Content */}
-        <div className="flex-1 overflow-y-auto scroll-smooth">{children}</div>
+        <div className="flex-1 overflow-y-auto scroll-smooth pb-20 md:pb-0">
+          {children}
+        </div>
       </main>
 
       {!hideRightSidebar && (

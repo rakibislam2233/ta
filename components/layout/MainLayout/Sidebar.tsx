@@ -51,7 +51,7 @@ export default function Sidebar() {
   const currentNavItems = isAuthenticated ? authNavItems : publicNavItems;
 
   return (
-    <aside className="w-64 h-full flex-col border-r border-border-dark bg-background-dark shrink-0 z-20 hidden md:flex fixed top-0 left-0">
+    <aside className="w-64 h-full flex-col border-r border-border-dark bg-background-dark shrink-0 hidden md:flex fixed top-0 left-0">
       <div className="p-6 flex flex-col h-full">
         {/* Logo */}
         <Link href={"/"}>

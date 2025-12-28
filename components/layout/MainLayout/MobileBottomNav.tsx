@@ -1,0 +1,125 @@
+"use client";
+
+import CreatePostModal from "@/components/modals/CreatePostModal";
+import { useAuth } from "@/context/AuthContext";
+import { Bell, Compass, Home, MessageCircle, Plus, User } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+export default function MobileBottomNav() {
+  const pathname = usePathname();
+  const { isAuthenticated } = useAuth();
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname?.startsWith(href);
+  };
+
+  /* navItems removed as we are using manual layout */
+
+  // We want a layout like: [Item] [Item] [Plus] [Item] [Item]
+  // Ideally 5 slots.
+  // For unauthenticated, maybe just show Login instead of Create?
+  // Let's stick to the requested behavior: "Create Post or plus icon"
+
+  return (
+    <>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0f0f12] border-t border-border-dark flex items-center justify-between px-6 z-40 pb-safe">
+        {/* Left Side */}
+        <Link
+          href="/"
+          className={`flex flex-col items-center gap-1 ${
+            isActive("/") ? "text-primary" : "text-gray-400"
+          }`}
+        >
+          <Home className={`h-6 w-6 ${isActive("/") ? "fill-current" : ""}`} />
+        </Link>
+
+        <Link
+          href="/explore"
+          className={`flex flex-col items-center gap-1 ${
+            isActive("/explore") ? "text-primary" : "text-gray-400"
+          }`}
+        >
+          <Compass
+            className={`h-6 w-6 ${isActive("/explore") ? "fill-current" : ""}`}
+          />
+        </Link>
+
+        {/* Center Create Button */}
+        <div className="relative -top-5">
+          <button
+            onClick={() => setIsCreateModalOpen(true)}
+            className="w-14 h-14 rounded-full bg-linear-to-r from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/40 border-4 border-[#0f0f12] active:scale-95 transition-transform"
+          >
+            <Plus className="h-7 w-7 text-white" />
+          </button>
+        </div>
+
+        {/* Right Side */}
+        {isAuthenticated ? (
+          <>
+            <Link
+              href="/notifications"
+              className={`flex flex-col items-center gap-1 ${
+                isActive("/notifications") ? "text-primary" : "text-gray-400"
+              }`}
+            >
+              <Bell
+                className={`h-6 w-6 ${
+                  isActive("/notifications") ? "fill-current" : ""
+                }`}
+              />
+            </Link>
+            <Link
+              href="/profile"
+              className={`flex flex-col items-center gap-1 ${
+                isActive("/profile") ? "text-primary" : "text-gray-400"
+              }`}
+            >
+              <User
+                className={`h-6 w-6 ${
+                  isActive("/profile") ? "fill-current" : ""
+                }`}
+              />
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              href="/messages"
+              className={`flex flex-col items-center gap-1 ${
+                isActive("/messages") ? "text-primary" : "text-gray-400"
+              }`}
+            >
+              <MessageCircle
+                className={`h-6 w-6 ${
+                  isActive("/messages") ? "fill-current" : ""
+                }`}
+              />
+            </Link>
+            <Link
+              href="/auth/login"
+              className={`flex flex-col items-center gap-1 ${
+                isActive("/auth/login") ? "text-primary" : "text-gray-400"
+              }`}
+            >
+              <User
+                className={`h-6 w-6 ${
+                  isActive("/auth/login") ? "fill-current" : ""
+                }`}
+              />
+            </Link>
+          </>
+        )}
+      </div>
+
+      <CreatePostModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
+    </>
+  );
+}

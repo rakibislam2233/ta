@@ -53,7 +53,7 @@ export default function CreatePostMedia({
   const currentFile = selectedFiles[currentSlide];
 
   return (
-    <div className="relative w-full md:w-[60%] bg-[#0f0f12] flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-dark group overflow-hidden">
+    <div className="relative w-full h-[40vh] sm:h-[50vh] lg:h-full lg:w-[60%] bg-[#0f0f12] flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-border-dark group overflow-hidden">
       {selectedFiles.length > 0 ? (
         <>
           {/* Main Preview Area */}
@@ -126,15 +126,15 @@ export default function CreatePostMedia({
               <>
                 <button
                   onClick={onPrevSlide}
-                  className="absolute left-4 p-3 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-sm transition-colors z-10"
+                  className="absolute left-2 md:left-4 p-2 md:p-3 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-sm transition-colors z-10"
                 >
-                  <ChevronLeft className="h-6 w-6" />
+                  <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
                 <button
                   onClick={onNextSlide}
-                  className="absolute right-4 p-3 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-sm transition-colors z-10"
+                  className="absolute right-2 md:right-4 p-2 md:p-3 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-sm transition-colors z-10"
                 >
-                  <ChevronRight className="h-6 w-6" />
+                  <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
               </>
             )}
@@ -157,7 +157,7 @@ export default function CreatePostMedia({
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 20, opacity: 0 }}
-                className="absolute bottom-24 inset-x-8 bg-black/80 backdrop-blur-xl p-4 rounded-2xl border border-gray-800 flex items-center gap-4 px-4 overflow-x-auto custom-scrollbar z-30"
+                className="absolute bottom-16 lg:bottom-24 inset-x-4 md:inset-x-8 bg-black/80 backdrop-blur-xl p-3 md:p-4 rounded-2xl border border-gray-800 flex items-center gap-4 px-4 overflow-x-auto custom-scrollbar z-30"
               >
                 {FILTERS.map((filter) => (
                   <button
@@ -204,7 +204,7 @@ export default function CreatePostMedia({
 
           {/* Edit Tools Trigger Buttons */}
           {activeTool === "none" && (
-            <div className="absolute right-6 bottom-24 cursor-pointer flex flex-col gap-4 z-10">
+            <div className="absolute right-4 lg:right-6 bottom-16 lg:bottom-24 cursor-pointer flex flex-col gap-3 lg:gap-4 z-10">
               {currentFile.type === "image" && (
                 <>
                   <ToolButton
@@ -246,25 +246,25 @@ export default function CreatePostMedia({
         </>
       ) : (
         /* Empty State: Prompt to upload */
-        <div className="flex flex-col items-center justify-center p-8 text-center">
+        <div className="flex flex-col items-center justify-center p-4 md:p-8 text-center h-full">
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", bounce: 0.5 }}
-            className="w-24 h-24 bg-surface-dark rounded-3xl flex items-center justify-center mb-6 shadow-2xl border border-white/5"
+            className="w-16 h-16 md:w-24 md:h-24 bg-surface-dark rounded-3xl flex items-center justify-center mb-4 md:mb-6 shadow-2xl border border-white/5"
           >
-            <ImageIcon className="h-10 w-10 text-primary" />
+            <ImageIcon className="h-8 w-8 md:h-10 md:w-10 text-primary" />
           </motion.div>
-          <h3 className="text-2xl font-bold text-white mb-2">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
             Create New Post
           </h3>
-          <p className="text-gray-400 mb-8 max-w-xs leading-relaxed">
+          <p className="text-gray-400 mb-6 md:mb-8 max-w-xs leading-relaxed text-sm md:text-base">
             Drag and drop photos or videos here, or click to select from your
             computer
           </p>
           <Button
             onClick={() => fileInputRef.current?.click()}
-            className="bg-primary hover:bg-primary-hover text-white rounded-xl px-8 py-6 text-lg font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all hover:scale-105"
+            className="bg-primary hover:bg-primary-hover text-white rounded-xl px-6 py-4 md:px-8 md:py-6 text-base md:text-lg font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all hover:scale-105"
           >
             Select from Computer
           </Button>
