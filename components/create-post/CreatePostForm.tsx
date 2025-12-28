@@ -95,20 +95,19 @@ export default function CreatePostForm({
               <h4 className="text-white font-bold text-base">Alex Talent</h4>
               {/* Privacy Dropdown */}
               <div className="relative mt-0.5 group">
-
-                <div className="absolute top-0 left-0 pointer-events-none flex items-center gap-1 text-gray-400 text-xs font-medium">
-                  {privacy === "public" && <Globe className="h-3 w-3" />}
-                  {privacy === "connections" && <Users className="h-3 w-3" />}
-                  {privacy === "private" && <Lock className="h-3 w-3" />}
-                  <span>
-                    {privacy === "public"
-                      ? "Public"
-                      : privacy === "connections"
-                      ? "Connections"
-                      : "Only Me"}
-                  </span>
-                  <ChevronRight className="h-3 w-3 rotate-90" />
-                </div>
+                <select
+                  value={privacy}
+                  onChange={(e) =>
+                    setPrivacy(
+                      e.target.value as "public" | "connections" | "private"
+                    )
+                  }
+                  className="appearance-none bg-transparent text-gray-400 text-xs font-medium pr-4 cursor-pointer focus:outline-none hover:text-white transition-colors"
+                >
+                  <option value="public">Public</option>
+                  <option value="connections">Connections</option>
+                  <option value="private">Only Me</option>
+                </select>
               </div>
             </div>
           </div>
