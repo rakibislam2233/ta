@@ -81,8 +81,8 @@ export default function Sidebar() {
                 href={item.href}
                 className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-all group ${
                   active
-                    ? "bg-surface-dark text-white border border-border-dark/50 shadow-sm"
-                    : "text-text-secondary hover:bg-surface-dark hover:text-white"
+                    ? "bg-surface-dark text-white  border-border-dark/50 shadow-sm"
+                    : "text-text-secondary hover:bg-surface-dark hover:text-white border border-transparent"
                 }`}
               >
                 <item.icon
