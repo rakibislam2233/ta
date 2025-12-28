@@ -88,7 +88,7 @@ export default function CreatePostModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-70 flex items-center justify-center p-0 lg:p-4 bg-black/60 backdrop-blur-md"
+          className="fixed inset-0 z-70 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
         >
           {/* Close Button - Hidden on mobile, shown on desktop outside */}
           <button
