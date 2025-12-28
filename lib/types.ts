@@ -17,3 +17,10 @@ export interface Post {
   category: string;
   audioName?: string;
 }
+
+export interface Story {
+  id: string;
+  username: string;
+  avatarUrl: string;
+  isViewed: boolean;
+}

@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { FileText, PlusCircle, Radio, Video } from "lucide-react";
 import Image from "next/image";
 
-import { MOCK_POSTS } from "@/lib/data";
+import { MOCK_POSTS, MOCK_STORIES } from "@/lib/data";
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
@@ -29,25 +29,27 @@ export default function Home() {
             </div>
             <span className="text-xs text-white font-medium">My Story</span>
           </div>
-          {[1, 2, 3, 4, 5].map((i) => (
+          {MOCK_STORIES.map((story) => (
             <div
-              key={i}
+              key={story.id}
               className="flex flex-col items-center gap-2 min-w-[72px] cursor-pointer group"
             >
-              <div className="w-16 h-16 rounded-full border-2 border-primary p-0.5 group-hover:scale-105 transition-transform">
+              <div
+                className={`w-16 h-16 rounded-full border-2 p-0.5 group-hover:scale-105 transition-transform ${
+                  story.isViewed ? "border-gray-600" : "border-primary"
+                }`}
+              >
                 <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800">
                   <Image
-                    src={`https://images.unsplash.com/photo-${
-                      1500000000000 + i
-                    }?w=100&h=100&fit=crop`}
-                    alt="User"
+                    src={story.avatarUrl}
+                    alt={story.username}
                     fill
                     className="object-cover"
                   />
                 </div>
               </div>
               <span className="text-xs text-white font-medium truncate w-full text-center">
-                User {i}
+                {story.username}
               </span>
             </div>
           ))}
