@@ -2,66 +2,39 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.25rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    
-    /* Custom theme colors */
-    --color-primary: #9419e6;
-    --color-background-light: #f7f6f8;
-    --color-background-dark: #1b1121;
-    --color-surface-dark: #221c26;
-    --color-border-dark: #4a3c53;
-    --color-text-muted: #ae9db8;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --background: 268 34% 6%; /* #0f0f13 */
+    --foreground: 0 0% 100%;
+    --card: 270 26% 10%; /* #1b1121 */
+    --card-foreground: 0 0% 100%;
+    --popover: 270 26% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 277 85% 27%; /* #500e7c */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 280 18% 19%; /* #322938 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 280 18% 19%;
+    --muted-foreground: 280 15% 66%; /* #ae9db8 */
+    --accent: 270 26% 10%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 280 18% 19%; /* #322938 */
+    --input: 280 18% 19%;
+    --ring: 277 85% 27%;
+    --radius: 0.25rem;
+    --chart-1: 277 70% 50%;
+    --chart-2: 280 60% 45%;
+    --chart-3: 260 50% 40%;
+    --chart-4: 290 65% 60%;
+    --chart-5: 270 75% 55%;
+
+    /* Custom theme colors - Talenzy palette */
+    --color-primary: #500e7c;
+    --color-primary-hover: #6a1b9a;
+    --color-background-dark: #0f0f13;
+    --color-surface-dark: #1b1121;
+    --color-border-dark: #322938;
+    --color-text-secondary: #ae9db8;
   }
 }
 
@@ -72,7 +45,7 @@
   --color-card-foreground: hsl(var(--card-foreground));
   --color-popover: hsl(var(--popover));
   --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-primary: #9419e6;
+  --color-primary: #500e7c;
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
@@ -85,22 +58,22 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-  
-  /* Custom theme colors */
-  --color-background-light: #f7f6f8;
-  --color-background-dark: #1b1121;
-  --color-surface-dark: #221c26;
-  --color-border-dark: #4a3c53;
-  --color-text-muted: #ae9db8;
-  
+
+  /* Custom theme colors - Talenzy palette */
+  --color-primary-hover: #6a1b9a;
+  --color-background-dark: #0f0f13;
+  --color-surface-dark: #1b1121;
+  --color-border-dark: #322938;
+  --color-text-secondary: #ae9db8;
+
   /* Border radius */
   --radius-sm: 0.25rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
   --radius-full: 9999px;
-  
+
   /* Font family */
   --font-display: var(--font-display);
 }
@@ -112,6 +85,21 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom scrollbar styling for the Talenzy theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f0f13;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #322938;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #500e7c;
+  }
 }
 
 @layer utilities {
@@ -121,5 +109,26 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Glass panel effect for Talenzy */
+  .glass-panel {
+    background: rgba(15, 15, 19, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Card hover effect */
+  .card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-hover-effect:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 30px -10px rgba(80, 14, 124, 0.4);
+  }
+
+  /* Glow effect for primary elements */
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(80, 14, 124, 0.3);
   }
 }

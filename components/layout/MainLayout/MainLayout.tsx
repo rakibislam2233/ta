@@ -1,33 +1,38 @@
-"use client"
+"use client";
 
-import { ReactNode } from "react"
-import { usePathname } from "next/navigation"
-import Sidebar from "./Sidebar"
-import TopBar from "./TopBar"
-import RightSidebar from "@/components/RightSidebar"
+import RightSidebar from "@/components/RightSidebar";
+import { usePathname } from "next/navigation";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
-interface MainLayoutProps {
-  children: ReactNode
-}
-
-export default function MainLayout({ children }: MainLayoutProps) {
-  const pathname = usePathname()
-  // Hide right sidebar for messages, hiring, settings pages
-  const hideRightSidebar = pathname?.includes("/messages") || pathname?.includes("/hiring") || pathname?.includes("/settings")
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  // Hide right sidebar on messages and hiring pages
+  const hideRightSidebar =
+    pathname.includes("/messages") ||
+    pathname.includes("/hiring") ||
+    pathname.includes("/discover");
 
   return (
-    <div className="min-h-screen bg-background-dark flex">
+    <div className="flex min-h-screen bg-background-dark text-white font-display selection:bg-primary selection:text-white overflow-hidden md:pl-64">
       <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <TopBar />
-        <div className="flex-1 flex overflow-y-auto">
-          <main className="flex-1 overflow-y-auto">
-            {children}
-          </main>
-          {!hideRightSidebar && <RightSidebar />}
-        </div>
-      </div>
-    </div>
-  )
-}
+      <main className="flex-1 flex flex-col h-screen overflow-hidden relative group/main w-full">
+        {/* Sticky Header */}
+        <Header />
 
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto scroll-smooth">{children}</div>
+      </main>
+
+      {!hideRightSidebar && (
+        <div className="hidden xl:block w-80 border-l border-border-dark bg-background-dark h-screen sticky top-0">
+          <RightSidebar />
+        </div>
+      )}
+    </div>
+  );
+}

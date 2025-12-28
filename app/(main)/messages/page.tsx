@@ -73,14 +73,14 @@ export default function Messages() {
   ];
 
   return (
-    <div className="flex h-[calc(100vh-theme(spacing.20))] m-4 bg-[#2a2330]/50 rounded-2xl border border-border-dark/30 overflow-hidden backdrop-blur-sm">
+    <div className="flex h-[calc(100vh-(--spacing(20)))] m-4 bg-surface-dark/50 rounded-2xl border border-border-dark/30 overflow-hidden backdrop-blur-sm">
       {/* Left Sidebar: Chat List */}
       <div className="w-80 border-r border-border-dark/30 flex flex-col bg-surface-dark/50">
         <div className="p-4 border-b border-border-dark/30">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-xl font-bold text-white">Messages</h1>
             <button className="text-primary hover:text-white transition-colors">
-              <div className="bg-[#2a2330] p-2 rounded-lg">
+              <div className="bg-surface-dark p-2 rounded-lg">
                 <svg
                   width="20"
                   height="20"
@@ -103,7 +103,7 @@ export default function Messages() {
             <input
               type="text"
               placeholder="Search messages..."
-              className="w-full bg-[#1b1121] border border-border-dark/30 rounded-lg h-10 pl-9 pr-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary"
+              className="w-full bg-background-dark border border-border-dark/30 rounded-lg h-10 pl-9 pr-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function Messages() {
                 className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
                   i === 0
                     ? "bg-primary text-white"
-                    : "bg-[#2a2330] text-gray-400 hover:text-white"
+                    : "bg-surface-dark text-gray-400 hover:text-white"
                 }`}
               >
                 {filter}
@@ -127,9 +127,9 @@ export default function Messages() {
           {contacts.map((contact) => (
             <div
               key={contact.id}
-              className={`p-4 flex gap-3 hover:bg-[#2a2330] cursor-pointer transition-colors ${
+              className={`p-4 flex gap-3 hover:bg-surface-dark cursor-pointer transition-colors ${
                 contact.id === 1
-                  ? "bg-[#2a2330]/50 border-l-2 border-primary"
+                  ? "bg-surface-dark/50 border-l-2 border-primary"
                   : ""
               }`}
             >
@@ -194,7 +194,7 @@ export default function Messages() {
       </div>
 
       {/* Right Pane: Chat Window */}
-      <div className="flex-1 flex flex-col bg-[#1b1121]/50 relative">
+      <div className="flex-1 flex flex-col bg-background-dark/50 relative">
         {/* Detail Header */}
         <div className="h-16 border-b border-border-dark/30 flex items-center justify-between px-6 bg-surface-dark/50">
           <div className="flex items-center gap-3">
@@ -237,7 +237,7 @@ export default function Messages() {
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Message Bubble: Received */}
           <div className="flex justify-start">
-            <div className="bg-[#2a2330] rounded-2xl rounded-tl-none p-4 max-w-[70%] border border-border-dark/30">
+            <div className="bg-surface-dark rounded-2xl rounded-tl-none p-4 max-w-[70%] border border-border-dark/30">
               <p className="text-white text-sm">
                 Hi CreativeAgency! I saw your post regarding the Senior Graphic
                 Designer position. Is it still open?
@@ -251,7 +251,7 @@ export default function Messages() {
 
           {/* Date Divider */}
           <div className="flex justify-center my-4">
-            <span className="text-gray-500 text-xs bg-[#2a2330] px-3 py-1 rounded-full border border-border-dark/30">
+            <span className="text-gray-500 text-xs bg-surface-dark px-3 py-1 rounded-full border border-border-dark/30">
               Today, Oct 28
             </span>
           </div>
@@ -259,7 +259,7 @@ export default function Messages() {
           {/* Message Bubble: Sent with Attachment */}
           <div className="flex justify-end">
             <div className="bg-surface-dark rounded-2xl rounded-tr-none p-4 max-w-[70%] border border-border-dark/30">
-              <div className="bg-[#2a2330] rounded-xl p-3 mb-3 flex items-center gap-3 border border-border-dark/30 hover:bg-[#332840] cursor-pointer transition-colors group">
+              <div className="bg-background-dark rounded-xl p-3 mb-3 flex items-center gap-3 border border-border-dark/30 hover:bg-[#332840] cursor-pointer transition-colors group">
                 <div className="w-10 h-10 bg-red-500/10 rounded-lg flex items-center justify-center shrink-0">
                   <FileText className="h-5 w-5 text-red-500" />
                 </div>
@@ -316,7 +316,7 @@ export default function Messages() {
             <div className="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center shrink-0 mr-3 self-end">
               <span className="text-white text-xs font-bold">CA</span>
             </div>
-            <div className="bg-[#2a2330] rounded-2xl rounded-tl-none p-4 max-w-[70%] border border-border-dark/30">
+            <div className="bg-surface-dark rounded-2xl rounded-tl-none p-4 max-w-[70%] border border-border-dark/30">
               <p className="text-white text-sm">
                 Can you send the portfolio by 5 PM? We're finalizing the
                 candidates today.
@@ -338,7 +338,7 @@ export default function Messages() {
               <input
                 type="text"
                 placeholder="Type a message..."
-                className="w-full bg-[#1b1121] border border-border-dark/30 rounded-full h-12 pl-12 pr-12 text-sm text-white focus:outline-none focus:border-primary transition-colors"
+                className="w-full bg-background-dark border border-border-dark/30 rounded-full h-12 pl-12 pr-12 text-sm text-white focus:outline-none focus:border-primary transition-colors"
               />
               <button className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
                 <div className="w-6 h-6 rounded-full border border-gray-600 flex items-center justify-center">

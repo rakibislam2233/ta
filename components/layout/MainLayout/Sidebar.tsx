@@ -1,165 +1,146 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
 import {
-  Bell,
-  Bookmark,
-  Briefcase,
   Compass,
-  Home,
   Info,
   Layers,
-  MessageSquare,
-  Plus,
   Settings,
+  Sparkles,
   TrendingUp,
   User,
-  Wallet,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { useSearchParams } from "next/navigation";
-
 export default function Sidebar() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const isPublic = searchParams.get("view") === "public";
-
-  const navItems = [
-    { icon: Home, label: "Home", href: "/" },
-    { icon: Compass, label: "Explore", href: "/explore" },
-    { icon: Briefcase, label: "Hiring", href: "/hiring" },
-    { icon: MessageSquare, label: "Messages", href: "/messages" },
-    { icon: Bell, label: "Notifications", href: "/notifications" },
-    { icon: Bookmark, label: "Saved", href: "/saved" },
-    { icon: Wallet, label: "Wallet", href: "/wallet" },
-    { icon: User, label: "Profile", href: "/profile" },
-    { icon: Settings, label: "Settings", href: "/settings" },
-  ];
-
-  const publicNavItems = [
-    { icon: Compass, label: "Explore", href: "/public/explore" }, // Pseudo-link
-    { icon: TrendingUp, label: "Trending", href: "/public/trending" },
-    { icon: Layers, label: "Categories", href: "/public/categories" },
-    { icon: Info, label: "About", href: "/public/about" },
-  ];
-
-  const currentNavItems = isPublic ? publicNavItems : navItems;
+  const { isAuthenticated, logout } = useAuth();
 
   const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
+    if (href === "/") return pathname === "/";
     return pathname?.startsWith(href);
   };
 
-  return (
-    <div className="w-64 bg-[#221c26] border-r border-[#4a3c53]/30 flex flex-col h-screen sticky top-0">
-      {/* Logo */}
-      <div className="p-6 border-b border-[#4a3c53]/30">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-[#9419e6] rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">T</span>
-          </div>
-          <span className="text-white text-xl font-semibold">Talenzy</span>
-        </Link>
-        <p className="text-gray-400 text-xs mt-1 ml-12">
-          Unleash Your Potential
-        </p>
-      </div>
+  const navItems = [
+    { href: "/explore", icon: Compass, label: "Explore" },
+    { href: "/trending", icon: TrendingUp, label: "Trending" },
+    { href: "/categories", icon: Layers, label: "Categories" },
+    { href: "/about", icon: Info, label: "About" },
+  ];
 
-      {/* User Profile Section - Only for Authenticated */}
-      {!isPublic && (
-        <div className="p-4 border-b border-[#4a3c53]/30">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#9419e6] to-[#7a14c4] flex items-center justify-center">
-              <span className="text-white font-semibold">AT</span>
-            </div>
-            <div className="flex-1">
-              <p className="text-white font-medium text-sm">Alex Talent</p>
-              <p className="text-gray-400 text-xs">@alextalent</p>
-              <div className="flex gap-4 mt-1">
-                <span className="text-gray-500 text-xs">12.5k FOLLOWERS</span>
-                <span className="text-gray-500 text-xs">480 FOLLOWING</span>
-              </div>
-            </div>
+  const accountItems = [
+    { href: "/profile", icon: User, label: "Profile" },
+    { href: "/settings", icon: Settings, label: "Settings" },
+  ];
+
+  return (
+    <aside className="w-64 h-full flex flex-col border-r border-border-dark bg-[#0f0f13] flex-shrink-0 z-20 hidden md:flex fixed top-0 left-0">
+      <div className="p-6 flex flex-col h-full">
+        {/* Logo */}
+        <div className="flex items-center gap-3 mb-10 cursor-pointer">
+          <div className="size-10 rounded-xl bg-linear-to-br from-primary to-purple-400 flex items-center justify-center shadow-glow">
+            <Sparkles className="text-white h-6 w-6 fill-white" />
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-xl font-bold tracking-tight text-white">
+              Talenzy
+            </h1>
+            <p className="text-text-secondary text-xs font-medium">
+              Unleash Your Potential
+            </p>
           </div>
         </div>
-      )}
 
-      {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-4">
-        <div className="space-y-1">
-          {currentNavItems.map((item) => {
-            const Icon = item.icon;
+        {/* Navigation */}
+        <nav className="flex flex-col gap-2 flex-1">
+          {navItems.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-all group ${
                   active
-                    ? "bg-[#9419e6] text-white"
-                    : "text-gray-400 hover:bg-[#2a2330] hover:text-white"
+                    ? "bg-surface-dark text-white border border-border-dark/50 shadow-sm"
+                    : "text-text-secondary hover:bg-surface-dark hover:text-white"
                 }`}
               >
-                <Icon className="h-5 w-5" />
-                <span className="font-medium">{item.label}</span>
+                <item.icon
+                  className={`h-6 w-6 transition-colors ${
+                    active ? "text-primary fill-current" : ""
+                  }`}
+                />
+                <span
+                  className={`text-sm ${
+                    active ? "font-semibold" : "font-medium"
+                  }`}
+                >
+                  {item.label}
+                </span>
               </Link>
             );
           })}
-        </div>
-      </nav>
 
-      {isPublic && (
-        <div className="px-6 pb-4">
-          <div className="mb-4">
-            <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">
+          <div className="mt-8 pt-8 border-t border-border-dark">
+            <p className="px-4 text-xs font-bold text-text-secondary uppercase tracking-wider mb-4">
               Your Account
             </p>
-            <Link
-              href="#"
-              className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-gray-400 hover:bg-[#2a2330] hover:text-white"
-            >
-              <User className="h-5 w-5" />
-              <span className="font-medium">Profile</span>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-gray-400 hover:bg-[#2a2330] hover:text-white"
-            >
-              <Settings className="h-5 w-5" />
-              <span className="font-medium">Settings</span>
-            </Link>
-          </div>
-        </div>
-      )}
+            {(isAuthenticated ? accountItems : []).map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`w-full flex items-center gap-4 px-4 py-3 rounded-lg transition-all ${
+                    active
+                      ? "bg-surface-dark text-white"
+                      : "text-text-secondary hover:bg-surface-dark hover:text-white"
+                  }`}
+                >
+                  <item.icon className="h-6 w-6" />
+                  <span className="text-sm font-medium">{item.label}</span>
+                </Link>
+              );
+            })}
 
-      {/* Create Post Button */}
-      <div className="p-4 border-t border-[#4a3c53]/30">
-        {/* Bottom Actions */}
-        <div className="p-4 border-t border-[#4a3c53]/30">
-          {isPublic ? (
-            <div className="space-y-3">
-              <Button className="w-full bg-[#9419e6] hover:bg-[#a824f0] text-white rounded-lg h-12 font-semibold">
-                Sign Up
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full bg-transparent border border-[#4a3c53] text-white hover:bg-[#2a2330] rounded-lg h-12 font-semibold"
+            {!isAuthenticated && (
+              <Link
+                href="/auth/register"
+                className="w-full flex items-center gap-4 px-4 py-3 rounded-lg transition-all text-text-secondary hover:bg-surface-dark hover:text-white"
               >
-                Log In
-              </Button>
-            </div>
+                <User className="h-6 w-6" />
+                <span className="text-sm font-medium">Sign In / Register</span>
+              </Link>
+            )}
+          </div>
+        </nav>
+
+        {/* Footer Buttons */}
+        <div className="flex flex-col gap-3 mt-auto">
+          {isAuthenticated ? (
+            <button
+              onClick={logout}
+              className="w-full h-10 rounded-lg border border-border-dark hover:bg-surface-dark text-white text-sm font-bold transition-all"
+            >
+              Log Out
+            </button>
           ) : (
-            <Button className="w-full bg-[#9419e6] hover:bg-[#a824f0] text-white rounded-lg h-12 font-semibold">
-              <Plus className="h-5 w-5 mr-2" />
-              Create Post
-            </Button>
+            <>
+              <Link href="/auth/register" className="w-full">
+                <button className="w-full h-10 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold shadow-glow transition-all">
+                  Sign Up
+                </button>
+              </Link>
+              <Link href="/auth/login" className="w-full">
+                <button className="w-full h-10 rounded-lg border border-border-dark hover:bg-surface-dark text-white text-sm font-bold transition-all">
+                  Log In
+                </button>
+              </Link>
+            </>
           )}
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

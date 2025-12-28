@@ -1,82 +1,139 @@
 "use client";
 
+import PostCard from "@/components/FeedPost";
 import PublicHome from "@/components/pages/PublicHome";
-import Post from "@/components/Post";
-import Stories from "@/components/Stories";
-import { Mic, PenTool, ShoppingBag, Video } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
+import { FileText, PlusCircle, Radio, Video } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const isPublic = searchParams.get("view") === "public";
+  const { isAuthenticated } = useAuth();
 
-  if (isPublic) {
+  if (!isAuthenticated) {
     return <PublicHome />;
   }
 
+  const post1 = {
+    mediaUrl:
+      "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=1000",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=100",
+    username: "GuitarMaster",
+    audioName: "Musician",
+    timestamp: "2h ago",
+    caption:
+      "Learning a new jazz scale. It's tricky but sounds amazing! 🎸 #jazz #music",
+    likes: "1.2k",
+    comments: "45",
+  };
+
+  const post2 = {
+    mediaUrl:
+      "https://images.unsplash.com/photo-1506157786151-b8491531f436?w=1000",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100",
+    username: "StageDirector",
+    audioName: "Theater",
+    timestamp: "5h ago",
+    caption:
+      "Behind the scenes of our new production. Lighting is everything! 💡 #theater",
+    likes: "890",
+    comments: "32",
+  };
+
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6">
-      {/* Stories */}
-      <Stories />
-
-      {/* "What's your talent today?" Input Section */}
-      <div className="bg-surface-dark rounded-xl p-4 border border-border-dark/30">
-        <div className="flex items-center gap-4 mb-4">
-          {/* User Avatar */}
-          <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-[#7a14c4] flex items-center justify-center shrink-0">
-            <span className="text-white font-bold text-xs">AT</span>
+    <div className="max-w-2xl mx-auto px-4 pb-32">
+      {/* Stories Section */}
+      <div className="py-6 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-4">
+          <div className="flex flex-col items-center gap-2 min-w-[72px]">
+            <div className="w-16 h-16 rounded-full border-2 border-dashed border-gray-600 p-0.5 flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
+              <div className="w-full h-full bg-surface-dark rounded-full flex items-center justify-center">
+                <PlusCircle className="text-primary h-6 w-6" />
+              </div>
+            </div>
+            <span className="text-xs text-white font-medium">My Story</span>
           </div>
-          {/* Input */}
-          <div className="flex-1 relative">
-            <input
-              type="text"
-              placeholder="What's your talent today?"
-              className="w-full h-12 bg-[#1b1121] rounded-full pl-5 pr-4 text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-primary border border-border-dark/30 transition-shadow"
-            />
-          </div>
-        </div>
-
-        {/* Action Buttons Row */}
-        <div className="flex justify-between items-center px-4 pt-2">
-          <ActionButton icon={Video} label="Video" />
-          <ActionButton icon={Mic} label="Live" />
-          <ActionButton icon={PenTool} label="Article" />
-          <ActionButton icon={ShoppingBag} label="Job" />
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center gap-2 min-w-[72px] cursor-pointer group"
+            >
+              <div className="w-16 h-16 rounded-full border-2 border-primary p-0.5 group-hover:scale-105 transition-transform">
+                <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800">
+                  <Image
+                    src={`https://images.unsplash.com/photo-${
+                      1500000000000 + i
+                    }?w=100&h=100&fit=crop`}
+                    alt="User"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <span className="text-xs text-white font-medium truncate w-full text-center">
+                User {i}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Post 1 - GuitarMaster */}
-      <Post
-        id="1"
-        username="GuitarMaster"
-        userAvatar="GM"
-        timeAgo="2h ago"
-        category="Music"
-        location="Los Angeles"
-        caption="Practicing a new riff inspired by the classics. Let me know what you think! 🎸 #TalenzyMusic #GuitarSolo"
-        hashtags={[]} // Hashtags included in caption for simpler rendering if Post component supports it, OR passed separately
-        mediaType="image" // Using image as per design mockup appearance (static) or video if player needed. Mockup looks like a static image of a video player.
-        likes={1200}
-        comments={84}
-        originalAudio=""
-      />
+      {/* Create Post Input */}
+      <div className="bg-surface-dark rounded-xl p-6 border border-border-dark mb-8">
+        <div className="flex gap-4 mb-4">
+          <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-[#7a14c4] flex items-center justify-center shrink-0">
+            <span className="text-white font-bold text-sm">AT</span>
+          </div>
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="What's your talent today?"
+              className="w-full h-10 bg-background-dark border border-border-dark rounded-full px-4 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-primary transition-colors"
+            />
+          </div>
+        </div>
+        <div className="flex items-center justify-between">
+          <div className="flex gap-2">
+            <ActionButton icon={Video} label="Video" color="text-red-500" />
+            <ActionButton icon={Radio} label="Live" color="text-red-600" />
+            <ActionButton
+              icon={FileText}
+              label="Article"
+              color="text-green-500"
+            />
+          </div>
+          <Button className="bg-primary hover:bg-[#a824f0] text-white rounded-lg px-6 h-9 text-sm font-bold shadow-glow">
+            Post
+          </Button>
+        </div>
+      </div>
+
+      {/* Feed Posts */}
+      <div className="space-y-4">
+        <PostCard post={post1} />
+        <PostCard post={post2} />
+      </div>
     </div>
   );
 }
 
-function ActionButton({ icon: Icon, label }: { icon: any; label: string }) {
+function ActionButton({
+  icon: Icon,
+  label,
+  color,
+}: {
+  icon: any;
+  label: string;
+  color: string;
+}) {
   return (
-    <button className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
-      <div className="p-2 rounded-lg group-hover:bg-[#2a2330]">
-        <Icon className="h-5 w-5 text-primary" />
-      </div>
-      {/* Helper text if needed, though design just shows icons distributed? 
-             Actually Image 1 shows icon buttons row: Video (Purple), etc. 
-             Let's just show icons? 
-             Wait, Image 1 has: [Purple Icon] [Purple Icon] [Purple Icon] [Purple Icon]. 
-             No text labels visible in the small bar. 
-             I'll stick to icons with tooltips or just icons.
-         */}
+    <button className="flex items-center gap-2 hover:bg-background-dark px-3 py-2 rounded-lg transition-colors group">
+      <Icon className={`h-4 w-4 ${color}`} />
+      <span className="text-gray-400 font-medium text-xs group-hover:text-white transition-colors">
+        {label}
+      </span>
     </button>
   );
 }

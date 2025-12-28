@@ -9,12 +9,12 @@ export default function Explore() {
     {
       type: "image",
       src: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600",
-      aspect: "aspect-[4/5]",
+      aspect: "aspect-4/5",
     }, // Guitar
     {
       type: "video",
       src: "https://images.unsplash.com/photo-1514525253440-b393452e233e?w=600",
-      aspect: "aspect-[16/9]",
+      aspect: "aspect-16/9",
     }, // Concert wide
     {
       type: "person",
@@ -24,12 +24,12 @@ export default function Explore() {
     {
       type: "image",
       src: "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=600",
-      aspect: "aspect-[4/3]",
+      aspect: "aspect-4/3",
     }, // Guitar 2
     {
       type: "video",
       src: "https://images.unsplash.com/photo-1506157786151-b8491531f436?w=600",
-      aspect: "aspect-[3/4]",
+      aspect: "aspect-3/4",
     }, // Stage vertical
     {
       type: "image",
@@ -39,7 +39,7 @@ export default function Explore() {
     {
       type: "person",
       src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600",
-      aspect: "aspect-[3/4]",
+      aspect: "aspect-3/4",
     }, // Man portrait
     {
       type: "image",
@@ -84,7 +84,7 @@ export default function Explore() {
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
-              className="border-border-dark bg-[#2a2330] text-gray-300 hover:text-white hover:bg-[#332840] gap-2"
+              className="border-border-dark bg-surface-dark text-gray-300 hover:text-white hover:bg-surface-dark/80 gap-2"
             >
               <svg
                 width="16"
@@ -126,7 +126,7 @@ export default function Explore() {
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                 chip.active
                   ? "bg-primary text-white"
-                  : "bg-[#221c26] border border-border-dark/30 text-gray-400 hover:bg-[#2a2330] hover:text-white"
+                  : "bg-surface-dark border border-border-dark/30 text-gray-400 hover:bg-surface-dark/80 hover:text-white"
               }`}
             >
               {chip.icon && <chip.icon className="h-4 w-4" />}
@@ -140,7 +140,7 @@ export default function Explore() {
       <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
         {/* Featured Large Card (Simulated first item spans) */}
         <div className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border-dark/30">
-          <div className="relative aspect-[4/5]">
+          <div className="relative aspect-4/5">
             <Image
               src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800"
               alt="Guitarist"
@@ -154,7 +154,7 @@ export default function Explore() {
         </div>
 
         {/* Sarah Jenkins Profile Card */}
-        <div className="break-inside-avoid relative overflow-hidden rounded-xl border border-border-dark/30 bg-[#221c26] p-4">
+        <div className="break-inside-avoid relative overflow-hidden rounded-xl border border-border-dark/30 bg-surface-dark p-4">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -174,7 +174,7 @@ export default function Explore() {
               </div>
               <div>
                 <h3 className="text-white font-bold text-sm">Sarah Jenkins</h3>
-                <p className="text-[#9419e6] text-xs font-semibold">
+                <p className="text-primary text-xs font-semibold">
                   VOCALIST • JAZZ
                 </p>
                 <p className="text-gray-500 text-xs mt-0.5 flex items-center gap-1">
@@ -200,12 +200,12 @@ export default function Explore() {
             10+ years of experience performing live.
           </p>
           <div className="flex gap-2">
-            <Button className="flex-1 bg-[#4a1d75] hover:bg-[#5b2490] text-primary-foreground text-sm h-9">
+            <Button className="flex-1 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/50 text-sm h-9">
               Hire Talent
             </Button>
             <Button
               variant="outline"
-              className="w-9 h-9 p-0 border-[#4a3c53] bg-transparent text-gray-400 hover:text-white"
+              className="w-9 h-9 p-0 border-border-dark bg-transparent text-gray-400 hover:text-white"
             >
               <User className="h-4 w-4" />
             </Button>
@@ -225,7 +225,7 @@ export default function Explore() {
                 </div>
                 <h3 className="text-white font-semibold text-sm">David Chen</h3>
                 <p className="text-gray-500 text-xs">Photographer</p>
-                <Button className="mt-3 w-full h-8 text-xs bg-[#2a2330] hover:bg-primary text-white rounded-full">
+                <Button className="mt-3 w-full h-8 text-xs bg-surface-dark hover:bg-primary text-white rounded-full border border-border-dark/50">
                   Follow
                 </Button>
               </div>

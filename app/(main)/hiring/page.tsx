@@ -96,16 +96,6 @@ export default function Hire() {
 
   return (
     <div className="flex h-full">
-      {/* Left Filters Sidebar (Simulated as typical sidebar in this view, based on Image 2 structure)
-          Image 2 shows:
-          Left: "Filters", Categories (Checkbox), Price Range, Rating, Location, Availability, "Apply Filters".
-          Right: Main Content "Hire Talented Creators" + Search Bar + Talent Grid.
-          Since MainLayout sidebar is already there, I assume this filter sidebar is an *inner* sidebar?
-          Wait, MainLayout sidebar is the APP sidebar.
-          In Image 2, there is an APP sidebar on the far left (Icons only in that view? No, standard sidebar).
-          So this "Filters" column is part of the PAGE content.
-      */}
-
       {/* Inner Filter Sidebar */}
       <div className="w-64 p-6 border-r border-border-dark/30 hidden lg:block overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
@@ -151,7 +141,7 @@ export default function Hire() {
               <span>$10</span>
               <span>$500+</span>
             </div>
-            <div className="h-1 bg-[#2a2330] rounded-full relative">
+            <div className="h-1 bg-surface-dark rounded-full relative">
               <div className="absolute left-[30%] right-[40%] bg-primary h-full rounded-full" />
               <div className="absolute left-[30%] top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-2 border-surface-dark cursor-pointer shadow-lg" />
             </div>
@@ -163,7 +153,7 @@ export default function Hire() {
           {/* Availability */}
           <div>
             <h3 className="text-white font-semibold mb-3">Availability</h3>
-            <select className="w-full bg-[#1b1121] border border-border-dark/30 rounded-lg h-10 px-3 text-sm text-white focus:outline-none focus:border-primary">
+            <select className="w-full bg-background-dark border border-border-dark/30 rounded-lg h-10 px-3 text-sm text-white focus:outline-none focus:border-primary">
               <option>Anytime</option>
               <option>This Week</option>
               <option>This Month</option>
@@ -178,7 +168,7 @@ export default function Hire() {
               <input
                 type="text"
                 placeholder="City or Country"
-                className="w-full bg-[#1b1121] border border-border-dark/30 rounded-lg h-10 pl-9 pr-3 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary"
+                className="w-full bg-background-dark border border-border-dark/30 rounded-lg h-10 pl-9 pr-3 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary"
               />
             </div>
           </div>
@@ -186,7 +176,7 @@ export default function Hire() {
           {/* Verified toggle */}
           <div className="flex items-center justify-between">
             <span className="text-white font-semibold">Verified Only</span>
-            <div className="w-10 h-6 bg-[#2a2330] rounded-full p-1 cursor-pointer">
+            <div className="w-10 h-6 bg-surface-dark rounded-full p-1 cursor-pointer">
               <div className="w-4 h-4 bg-white rounded-full ml-auto" />
             </div>
           </div>
@@ -196,7 +186,7 @@ export default function Hire() {
           </Button>
           <Button
             variant="outline"
-            className="w-full border-border-dark text-white hover:bg-[#2a2330] mt-2"
+            className="w-full border-border-dark text-white hover:bg-surface-dark mt-2"
           >
             Clear Filters
           </Button>
@@ -206,7 +196,7 @@ export default function Hire() {
       {/* Main Content */}
       <div className="flex-1 p-8 overflow-y-auto">
         {/* Gradient Hero Header */}
-        <div className="bg-gradient-to-r from-primary to-[#5b21b6] rounded-2xl p-8 mb-8 text-center shadow-2xl relative overflow-hidden">
+        <div className="bg-linear-to-r from-primary to-[#5b21b6] rounded-2xl p-8 mb-8 text-center shadow-2xl relative overflow-hidden">
           {/* Decorative circles */}
           <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
@@ -249,12 +239,12 @@ export default function Hire() {
           {talents.map((talent, i) => (
             <div
               key={i}
-              className="bg-surface-dark rounded-xl p-5 border border-border-dark/30 hover:border-primary/50 transition-colors group"
+              className="bg-surface-dark rounded-xl p-5 border border-border-dark/30 hover:border-primary/50 transition-colors group card-hover-effect"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#2a2330]">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-dark">
                       <Image
                         src={talent.image || ""}
                         alt={talent.name}
@@ -294,7 +284,7 @@ export default function Hire() {
                 {talent.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-[#2a2330] text-gray-300 text-xs px-2 py-1 rounded border border-border-dark/50"
+                    className="bg-background-dark text-gray-300 text-xs px-2 py-1 rounded border border-border-dark/50"
                   >
                     {tag}
                   </span>
@@ -320,7 +310,7 @@ export default function Hire() {
                 </div>
               </div>
 
-              <Button className="w-full mt-4 bg-[#2a2330] hover:bg-primary text-white border border-border-dark/50 hover:border-primary transition-all font-semibold">
+              <Button className="w-full mt-4 bg-background-dark hover:bg-primary text-white border border-border-dark/50 hover:border-primary transition-all font-semibold">
                 Hire Now
               </Button>
             </div>
@@ -330,7 +320,7 @@ export default function Hire() {
         <div className="flex justify-center mt-8 pb-8">
           <Button
             variant="outline"
-            className="rounded-full px-6 border-border-dark text-white hover:bg-surface-dark"
+            className="rounded-full px-6 border-border-dark text-white hover:bg-surface-dark bg-transparent"
           >
             Load More Talents
           </Button>
