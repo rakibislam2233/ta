@@ -105,9 +105,19 @@ export const MOCK_POSTS: Post[] = [
     id: "5",
     username: "MagicMike",
     avatarUrl:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100",
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100",
     mediaUrl:
-      "https://images.unsplash.com/photo-1531747056595-07f6cbbe10bd?w=800",
+      "https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?w=800",
+    mediaItems: [
+      {
+        url: "https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?w=800",
+        type: "image",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1542617300-4740f90e66c0?w=800",
+        type: "image",
+      },
+    ],
     caption:
       "Pick a card, any card. But not that one! 🃏🎩 #magic #cardtricks #illusion",
     timestamp: "6h ago",
@@ -121,9 +131,18 @@ export const MOCK_POSTS: Post[] = [
     id: "6",
     username: "VocalVibes",
     avatarUrl:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100",
-    mediaUrl:
-      "https://images.unsplash.com/photo-1516280440614-6697288d5d38?w=800",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100",
+    mediaUrl: "https://images.unsplash.com/photo-1549497401-d70313589b33?w=800",
+    mediaItems: [
+      {
+        url: "https://images.unsplash.com/photo-1549497401-d70313589b33?w=800",
+        type: "image",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1520521888991-3ad9b164244a?w=800",
+        type: "image",
+      },
+    ],
     caption: "Covering my favorite Adele song. Hope you like it! 🎤🎶",
     timestamp: "30m ago",
     likes: "900",
@@ -167,7 +186,17 @@ export const MOCK_POSTS: Post[] = [
     avatarUrl:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
     mediaUrl:
-      "https://images.unsplash.com/photo-1503095392237-73621374f63e?w=800",
+      "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800",
+    mediaItems: [
+      {
+        url: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800",
+        type: "image",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800",
+        type: "image",
+      },
+    ],
     caption: "Rehearsal day 15. The monologue is finally clicking. 🎭📜",
     timestamp: "7h ago",
     likes: "670",
@@ -181,8 +210,7 @@ export const MOCK_POSTS: Post[] = [
     username: "ComedyKing",
     avatarUrl:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100",
-    mediaUrl:
-      "https://images.unsplash.com/photo-1585647346835-2d8e1376aea6?w=800",
+    mediaUrl: "https://images.unsplash.com/photo-1547466548-038c114f1778?w=800",
     caption: "My cat is smarter than me. Here is the proof... 🐱😂",
     timestamp: "12h ago",
     likes: "1.5k",
@@ -239,7 +267,18 @@ export const MOCK_POSTS: Post[] = [
     username: "Illusionist",
     avatarUrl:
       "https://images.unsplash.com/photo-1560250097-9b9356679190?w=100",
-    mediaUrl: "https://images.unsplash.com/photo-1556648366-2db9320d3f24?w=800",
+    mediaUrl:
+      "https://images.unsplash.com/photo-1577985449779-166258410214?w=800",
+    mediaItems: [
+      {
+        url: "https://images.unsplash.com/photo-1577985449779-166258410214?w=800",
+        type: "image",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1556648366-2db9320d3f24?w=800",
+        type: "image",
+      },
+    ],
     caption: "Nothing is as it seems. Watch closely... 👁️✨",
     timestamp: "8h ago",
     likes: "2.2k",

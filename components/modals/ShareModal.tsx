@@ -42,15 +42,22 @@ export default function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const modalContent = (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-80 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            className="bg-[#1a161f] w-full max-w-lg rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+          />
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            className="bg-[#1a161f] w-full max-w-lg rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10"
           >
             {/* Header */}
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
@@ -188,10 +195,9 @@ export default function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
-
-  return createPortal(modalContent, document.body);
 }
 
 function QuickActionButton({
