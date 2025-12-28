@@ -7,40 +7,14 @@ import { useAuth } from "@/context/AuthContext";
 import { FileText, PlusCircle, Radio, Video } from "lucide-react";
 import Image from "next/image";
 
+import { MOCK_POSTS } from "@/lib/data";
+
 export default function Home() {
   const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
     return <PublicHome />;
   }
-
-  const post1 = {
-    mediaUrl:
-      "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=1000",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=100",
-    username: "GuitarMaster",
-    audioName: "Musician",
-    timestamp: "2h ago",
-    caption:
-      "Learning a new jazz scale. It's tricky but sounds amazing! 🎸 #jazz #music",
-    likes: "1.2k",
-    comments: "45",
-  };
-
-  const post2 = {
-    mediaUrl:
-      "https://images.unsplash.com/photo-1506157786151-b8491531f436?w=1000",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100",
-    username: "StageDirector",
-    audioName: "Theater",
-    timestamp: "5h ago",
-    caption:
-      "Behind the scenes of our new production. Lighting is everything! 💡 #theater",
-    likes: "890",
-    comments: "32",
-  };
 
   return (
     <div className="max-w-2xl mx-auto px-4 pb-32">
@@ -79,7 +53,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
       {/* Create Post Input */}
       <div className="bg-surface-dark rounded-xl p-6 border border-border-dark mb-8">
         <div className="flex gap-4 mb-4">
@@ -111,9 +84,10 @@ export default function Home() {
       </div>
 
       {/* Feed Posts */}
-      <div className="space-y-4">
-        <PostCard post={post1} />
-        <PostCard post={post2} />
+      <div className="space-y-8">
+        {MOCK_POSTS.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
       </div>
     </div>
   );

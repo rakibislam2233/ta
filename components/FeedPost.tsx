@@ -11,16 +11,7 @@ import {
 import Image from "next/image";
 import React, { useState } from "react";
 
-interface Post {
-  mediaUrl: string;
-  avatarUrl: string;
-  username: string;
-  audioName?: string;
-  timestamp: string;
-  caption: string;
-  likes: string;
-  comments: string;
-}
+import { Post } from "@/lib/types";
 
 interface PostCardProps {
   post: Post;

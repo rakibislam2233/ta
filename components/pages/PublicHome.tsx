@@ -5,42 +5,18 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { useState } from "react";
 
+import { MOCK_POSTS } from "@/lib/data";
+
 export default function PublicHome() {
   const [showJoinToast, setShowJoinToast] = useState(true);
 
-  const post1 = {
-    mediaUrl:
-      "https://images.unsplash.com/photo-1549213783-8284d0336c4f?q=80&w=1000",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100",
-    username: "GuitarHero",
-    audioName: "Original Audio",
-    timestamp: "2h ago",
-    caption:
-      "Practicing a new solo for the upcoming gig! What do you guys think of this riff? #music #rock",
-    likes: "1.2k",
-    comments: "45",
-  };
-
-  const post2 = {
-    mediaUrl:
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100",
-    username: "NeonDreamer",
-    audioName: "Concept Art",
-    timestamp: "5h ago",
-    caption:
-      "The future is bright. Latest concept art for my personal project. #art #design",
-    likes: "3.4k",
-    comments: "120",
-  };
-
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 flex flex-col gap-12 pb-32">
-      <PostCard post={post1} />
-      <PostCard post={post2} />
-
+      <div className="space-y-8">
+        {MOCK_POSTS.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </div>
       {/* Floating Join Banner */}
       {showJoinToast && (
         <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50">

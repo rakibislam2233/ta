@@ -68,7 +68,7 @@ export default function Sidebar() {
               >
                 <item.icon
                   className={`h-6 w-6 transition-colors ${
-                    active ? "text-primary fill-current" : ""
+                    active ? "text-primary " : ""
                   }`}
                 />
                 <span
