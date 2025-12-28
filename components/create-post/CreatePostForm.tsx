@@ -11,16 +11,13 @@ import {
   Bold,
   Briefcase,
   ChevronRight,
-  Globe,
   Hash,
   Italic,
   Layers,
   List,
   ListOrdered,
-  Lock,
   MapPin,
   Smile,
-  Users,
 } from "lucide-react";
 
 interface CreatePostFormProps {
