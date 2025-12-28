@@ -1,4 +1,4 @@
-import { Category, Post, Story } from "./types";
+import { Category, Post } from "./types";
 export const CATEGORIES: Category[] = [
   { id: "all", label: "All", icon: "" },
   { id: "music", label: "Music", icon: "🎵" },

@@ -47,7 +47,7 @@ export default function ShareModal({
         {/* Preview */}
         <div className="p-6 border-b border-[#4a3c53]/30">
           <div className="bg-[#2a2330] rounded-xl p-4 flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#9419e6] to-[#7a14c4] flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#9419e6] to-[#7a14c4] flex items-center justify-center shrink-0">
               <span className="text-white font-bold">SS</span>
             </div>
             <div className="flex-1">
