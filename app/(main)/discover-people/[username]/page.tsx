@@ -1,5 +1,6 @@
 "use client";
 
+import HiringRequestModal from "@/components/HiringRequestModal";
 import PostViewModal from "@/components/modals/PostViewModal";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
@@ -7,7 +8,6 @@ import { MOCK_POSTS } from "@/lib/data";
 import { Post } from "@/lib/types";
 import {
   Calendar,
-  CheckCircle2,
   Gift,
   Link as LinkIcon,
   MapPin,
@@ -93,6 +93,7 @@ export default function UserProfilePage() {
   const usernameParam = params.username as string;
   const [activeTab, setActiveTab] = useState("Portfolio");
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [isHireModalOpen, setIsHireModalOpen] = useState(false);
 
   const profile = useMemo(() => getProfileData(usernameParam), [usernameParam]);
 
@@ -157,7 +158,7 @@ export default function UserProfilePage() {
             </Button>
             <Button
               variant="outline"
-              onClick={() => toast.hire(usernameParam)}
+              onClick={() => setIsHireModalOpen(true)}
               className="flex-1 cursor-pointer md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
             >
               <Gift className="h-4 w-4 mr-2" />
@@ -419,7 +420,10 @@ export default function UserProfilePage() {
               <p className="text-gray-400 text-sm mb-6">
                 Send a gift to show your appreciation!
               </p>
-              <Button className="bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow">
+              <Button
+                onClick={() => toast.gift(usernameParam)}
+                className="bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow"
+              >
                 <Gift className="h-4 w-4 mr-2" />
                 Send Gift
               </Button>
@@ -433,6 +437,14 @@ export default function UserProfilePage() {
           isOpen={!!selectedPost}
           onClose={() => setSelectedPost(null)}
           post={selectedPost}
+        />
+      )}
+
+      {isHireModalOpen && (
+        <HiringRequestModal
+          talentName={profile.name}
+          talentImage={profile.avatar}
+          onClose={() => setIsHireModalOpen(false)}
         />
       )}
     </div>

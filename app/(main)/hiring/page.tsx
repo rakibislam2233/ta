@@ -13,14 +13,18 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { MapPin, Search, Star } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function Hire() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<
-    "all" | "my-requests" | "hired-me"
-  >("all");
+  const searchParams = useSearchParams();
+  const activeTab =
+    (searchParams.get("tab") as "all" | "my-requests" | "hired-me") || "all";
+
+  const handleTabChange = (newTab: "all" | "my-requests" | "hired-me") => {
+    router.push(`/hiring?tab=${newTab}`);
+  };
 
   // Filter states
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -291,7 +295,7 @@ export default function Hire() {
         {/* Filter Tabs */}
         <div className="flex items-center gap-6 sm:gap-10 mb-8 border-b border-border-dark/40 overflow-x-auto scrollbar-hide no-scrollbar">
           <button
-            onClick={() => setActiveTab("all")}
+            onClick={() => handleTabChange("all")}
             className={`${
               activeTab === "all"
                 ? "text-primary border-b-2 border-primary"
@@ -301,7 +305,7 @@ export default function Hire() {
             All People
           </button>
           <button
-            onClick={() => setActiveTab("my-requests")}
+            onClick={() => handleTabChange("my-requests")}
             className={`${
               activeTab === "my-requests"
                 ? "text-primary border-b-2 border-primary"
@@ -311,7 +315,7 @@ export default function Hire() {
             My Hire Requests
           </button>
           <button
-            onClick={() => setActiveTab("hired-me")}
+            onClick={() => handleTabChange("hired-me")}
             className={`${
               activeTab === "hired-me"
                 ? "text-primary border-b-2 border-primary"
