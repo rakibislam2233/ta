@@ -13,6 +13,7 @@ import {
   Plus,
   Rocket,
   Send,
+  Trophy,
   Wallet,
   X,
 } from "lucide-react";
