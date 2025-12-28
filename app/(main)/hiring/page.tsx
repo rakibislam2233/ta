@@ -1,136 +1,202 @@
-import { Search, MapPin, Star, CheckCircle2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
+"use client";
 
-export default function HiringPage() {
+import { Button } from "@/components/ui/button";
+import { Bookmark, MapPin, Star } from "lucide-react";
+import Image from "next/image";
+
+export default function Hire() {
+  const categories = [
+    { name: "Music & Audio", checked: true },
+    { name: "Dance & Performance", checked: false },
+    { name: "Visual Arts", checked: false },
+    { name: "Tech & Development", checked: false },
+    { name: "Lifestyle & Model", checked: false },
+  ];
+
+  const talents = [
+    {
+      name: "GuitarMaster",
+      username: "@guitarmaster",
+      role: "Musician",
+      rating: 4.9,
+      jobs: 120,
+      rate: "$80/hr",
+      bio: "Professional session guitarist with 10+ years of experience. I can...",
+      tags: ["Music", "Guitarist", "Composer"],
+      image:
+        "https://images.unsplash.com/photo-1549213783-8284d0336c4f?w=100&h=100", // Guitarist
+      followers: "45.2k",
+    },
+    {
+      name: "Sarah_S",
+      username: "@sarahdance",
+      role: "Dancer",
+      rating: 5.0,
+      jobs: 45,
+      rate: "$120/hr",
+      bio: "Contemporary dancer and choreographer. Available for music...",
+      tags: ["Dance", "Choreography"],
+      image:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100", // Girl
+      followers: "128k",
+    },
+    {
+      name: "Jenny_Art",
+      username: "@jennycolors",
+      role: "Artist",
+      rating: 4.8,
+      jobs: 82,
+      rate: "$95/hr",
+      bio: "Digital illustrator specializing in character design and concept art. ...",
+      tags: ["Art", "Digital", "NFT"],
+      image:
+        "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100", // Girl 2
+      followers: "67.5k",
+    },
+    {
+      name: "Tom_Tech",
+      username: "@tomcodes",
+      role: "Reviewer",
+      rating: 5.0,
+      jobs: 210,
+      rate: "$250/hr",
+      bio: "Tech enthusiast and reviewer. I create high-quality unboxing and...",
+      tags: ["Tech", "Reviewer"],
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100", // Guy
+      followers: "240k",
+    },
+    {
+      name: "CreativeAgency",
+      username: "@creative_hq",
+      role: "Agency",
+      rating: 4.7,
+      jobs: "300+",
+      rate: "$150/hr",
+      bio: "Full-service creative design agency. We handle branding, logo design,...",
+      tags: ["Design", "Branding"],
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100", // Logo placeholder
+      followers: "15.4k",
+    },
+    {
+      name: "Anna K.",
+      username: "@annadance",
+      role: "Dancer",
+      rating: 4.6,
+      jobs: 28,
+      rate: "$75/hr",
+      bio: "Classical ballet dancer available for artistic photoshoots, music videos,...",
+      tags: ["Dance", "Ballet"],
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100", // Girl 3
+      followers: "8.2k",
+    },
+  ];
+
   return (
     <div className="flex h-full">
-      {/* Left Sidebar - Filters */}
-      <div className="w-80 bg-[#221c26] border-r border-[#4a3c53]/30 p-6 overflow-y-auto">
+      {/* Left Filters Sidebar (Simulated as typical sidebar in this view, based on Image 2 structure)
+          Image 2 shows:
+          Left: "Filters", Categories (Checkbox), Price Range, Rating, Location, Availability, "Apply Filters".
+          Right: Main Content "Hire Talented Creators" + Search Bar + Talent Grid.
+          Since MainLayout sidebar is already there, I assume this filter sidebar is an *inner* sidebar?
+          Wait, MainLayout sidebar is the APP sidebar.
+          In Image 2, there is an APP sidebar on the far left (Icons only in that view? No, standard sidebar).
+          So this "Filters" column is part of the PAGE content.
+      */}
+
+      {/* Inner Filter Sidebar */}
+      <div className="w-64 p-6 border-r border-border-dark/30 hidden lg:block overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-white font-semibold text-lg">Filters</h2>
-          <button className="text-[#9419e6] text-sm hover:underline">Reset</button>
+          <h2 className="text-white font-bold text-lg">Filters</h2>
+          <button className="text-primary text-sm hover:underline">
+            Reset
+          </button>
         </div>
 
-        {/* Categories */}
-        <div className="mb-6">
-          <h3 className="text-white font-medium mb-3">Categories</h3>
-          <div className="space-y-2">
-            {["Music & Audio", "Dance & Performance", "Visual Arts", "Tech & Development", "Lifestyle & Model"].map(
-              (category) => (
-                <div key={category} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={category}
-                    className="border-[#4a3c53] data-[state=checked]:bg-[#9419e6] data-[state=checked]:border-[#9419e6]"
-                  />
-                  <Label
-                    htmlFor={category}
-                    className="text-gray-400 text-sm cursor-pointer hover:text-white transition-colors"
+        <div className="space-y-6">
+          {/* Categories */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Categories</h3>
+            <div className="space-y-2">
+              {categories.map((cat, i) => (
+                <label
+                  key={i}
+                  className="flex items-center gap-3 cursor-pointer group"
+                >
+                  <div
+                    className={`w-4 h-4 rounded border flex items-center justify-center ${
+                      cat.checked
+                        ? "bg-primary border-primary"
+                        : "border-gray-500 group-hover:border-primary"
+                    }`}
                   >
-                    {category}
-                  </Label>
-                </div>
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Price Range */}
-        <div className="mb-6">
-          <h3 className="text-white font-medium mb-3">Price Range / Hr</h3>
-          <div className="relative">
-            <input
-              type="range"
-              min="10"
-              max="500"
-              defaultValue="150"
-              className="w-full h-2 bg-[#2a2330] rounded-lg appearance-none cursor-pointer accent-[#9419e6]"
-            />
-            <div className="flex justify-between text-xs text-gray-400 mt-1">
-              <span>$10</span>
-              <span className="text-[#9419e6] font-semibold">$150/hr</span>
-              <span>$500+</span>
+                    {cat.checked && (
+                      <div className="w-2 h-2 bg-white rounded-sm" />
+                    )}
+                  </div>
+                  <span className="text-gray-400 text-sm group-hover:text-white transition-colors">
+                    {cat.name}
+                  </span>
+                </label>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Rating */}
-        <div className="mb-6">
-          <h3 className="text-white font-medium mb-3">Rating</h3>
-          <div className="space-y-2">
-            {[
-              { stars: "★★★★★", label: "5 Stars" },
-              { stars: "★★★★ & Up", label: "4 Stars & Up" },
-            ].map((rating, index) => (
-              <div key={index} className="flex items-center space-x-2">
-                <input
-                  type="radio"
-                  name="rating"
-                  id={`rating-${index}`}
-                  defaultChecked={index === 0}
-                  className="w-4 h-4 accent-[#9419e6]"
-                />
-                <Label
-                  htmlFor={`rating-${index}`}
-                  className="text-gray-400 text-sm cursor-pointer hover:text-white transition-colors"
-                >
-                  {rating.stars}
-                </Label>
-              </div>
-            ))}
+          {/* Price Range */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Price Range / Hr</h3>
+            <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+              <span>$10</span>
+              <span>$500+</span>
+            </div>
+            <div className="h-1 bg-[#2a2330] rounded-full relative">
+              <div className="absolute left-[30%] right-[40%] bg-primary h-full rounded-full" />
+              <div className="absolute left-[30%] top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-2 border-surface-dark cursor-pointer shadow-lg" />
+            </div>
+            <div className="mt-2 text-center text-primary font-bold text-sm">
+              $150/hr
+            </div>
           </div>
-        </div>
 
-        {/* Location */}
-        <div className="mb-6">
-          <h3 className="text-white font-medium mb-3">Location</h3>
-          <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-            <Input
-              type="text"
-              placeholder="City or Country"
-              className="bg-[#2a2330] border-[#4a3c53] text-white placeholder:text-gray-500 h-10 pl-10 rounded-lg focus:border-[#9419e6] focus:ring-[#9419e6]"
-            />
+          {/* Availability */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Availability</h3>
+            <select className="w-full bg-[#1b1121] border border-border-dark/30 rounded-lg h-10 px-3 text-sm text-white focus:outline-none focus:border-primary">
+              <option>Anytime</option>
+              <option>This Week</option>
+              <option>This Month</option>
+            </select>
           </div>
-        </div>
 
-        {/* Availability */}
-        <div className="mb-6">
-          <h3 className="text-white font-medium mb-3">Availability</h3>
-          <select className="w-full bg-[#2a2330] border border-[#4a3c53] text-white rounded-lg h-10 px-3 focus:border-[#9419e6] focus:ring-[#9419e6]">
-            <option>Anytime</option>
-            <option>This Week</option>
-            <option>This Month</option>
-          </select>
-        </div>
-
-        {/* Verified Only */}
-        <div className="mb-6">
-          <div className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              id="verified"
-              className="w-4 h-4 accent-[#9419e6] rounded"
-            />
-            <Label
-              htmlFor="verified"
-              className="text-gray-400 text-sm cursor-pointer hover:text-white transition-colors"
-            >
-              Verified Only
-            </Label>
+          {/* Location */}
+          <div>
+            <h3 className="text-white font-semibold mb-3">Location</h3>
+            <div className="relative">
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+              <input
+                type="text"
+                placeholder="City or Country"
+                className="w-full bg-[#1b1121] border border-border-dark/30 rounded-lg h-10 pl-9 pr-3 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Action Buttons */}
-        <div className="space-y-3">
-          <Button className="w-full bg-[#9419e6] hover:bg-[#a824f0] text-white rounded-lg h-10 font-semibold">
+          {/* Verified toggle */}
+          <div className="flex items-center justify-between">
+            <span className="text-white font-semibold">Verified Only</span>
+            <div className="w-10 h-6 bg-[#2a2330] rounded-full p-1 cursor-pointer">
+              <div className="w-4 h-4 bg-white rounded-full ml-auto" />
+            </div>
+          </div>
+
+          <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold mt-4">
             Apply Filters
           </Button>
           <Button
             variant="outline"
-            className="w-full bg-[#2a2330] border-[#4a3c53] text-gray-400 hover:text-white hover:bg-[#332840] rounded-lg h-10"
+            className="w-full border-border-dark text-white hover:bg-[#2a2330] mt-2"
           >
             Clear Filters
           </Button>
@@ -138,189 +204,138 @@ export default function HiringPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
-        {/* Banner */}
-        <div className="bg-gradient-to-r from-[#9419e6] to-[#7a14c4] p-8 mb-6">
-          <h1 className="text-4xl font-bold text-white mb-2">Hire Talented Creators</h1>
-          <p className="text-white/90 text-lg mb-6">
-            Connect with top-tier musicians, dancers, artists, and influencers for your next campaign or project.
+      <div className="flex-1 p-8 overflow-y-auto">
+        {/* Gradient Hero Header */}
+        <div className="bg-gradient-to-r from-primary to-[#5b21b6] rounded-2xl p-8 mb-8 text-center shadow-2xl relative overflow-hidden">
+          {/* Decorative circles */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
+
+          <h1 className="text-3xl font-bold text-white mb-2 relative z-10">
+            Hire Talented Creators
+          </h1>
+          <p className="text-white/80 mb-8 max-w-lg mx-auto relative z-10">
+            Connect with top-tier musicians, dancers, artists, and influencers
+            for your next campaign or project.
           </p>
-          <div className="flex gap-3">
-            <Input
+
+          <div className="relative max-w-xl mx-auto z-10">
+            <input
               type="text"
               placeholder="Search for skills (e.g. 'Guitarist', 'Video Editor')..."
-              className="flex-1 bg-white/20 border-white/30 text-white placeholder:text-white/70 h-12 rounded-lg focus:border-white focus:ring-white"
+              className="w-full h-12 rounded-full pl-6 pr-32 bg-white text-black placeholder:text-gray-500 focus:outline-none shadow-xl"
             />
-            <Button className="bg-white text-[#9419e6] hover:bg-gray-100 rounded-lg h-12 px-6 font-semibold">
+            <Button className="absolute right-1 top-1 bottom-1 rounded-full bg-purple-900 hover:bg-purple-950 text-white px-6 font-semibold">
               Search
             </Button>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="px-6 border-b border-[#4a3c53]/30">
-          <div className="flex gap-6">
-            {["Available for Hire", "My Hiring Requests", "My Active Hires"].map((tab, index) => (
-              <button
-                key={tab}
-                className={`pb-4 px-2 border-b-2 transition-colors ${
-                  index === 0
-                    ? "border-[#9419e6] text-white font-semibold"
-                    : "border-transparent text-gray-400 hover:text-white"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+        {/* Filter Tabs */}
+        <div className="flex items-center gap-6 mb-6 border-b border-border-dark/30 pb-2">
+          <button className="text-primary font-semibold border-b-2 border-primary pb-2 px-2">
+            Available for Hire
+          </button>
+          <button className="text-gray-400 font-medium hover:text-white pb-2 px-2 transition-colors">
+            My Hiring Requests
+          </button>
+          <button className="text-gray-400 font-medium hover:text-white pb-2 px-2 transition-colors">
+            My Active Hires
+          </button>
         </div>
 
-        {/* Talent Cards */}
-        <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              name: "GuitarMaster",
-              handle: "@guitarmaster",
-              rating: 4.9,
-              jobs: 120,
-              category: "Music",
-              tags: ["Guitarist"],
-              description: "Professional guitarist with 10+ years of experience",
-              followers: "45.2k",
-              rate: "$80/hr",
-              verified: true,
-            },
-            {
-              name: "Sarah_S",
-              handle: "@sarah_s",
-              rating: 4.8,
-              jobs: 95,
-              category: "Dance",
-              tags: ["Dancer", "Choreographer"],
-              description: "Contemporary dancer and choreographer",
-              followers: "32.1k",
-              rate: "$60/hr",
-              verified: true,
-            },
-            {
-              name: "Jenny_Art",
-              handle: "@jennyart",
-              rating: 5.0,
-              jobs: 150,
-              category: "Visual Arts",
-              tags: ["Designer", "Illustrator"],
-              description: "Digital artist specializing in branding",
-              followers: "67.8k",
-              rate: "$100/hr",
-              verified: true,
-            },
-            {
-              name: "Tom_Tech",
-              handle: "@tomtech",
-              rating: 4.7,
-              jobs: 80,
-              category: "Tech",
-              tags: ["Developer", "Video Editor"],
-              description: "Full-stack developer and video editor",
-              followers: "28.5k",
-              rate: "$90/hr",
-              verified: false,
-            },
-            {
-              name: "CreativeAgency",
-              handle: "@creativeagency",
-              rating: 4.9,
-              jobs: 200,
-              category: "Design",
-              tags: ["Agency", "Branding"],
-              description: "Creative agency offering full design services",
-              followers: "120k",
-              rate: "$150/hr",
-              verified: true,
-            },
-            {
-              name: "Anna K.",
-              handle: "@annak",
-              rating: 4.8,
-              jobs: 110,
-              category: "Lifestyle",
-              tags: ["Model", "Influencer"],
-              description: "Fashion model and lifestyle influencer",
-              followers: "89.3k",
-              rate: "$120/hr",
-              verified: true,
-            },
-          ].map((talent, index) => (
+        {/* Talent Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {talents.map((talent, i) => (
             <div
-              key={index}
-              className="bg-[#221c26] rounded-2xl p-6 border border-[#4a3c53]/30 hover:border-[#9419e6]/50 transition-colors"
+              key={i}
+              className="bg-surface-dark rounded-xl p-5 border border-border-dark/30 hover:border-primary/50 transition-colors group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#9419e6] to-[#7a14c4] flex items-center justify-center">
-                    <span className="text-white font-semibold text-sm">{talent.name.split(" ")[0][0]}</span>
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#2a2330]">
+                      <Image
+                        src={talent.image || ""}
+                        alt={talent.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-surface-dark rounded-full" />
                   </div>
                   <div>
                     <div className="flex items-center gap-1">
-                      <span className="text-white font-semibold">{talent.name}</span>
-                      {talent.verified && (
-                        <CheckCircle2 className="h-4 w-4 text-blue-500" />
-                      )}
+                      <h3 className="text-white font-bold">{talent.name}</h3>
+                      <div className="bg-blue-500 p-0.5 rounded-full">
+                        <div className="w-2 h-2 text-white">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-gray-400 text-xs">{talent.handle}</p>
+                    <p className="text-gray-400 text-xs">{talent.username}</p>
+                    <div className="flex items-center gap-1 text-xs mt-1">
+                      <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                      <span className="text-white font-bold">
+                        {talent.rating}
+                      </span>
+                      <span className="text-gray-500">
+                        ({talent.jobs} jobs)
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <Bookmark className="w-5 h-5 text-gray-500 hover:text-white cursor-pointer" />
               </div>
 
-              <div className="flex items-center gap-2 mb-3">
-                <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                <span className="text-white text-sm font-medium">
-                  {talent.rating} ({talent.jobs} jobs)
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-3">
-                {talent.tags.map((tag, tagIndex) => (
+              <div className="flex gap-2 mb-4">
+                {talent.tags.map((tag) => (
                   <span
-                    key={tagIndex}
-                    className="px-2 py-1 bg-[#2a2330] text-gray-400 text-xs rounded"
+                    key={tag}
+                    className="bg-[#2a2330] text-gray-300 text-xs px-2 py-1 rounded border border-border-dark/50"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <p className="text-gray-400 text-sm mb-4">{talent.description}</p>
+              <p className="text-gray-400 text-sm mb-6 line-clamp-2">
+                {talent.bio}
+              </p>
 
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <p className="text-gray-500 text-xs">FOLLOWERS</p>
-                  <p className="text-white text-sm font-semibold">{talent.followers}</p>
+              <div className="flex items-center justify-between pt-4 border-t border-border-dark/30">
+                <div className="text-center">
+                  <p className="text-gray-500 text-[10px] uppercase tracking-wider">
+                    Followers
+                  </p>
+                  <p className="text-white font-bold">{talent.followers}</p>
                 </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs">STARTING AT</p>
-                  <p className="text-[#9419e6] text-sm font-semibold">{talent.rate}</p>
+                <div className="text-center">
+                  <p className="text-gray-500 text-[10px] uppercase tracking-wider">
+                    Starting At
+                  </p>
+                  <p className="text-white font-bold">{talent.rate}</p>
                 </div>
               </div>
 
-              <Button className="w-full bg-[#9419e6] hover:bg-[#a824f0] text-white rounded-lg h-10 font-semibold">
+              <Button className="w-full mt-4 bg-[#2a2330] hover:bg-primary text-white border border-border-dark/50 hover:border-primary transition-all font-semibold">
                 Hire Now
               </Button>
             </div>
           ))}
         </div>
 
-        {/* Load More */}
-        <div className="flex justify-center p-6">
+        <div className="flex justify-center mt-8 pb-8">
           <Button
             variant="outline"
-            className="bg-[#2a2330] border-[#4a3c53] text-gray-400 hover:text-white hover:bg-[#332840] rounded-lg h-10 px-6"
+            className="rounded-full px-6 border-border-dark text-white hover:bg-surface-dark"
           >
             Load More Talents
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
