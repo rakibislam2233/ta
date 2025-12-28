@@ -1,12 +1,9 @@
 "use client";
-
 import PostCard from "@/components/FeedPost";
 import PublicHome from "@/components/pages/PublicHome";
 import { useAuth } from "@/context/AuthContext";
-import { PlusCircle } from "lucide-react";
-import Image from "next/image";
 
-import { MOCK_POSTS, MOCK_STORIES } from "@/lib/data";
+import { MOCK_POSTS } from "@/lib/data";
 
 export default function Home() {
   const { isAuthenticated } = useAuth();

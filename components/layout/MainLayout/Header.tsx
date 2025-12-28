@@ -68,7 +68,6 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-4">
         {/* Main Header Row */}
         <div className="flex items-center justify-between gap-6">
-          {/* Logo - Visible on Mobile (Left) AND Desktop (if not Home) */}
           <Link
             href="/"
             className={`flex items-center gap-2 shrink-0 ${

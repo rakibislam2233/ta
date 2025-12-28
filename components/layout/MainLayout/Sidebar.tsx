@@ -33,13 +33,13 @@ export default function Sidebar() {
     { href: "/", icon: Home, label: "Home" },
     { href: "/explore", icon: Compass, label: "Explore" },
     { href: "/about", icon: Info, label: "About" },
-    { href: "/discover", icon: Users, label: "Discover User" },
+    { href: "/discover-people", icon: Users, label: "Discover People" },
   ];
 
   const authNavItems = [
     { href: "/", icon: Home, label: "Home" },
     { href: "/explore", icon: Compass, label: "Explore" },
-    { href: "/discover", icon: Users, label: "Discover User" },
+    { href: "/discover-people", icon: Users, label: "Discover People" },
     { href: "/hiring", icon: Briefcase, label: "Hiring" },
     { href: "/messages", icon: MessageCircle, label: "Message" },
     { href: "/notifications", icon: Bell, label: "Notification" },
@@ -75,10 +75,6 @@ export default function Sidebar() {
           {currentNavItems.map((item) => {
             const active = isActive(item.href);
             return (
-              //               <a class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gradient-to-r from-primary/20 to-transparent border-l-4 border-primary text-white group transition-all" href="#">
-              // <span class="material-symbols-outlined !text-[28px] group-hover:scale-110 transition-transform" data-weight="fill">explore</span>
-              // <span class="text-sm font-semibold">Explore</span>
-              // </a>
               <Link
                 key={item.href}
                 href={item.href}
@@ -105,7 +101,7 @@ export default function Sidebar() {
           })}
 
           {/* Create Post Button (Only for Authenticated Users) */}
-          <div className="w-full mt-24">
+          <div className="w-full mt-16">
             {isAuthenticated && (
               <button
                 onClick={() => setIsCreateModalOpen(true)}
