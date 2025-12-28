@@ -16,51 +16,13 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 pb-32">
-      {/* Stories Section */}
-      <div className="py-6 overflow-x-auto scrollbar-hide">
-        <div className="flex gap-4">
-          <div className="flex flex-col items-center gap-2 min-w-[72px]">
-            <div className="w-16 h-16 rounded-full border-2 border-dashed border-gray-600 p-0.5 flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
-              <div className="w-full h-full bg-surface-dark rounded-full flex items-center justify-center">
-                <PlusCircle className="text-primary h-6 w-6" />
-              </div>
-            </div>
-            <span className="text-xs text-white font-medium">My Story</span>
-          </div>
-          {MOCK_STORIES.map((story) => (
-            <div
-              key={story.id}
-              className="flex flex-col items-center gap-2 min-w-[72px] cursor-pointer group"
-            >
-              <div
-                className={`w-16 h-16 rounded-full border-2 p-0.5 group-hover:scale-105 transition-transform ${
-                  story.isViewed ? "border-gray-600" : "border-primary"
-                }`}
-              >
-                <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800">
-                  <Image
-                    src={story.avatarUrl}
-                    alt={story.username}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <span className="text-xs text-white font-medium truncate w-full text-center">
-                {story.username}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
+    <section className="w-full max-w-2xl mx-auto px-4 pb-32">
       {/* Feed Posts */}
-      <div className="space-y-8">
+      <div className="w-full space-y-8 mt-8">
         {MOCK_POSTS.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
