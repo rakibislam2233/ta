@@ -69,7 +69,7 @@ export default function CreatePostPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black/95 flex items-center justify-center p-4 md:p-8 z-50 fixed inset-0 overflow-y-auto">
+    <div className="min-h-screen bg-black/95 flex items-center justify-center p-4 md:p-8 z-10 fixed inset-0 overflow-y-auto">
       {/* Close Button */}
       <button
         onClick={() => router.back()}

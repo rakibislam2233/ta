@@ -10,19 +10,19 @@ export default function RightSidebar() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <aside className="w-80 h-full px-5 py-4 space-y-6 overflow-y-auto scrollbar-hide hidden xl:block border-l border-border-dark bg-background-dark fixed right-0 top-0 z-20 ">
+    <aside className="w-80 h-full px-5 py-4 space-y-6 overflow-y-auto scrollbar-hide hidden xl:block border-l border-border-dark bg-background-dark fixed right-0 top-0  ">
       {/* Join Card (if not authenticated) */}
       {!isAuthenticated && (
         <div className="bg-surface-dark rounded-2xl p-5 border border-border-dark shadow-glow relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/30 transition-colors"></div>
-          <h3 className="text-white font-bold text-lg mb-2 relative z-10">
+          <h3 className="text-white font-bold text-lg mb-2 relative">
             Join Talenzy
           </h3>
-          <p className="text-gray-400 text-xs mb-4 relative z-10 leading-relaxed">
+          <p className="text-gray-400 text-xs mb-4 relative leading-relaxed">
             Unlock your full potential. Connect with top talents and get hired
             for your skills.
           </p>
-          <Link href="/auth/register" className="w-full relative z-10">
+          <Link href="/auth/register" className="w-full relative">
             <Button className="w-full bg-primary hover:bg-primary-hover text-white font-bold h-10 shadow-lg shadow-primary/25 transition-all">
               Sign Up Now
             </Button>

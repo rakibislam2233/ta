@@ -19,7 +19,7 @@ export default function PublicHome() {
       </div>
       {/* Floating Join Banner */}
       {showJoinToast && (
-        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50">
+        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10">
           <div className="glass-panel border border-primary/30 p-4 rounded-xl shadow-glow max-w-xs flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-5 duration-500">
             <div className="flex items-start justify-between gap-4">
               <div className="flex flex-col text-left">

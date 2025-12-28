@@ -27,7 +27,7 @@ export default function ReviewPage() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-[#221c26] rounded-2xl w-full max-w-2xl border border-[#4a3c53]/30">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#4a3c53]/30">

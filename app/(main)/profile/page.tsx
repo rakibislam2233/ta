@@ -199,7 +199,7 @@ export default function ProfilePage() {
   return (
     <div className="max-w-6xl mx-auto pb-32">
       {/* Cover Image */}
-      <div className="relative h-64 bg-linear-to-br from-[#2d0845] to-[#500e7c] overflow-hidden">
+      <div className="relative h-64 bg-linear-to-br from-[#2d0845] to-primary overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-linear-to-t from-background-dark via-transparent to-transparent"></div>
         <button className="absolute bottom-4 right-4 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all border border-white/10 group">
@@ -209,7 +209,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Profile Header */}
-      <div className="px-6 pb-6 relative z-10">
+      <div className="px-6 pb-6 relative">
         <div className="flex flex-col md:flex-row items-end md:items-end justify-between -mt-20 mb-6 gap-4">
           <div className="relative group">
             <div className="size-40 rounded-full p-1.5 bg-background-dark">
@@ -512,7 +512,7 @@ export default function ProfilePage() {
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    "{review.comment}"
+                    {review.comment}
                   </p>
                   <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border-dark/50">
                     <button className="text-xs text-secondary font-medium hover:text-white flex items-center gap-1">

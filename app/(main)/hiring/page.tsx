@@ -201,15 +201,15 @@ export default function Hire() {
           <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
 
-          <h1 className="text-3xl font-bold text-white mb-2 relative z-10">
+          <h1 className="text-3xl font-bold text-white mb-2 relative">
             Hire Talented Creators
           </h1>
-          <p className="text-white/80 mb-8 max-w-lg mx-auto relative z-10">
+          <p className="text-white/80 mb-8 max-w-lg mx-auto relative">
             Connect with top-tier musicians, dancers, artists, and influencers
             for your next campaign or project.
           </p>
 
-          <div className="relative max-w-xl mx-auto z-10">
+          <div className="relative max-w-xl mx-auto">
             <input
               type="text"
               placeholder="Search for skills (e.g. 'Guitarist', 'Video Editor')..."

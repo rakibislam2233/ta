@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { Heart, MessageCircle, Share2, Gift, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Post from "@/components/Post"
-import { useState } from "react"
+import { Heart, MessageCircle, Share2, Gift, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Post from "@/components/Post";
+import { useState } from "react";
 
 export default function GiftsPage() {
-  const [showGiftModal, setShowGiftModal] = useState(false)
+  const [showGiftModal, setShowGiftModal] = useState(false);
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function GiftsPage() {
 
       {/* Gift Sent Notification */}
       {showGiftModal && (
-        <div className="fixed top-4 right-4 bg-[#221c26] rounded-lg p-4 border border-[#4a3c53]/30 shadow-2xl z-50 max-w-sm">
+        <div className="fixed top-4 right-4 bg-[#221c26] rounded-lg p-4 border border-[#4a3c53]/30 shadow-2xl  max-w-sm">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 bg-[#9419e6] rounded-full flex items-center justify-center flex-shrink-0">
               <Gift className="h-5 w-5 text-white" />
@@ -85,6 +85,5 @@ export default function GiftsPage() {
         </div>
       )}
     </>
-  )
+  );
 }
-

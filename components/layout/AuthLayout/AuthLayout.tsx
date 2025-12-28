@@ -20,7 +20,7 @@ export default function AuthLayout({
         {/* Left Side - Brand/Marketing */}
         <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-[#3a0d5c]">
           {/* Background effects */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#5a108f] to-[#2d0845] opacity-90" />
+          <div className="absolute inset-0 bg-linear-to-br from-[#5a108f] to-[#2d0845] opacity-90" />
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#9d4edd] rounded-full blur-[128px] opacity-40" />
           <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-[#b5179e] rounded-full blur-[96px] opacity-30" />
 

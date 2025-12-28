@@ -208,7 +208,7 @@ export default function DiscoverPeople() {
             {/* Gradient Background Effect */}
             <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-[#2a2330] to-transparent opacity-50"></div>
 
-            <div className="relative flex flex-col items-center text-center z-10">
+            <div className="relative flex flex-col items-center text-center">
               <div className="relative mb-4">
                 <div className="w-20 h-20 rounded-full p-1 bg-surface-dark border border-border-dark/50">
                   <div className="w-full h-full rounded-full overflow-hidden relative">
