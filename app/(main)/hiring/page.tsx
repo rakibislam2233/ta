@@ -230,14 +230,35 @@ export default function Hire() {
 
         {/* Filter Tabs */}
         <div className="flex items-center gap-6 sm:gap-10 mb-8 border-b border-border-dark/40 overflow-x-auto scrollbar-hide no-scrollbar">
-          <button className="text-primary font-black border-b-2 border-primary pb-4 px-2 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest transition-all">
+          <button
+            onClick={() => setActiveTab("all")}
+            className={`${
+              activeTab === "all"
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-500 hover:text-white"
+            } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest transition-all`}
+          >
             All Freelancers
           </button>
-          <button className="text-gray-500 font-bold hover:text-white pb-4 px-2 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest transition-colors">
-            Saved Talents
+          <button
+            onClick={() => setActiveTab("my-requests")}
+            className={`${
+              activeTab === "my-requests"
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-500 hover:text-white"
+            } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest transition-all`}
+          >
+            My Hire Requests
           </button>
-          <button className="text-gray-500 font-bold hover:text-white pb-4 px-2 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest transition-colors">
-            Direct Messages
+          <button
+            onClick={() => setActiveTab("hired-me")}
+            className={`${
+              activeTab === "hired-me"
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-500 hover:text-white"
+            } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest transition-all`}
+          >
+            Who Hired Me
           </button>
         </div>
 
@@ -257,17 +278,18 @@ export default function Hire() {
           {talents.map((talent, i) => (
             <div
               key={i}
-              className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden"
+              onClick={() => router.push(`/hiring/84920`)}
+              className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden cursor-pointer"
             >
               <div className="flex items-start justify-between mb-6 relative z-10">
                 <div className="flex items-center gap-4">
                   <div className="relative">
-                    <div className="size-14 sm:size-16 rounded-full overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
+                    <div className="size-14 sm:size-16 rounded-2xl overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
                       <Image
                         src={talent.image || ""}
                         alt={talent.name}
                         fill
-                        className="object-cover rounded-full"
+                        className="object-cover"
                       />
                     </div>
                     <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
@@ -337,8 +359,14 @@ export default function Hire() {
                 </div>
               </div>
 
-              <Button className="w-full h-12 bg-white text-primary hover:bg-white/90 text-sm font-black uppercase tracking-widest rounded-xl shadow-xl shadow-white/5 relative z-10">
-                Contact Creator
+              <Button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/hiring/84920`);
+                }}
+                className="w-full h-12 bg-primary hover:bg-primary-hover text-white text-sm font-black uppercase tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10"
+              >
+                Hire Now
               </Button>
 
               {/* Subtle background aesthetic */}
