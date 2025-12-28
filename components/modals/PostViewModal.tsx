@@ -11,12 +11,16 @@ import {
   MessageCircle,
   MoreVertical,
   Music,
+  Pause,
+  Play,
   Share2,
   Smile,
+  Volume2,
+  VolumeX,
   X,
 } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 interface Comment {
@@ -142,6 +146,125 @@ const CommentItem = ({
   );
 };
 
+const VideoPlayer = ({ src }: { src: string }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const current = videoRef.current.currentTime;
+      const duration = videoRef.current.duration;
+      setProgress((current / duration) * 100);
+    }
+  };
+
+  const handleProgressChange = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const width = rect.width;
+      const newTime = (x / width) * videoRef.current.duration;
+      videoRef.current.currentTime = newTime;
+    }
+  };
+
+  return (
+    <div className="relative w-full h-full group/video">
+      <video
+        ref={videoRef}
+        src={src}
+        className="w-full h-full object-contain"
+        autoPlay
+        loop
+        muted={isMuted}
+        onTimeUpdate={handleTimeUpdate}
+        onClick={togglePlay}
+      />
+
+      {/* Custom Controls Overlay */}
+      <div className="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div className="flex flex-col gap-3 pointer-events-auto">
+          {/* Progress Bar */}
+          <div
+            className="w-full h-1.5 bg-white/20 rounded-full cursor-pointer relative group/progress"
+            onClick={handleProgressChange}
+          >
+            <div
+              className="absolute left-0 top-0 h-full bg-primary rounded-full"
+              style={{ width: `${progress}%` }}
+            />
+            <div
+              className="absolute size-3 bg-primary rounded-full top-1/2 -translate-y-1/2 -ml-1.5 opacity-0 group-hover/progress:opacity-100 transition-opacity shadow-glow"
+              style={{ left: `${progress}%` }}
+            />
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={togglePlay}
+                className="text-white hover:text-primary transition-colors"
+              >
+                {isPlaying ? (
+                  <Pause className="h-5 w-5 fill-current" />
+                ) : (
+                  <Play className="h-5 w-5 fill-current" />
+                )}
+              </button>
+              <button
+                onClick={toggleMute}
+                className="text-white hover:text-primary transition-colors"
+              >
+                {isMuted ? (
+                  <VolumeX className="h-5 w-5" />
+                ) : (
+                  <Volume2 className="h-5 w-5" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Big Center Play/Pause Indicator (Optional) */}
+      {!isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="p-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/20"
+          >
+            <Play className="h-10 w-10 text-white fill-current" />
+          </motion.div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function PostViewModal({
   isOpen,
   onClose,
@@ -204,14 +327,7 @@ export default function PostViewModal({
             {/* Left Column: Media */}
             <div className="relative w-full h-[50vh] lg:h-full lg:w-[60%] bg-surface-dark flex items-center justify-center overflow-hidden group">
               {mediaItems[currentMediaIndex].type === "video" ? (
-                <video
-                  src={mediaItems[currentMediaIndex].url}
-                  className="w-full h-full object-contain"
-                  controls
-                  autoPlay
-                  loop
-                  muted
-                />
+                <VideoPlayer src={mediaItems[currentMediaIndex].url} />
               ) : (
                 <Image
                   src={mediaItems[currentMediaIndex].url}

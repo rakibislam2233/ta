@@ -1,11 +1,11 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Bookmark,
   Briefcase,
   Gift,
   Heart,
-  Layers,
   MessageCircle,
   Play,
   Share2,
@@ -25,13 +25,23 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const pathname = usePathname();
 
   const isHome = pathname === "/";
 
+  const mediaItems = post.mediaItems || [
+    { url: post.mediaUrl, type: "image" as const },
+  ];
+
   const handleOpenView = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setIsViewModalOpen(true);
+  };
+
+  const nextSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentSlide((prev) => (prev + 1) % mediaItems.length);
   };
 
   return (
@@ -42,36 +52,64 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       }`}
     >
       <div className="absolute inset-0">
-        {post.mediaItems && post.mediaItems[0].type === "video" ? (
-          <div className="relative w-full h-full">
-            <video
-              src={post.mediaItems[0].url}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              muted
-              loop
-              playsInline
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="p-3 rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
-                <Play className="h-6 w-6 text-white fill-current" />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-full relative"
+            onClick={(e: React.MouseEvent) => {
+              if (mediaItems.length > 1) {
+                nextSlide(e);
+              }
+            }}
+          >
+            {mediaItems[currentSlide].type === "video" ? (
+              <div className="relative w-full h-full">
+                <video
+                  src={mediaItems[currentSlide].url}
+                  className="w-full h-full object-cover"
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="p-3 rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
+                    <Play className="h-6 w-6 text-white fill-current" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : (
-          <Image
-            src={post.mediaUrl}
-            alt="Post content"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            priority
-          />
-        )}
-        <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/90"></div>
+            ) : (
+              <Image
+                src={mediaItems[currentSlide].url}
+                alt="Post content"
+                fill
+                className="object-cover"
+                priority
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/90 pointer-events-none"></div>
 
-        {/* Multi-Media Indicator */}
-        {post.mediaItems && post.mediaItems.length > 1 && (
-          <div className="absolute top-4 right-4 p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 z-10 transition-transform group-hover:scale-110">
-            <Layers className="h-4 w-4 text-white" />
+        {/* Dot Indicators */}
+        {mediaItems.length > 1 && (
+          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+            {mediaItems.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentSlide(i);
+                }}
+                className={`size-1.5 rounded-full transition-all ${
+                  i === currentSlide ? "bg-primary w-4" : "bg-white/40"
+                }`}
+              />
+            ))}
           </div>
         )}
       </div>
