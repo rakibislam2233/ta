@@ -19,6 +19,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Post } from "@/lib/types";
 import { usePathname } from "next/navigation";
 import PostViewModal from "./modals/PostViewModal";
+import SendGiftModal from "./modals/SendGiftModal";
+import ShareModal from "./modals/ShareModal";
 
 interface PostCardProps {
   post: Post;
@@ -28,6 +30,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [isGiftModalOpen, setIsGiftModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -234,7 +238,13 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           </span>
         </button>
 
-        <button className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsGiftModalOpen(true);
+          }}
+          className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
+        >
           <div className="p-2 md:p-3 rounded-full bg-primary/80 backdrop-blur-sm shadow-glow hover:scale-110 transition-all">
             <Gift className="h-5 w-5 md:h-7 md:w-7 text-white" />
           </div>
@@ -263,7 +273,13 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           </span>
         </button>
 
-        <button className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsShareModalOpen(true);
+          }}
+          className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
+        >
           <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
             <Share2 className="h-5 w-5 md:h-7 md:w-7 text-white" />
           </div>
@@ -317,6 +333,18 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       <PostViewModal
         isOpen={isViewModalOpen}
         onClose={() => setIsViewModalOpen(false)}
+        post={post}
+      />
+
+      <SendGiftModal
+        isOpen={isGiftModalOpen}
+        onClose={() => setIsGiftModalOpen(false)}
+        username={post.username}
+      />
+
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
         post={post}
       />
     </article>

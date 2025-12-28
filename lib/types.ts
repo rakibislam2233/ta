@@ -14,6 +14,7 @@ export interface Post {
   timestamp: string;
   likes: string;
   comments: number;
+  views?: number;
   tags: string[];
   category: string;
   audioName?: string;
