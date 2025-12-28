@@ -9,6 +9,7 @@ import {
   Home,
   Info,
   MessageCircle,
+  PlusCircle,
   PlusSquare,
   Settings,
   Sparkles,
@@ -106,10 +107,10 @@ export default function Sidebar() {
             {isAuthenticated && (
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className="w-full bg-linear-to-br from-primary to-purple-400 flex items-center gap-4 px-4 py-3 rounded-lg transition-all group text-text-secondary hover:bg-surface-dark hover:text-white"
+                className="w-full bg-linear-to-br from-primary to-purple-400 flex items-center gap-4 px-4 py-3 rounded-lg cursor-pointer"
               >
-                <PlusSquare className="h-6 w-6 transition-colors group-hover:text-primary" />
-                <span className="text-sm font-medium">Create</span>
+                <PlusCircle className="h-6 w-6 transition-colors group-hover:text-primary" />
+                <span className="font-semibold">Create Post</span>
               </button>
             )}
           </div>
