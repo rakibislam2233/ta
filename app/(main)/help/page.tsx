@@ -146,7 +146,7 @@ export default function HelpPage() {
           <div className="bg-[#221c26] rounded-2xl p-6 border border-[#4a3c53]/30 mb-6">
             <h2 className="text-white font-semibold text-xl mb-2">Contact Support</h2>
             <p className="text-gray-400 text-sm mb-6">
-              Fill out the form below and we'll get back to you within 24 hours.
+              Fill out the form below and we&apos;ll get back to you within 24 hours.
             </p>
             <div className="space-y-4">
               <div>

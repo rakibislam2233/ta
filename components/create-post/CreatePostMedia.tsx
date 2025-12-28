@@ -37,8 +37,7 @@ export default function CreatePostMedia({
   onNextSlide,
   onPrevSlide,
   onApplyFilter,
-  fileInputRef,
-  setCurrentSlide,
+  fileInputRef
 }: CreatePostMediaProps) {
   // Local UI state for tools (only relevant to this component)
   const [activeTool, setActiveTool] = useState<"none" | "crop" | "filter">(

@@ -203,7 +203,14 @@ export default function DiscoverPeople() {
         {profiles.map((profile) => (
           <div
             key={profile.id}
-            className="bg-surface-dark rounded-2xl p-6 border border-border-dark/30 hover:border-primary/30 transition-all hover:transform hover:-translate-y-1 group relative overflow-hidden"
+            onClick={() => {
+              // Navigate to user profile page
+              window.location.href = `/discover-people/${profile.username.replace(
+                "@",
+                ""
+              )}`;
+            }}
+            className="bg-surface-dark rounded-2xl p-6 border border-border-dark/30 hover:border-primary/30 transition-all hover:transform hover:-translate-y-1 group relative overflow-hidden cursor-pointer"
           >
             {/* Gradient Background Effect */}
             <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-[#2a2330] to-transparent opacity-50"></div>
@@ -270,15 +277,24 @@ export default function DiscoverPeople() {
               {/* Actions */}
               <div className="flex items-center gap-3 w-full">
                 {profile.isFollowing ? (
-                  <Button className="flex-1 bg-[#2a2330] hover:bg-[#332840] text-gray-300 border border-border-dark/30 font-semibold h-10 transition-colors">
+                  <Button
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 bg-[#2a2330] hover:bg-[#332840] text-gray-300 border border-border-dark/30 font-semibold h-10 transition-colors"
+                  >
                     Followed
                   </Button>
                 ) : (
-                  <Button className="flex-1 bg-primary hover:bg-primary-hover text-white font-semibold h-10 shadow-lg shadow-primary/25 transition-all">
+                  <Button
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 bg-primary hover:bg-primary-hover text-white font-semibold h-10 shadow-lg shadow-primary/25 transition-all"
+                  >
                     Follow
                   </Button>
                 )}
-                <button className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#2a2330] hover:bg-[#332840] border border-border-dark/30 text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={(e) => e.stopPropagation()}
+                  className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#2a2330] hover:bg-[#332840] border border-border-dark/30 text-gray-400 hover:text-white transition-colors"
+                >
                   <MessageSquare className="h-5 w-5" />
                 </button>
               </div>

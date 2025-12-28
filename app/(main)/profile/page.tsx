@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -346,38 +345,28 @@ export default function ProfilePage() {
         <div className="min-h-[300px]">
           {activeTab === "Posts" && (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 animate-in fade-in duration-500">
-              {posts.map((item) => (
+              {myPosts.map((post) => (
                 <div
-                  key={item.id}
+                  key={post.id}
+                  onClick={() => setSelectedPost(post)}
                   className="relative aspect-square bg-surface-dark rounded-xl overflow-hidden group cursor-pointer border border-border-dark"
                 >
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={post.mediaUrl}
+                    alt={post.caption}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center md:gap-2">
-                    {item.type === "video" && (
+                    {post.mediaItems?.some((item) => item.type === "video") && (
                       <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-xl">
                         ▶
                       </div>
                     )}
-                    <p className="text-white font-bold text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hidden md:block">
-                      {item.title}
+                    <p className="text-white font-bold text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hidden md:block px-4 text-center line-clamp-2">
+                      {post.caption}
                     </p>
                   </div>
-
-                  {item.pinned && (
-                    <div className="absolute top-3 left-3 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg">
-                      PINNED
-                    </div>
-                  )}
-                  {item.locked && (
-                    <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white p-1.5 rounded-full">
-                      <span className="text-xs">🔒</span>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -441,7 +430,7 @@ export default function ProfilePage() {
                     {selectedCollection.items.map((item: any) => (
                       <div
                         key={item.id}
-                        className="relative aspect-[3/4] bg-surface-dark rounded-xl overflow-hidden group border border-border-dark cursor-pointer"
+                        className="relative aspect-3/4 bg-surface-dark rounded-xl overflow-hidden group border border-border-dark cursor-pointer"
                       >
                         <Image
                           src={item.image}
