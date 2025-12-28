@@ -306,7 +306,7 @@ export default function Hire() {
               activeTab === "my-requests"
                 ? "text-primary border-b-2 border-primary"
                 : "text-gray-500 hover:text-white"
-            } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm  tracking-widest transition-all`}
+            } font-black pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
           >
             My Hire Requests
           </button>
@@ -316,7 +316,7 @@ export default function Hire() {
               activeTab === "hired-me"
                 ? "text-primary border-b-2 border-primary"
                 : "text-gray-500 hover:text-white"
-            } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm  tracking-widest transition-all`}
+            } font-black pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
           >
             Who Hired Me
           </button>
@@ -339,18 +339,22 @@ export default function Hire() {
             {talents.map((talent, i) => (
               <div
                 key={i}
-                onClick={() => router.push(`/discover-people/${talent.username}`)}
-                className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden cursor-pointer"
+                className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-6 relative z-10">
+                <div
+                  onClick={() =>
+                    router.push(`/discover-people/${talent.username}`)
+                  }
+                  className="flex items-start justify-between mb-6 relative z-10 cursor-pointer"
+                >
                   <div className="flex items-center gap-4">
                     <div className="relative">
-                      <div className="size-14 sm:size-16 rounded-2xl overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
+                      <div className="size-14 sm:size-16 rounded-full overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
                         <Image
                           src={talent.image || ""}
                           alt={talent.name}
                           fill
-                          className="object-cover"
+                          className="object-cover rounded-full"
                         />
                       </div>
                       <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
@@ -420,13 +424,7 @@ export default function Hire() {
                   </div>
                 </div>
 
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    router.push(`/hiring/84920`);
-                  }}
-                  className="w-full h-12 bg-primary hover:bg-primary-hover text-white text-sm font-black uppercase tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10"
-                >
+                <Button className="w-full h-12 cursor-pointer bg-primary hover:bg-primary-hover text-white text-sm font-black tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10">
                   Hire Now
                 </Button>
 
@@ -607,7 +605,7 @@ export default function Hire() {
             ].map((hire) => (
               <div
                 key={hire.id}
-                onClick={() => router.push(`/hiring/${hire.id}`)}
+                onClick={() => router.push(`/hiring/hired-me/${hire.id}`)}
                 className="bg-surface-dark rounded-3xl p-6 border border-border-dark/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">
@@ -667,7 +665,7 @@ export default function Hire() {
                   <Button
                     onClick={(e) => {
                       e.stopPropagation();
-                      router.push(`/hiring/${hire.id}`);
+                      router.push(`/hiring/hired-me/${hire.id}`);
                     }}
                     className="bg-primary hover:bg-primary-hover text-white rounded-xl h-10 px-6 font-black uppercase text-xs shadow-lg shadow-primary/20"
                   >
