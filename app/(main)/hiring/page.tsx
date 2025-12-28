@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { MapPin, Star } from "lucide-react";
+import { MapPin, Search, Star } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -282,9 +282,8 @@ export default function Hire() {
               placeholder="Who are you looking for?"
               className="w-full h-14 sm:h-16 rounded-2xl pl-6 sm:pl-8 pr-16 sm:pr-36 bg-white/10 backdrop-blur-xl border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 focus:border-white/40 transition-all shadow-2xl"
             />
-            <Button className="absolute right-2 top-2 bottom-2 rounded-xl bg-white text-primary hover:bg-white/90 px-4 sm:px-8 font-black uppercase tracking-widest text-xs">
-              <span className="hidden sm:inline">Search Now</span>
-              <span className="sm:hidden">GO</span>
+            <Button className="absolute right-2 top-2 rounded-full size-10 cursor-pointer">
+              <Search />
             </Button>
           </div>
         </div>
@@ -334,13 +333,13 @@ export default function Hire() {
           </Button>
         </div>
 
-        {/* Talent Grid - All Freelancers Tab */}
+        {/* Talent Grid - All Talents Tab */}
         {activeTab === "all" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
             {talents.map((talent, i) => (
               <div
                 key={i}
-                onClick={() => router.push(`/hiring/84920`)}
+                onClick={() => router.push(`/discover-people/${talent.username}`)}
                 className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-6 relative z-10">
