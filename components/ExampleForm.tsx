@@ -1,101 +1,85 @@
-"use client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { cn } from "@/lib/utils";
-
-// Zod schema for form validation
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
-export default function ExampleForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-  });
-
-  const onSubmit = (data: FormValues) => {
-    console.log("Form data:", data);
-    alert(`Form submitted: ${JSON.stringify(data, null, 2)}`);
-  };
-
+export function ExampleForm() {
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-card rounded-lg border border-border shadow-sm">
-      <h2 className="text-2xl font-semibold mb-4 text-foreground">
-        Example Form with React Hook Form + Zod
-      </h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-foreground mb-1"
-          >
-            Name
-          </label>
-          <input
-            id="name"
-            {...register("name")}
-            className={cn(
-              "w-full px-3 py-2 border rounded-md",
-              "bg-background text-foreground",
-              "border-input focus:outline-none focus:ring-2 focus:ring-ring",
-              errors.name && "border-destructive"
-            )}
-            placeholder="Enter your name"
-          />
-          {errors.name && (
-            <p className="mt-1 text-sm text-destructive">
-              {errors.name.message}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-foreground mb-1"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            {...register("email")}
-            className={cn(
-              "w-full px-3 py-2 border rounded-md",
-              "bg-background text-foreground",
-              "border-input focus:outline-none focus:ring-2 focus:ring-ring",
-              errors.email && "border-destructive"
-            )}
-            placeholder="Enter your email"
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-destructive">
-              {errors.email.message}
-            </p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity font-medium"
-        >
-          Submit
-        </button>
-      </form>
+    <div className="container mx-auto py-8 max-w-2xl">
+      <Card className="bg-card text-card-foreground shadow-lg rounded-xl border border-border">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl font-bold">Join Talenzy</CardTitle>
+          <CardDescription>
+            Create your account to connect with professionals and discover opportunities
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="firstName">First Name</Label>
+              <Input id="firstName" placeholder="John" className="h-12" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="lastName">Last Name</Label>
+              <Input id="lastName" placeholder="Doe" className="h-12" />
+            </div>
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="john.doe@example.com" className="h-12" />
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="role">Professional Role</Label>
+            <Select>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Select your role" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="developer">Developer</SelectItem>
+                <SelectItem value="designer">Designer</SelectItem>
+                <SelectItem value="manager">Manager</SelectItem>
+                <SelectItem value="marketing">Marketing</SelectItem>
+                <SelectItem value="sales">Sales</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="bio">Bio</Label>
+            <Textarea 
+              id="bio" 
+              placeholder="Tell us about yourself..." 
+              rows={4}
+              className="resize-none"
+            />
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="experience">Years of Experience</Label>
+            <Select>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Select your experience" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="0-1">0-1 years</SelectItem>
+                <SelectItem value="2-5">2-5 years</SelectItem>
+                <SelectItem value="6-10">6-10 years</SelectItem>
+                <SelectItem value="10+">10+ years</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <Button className="w-full mt-4 h-12 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+            Create Account
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }
 
+export default ExampleForm;

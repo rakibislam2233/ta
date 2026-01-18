@@ -10,20 +10,20 @@ export default function RightSidebar() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <aside className="w-80 h-full px-5 py-4 space-y-6 overflow-y-auto scrollbar-hide hidden xl:block border-l border-border-dark bg-background-dark fixed right-0 top-0  ">
+    <aside className="w-80 h-full px-5 py-4 space-y-6 overflow-y-auto scrollbar-hide hidden xl:block border-l border-border bg-background fixed right-0 top-0  ">
       {/* Join Card (if not authenticated) */}
       {!isAuthenticated && (
-        <div className="bg-surface-dark rounded-2xl p-5 border border-border-dark shadow-glow relative overflow-hidden group">
+        <div className="bg-card rounded-2xl p-5 border border-border shadow-glow relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/30 transition-colors"></div>
-          <h3 className="text-white font-bold text-lg mb-2 relative">
+          <h3 className="text-foreground font-bold text-lg mb-2 relative">
             Join Talenzy
           </h3>
-          <p className="text-gray-400 text-xs mb-4 relative leading-relaxed">
+          <p className="text-muted-foreground text-xs mb-4 relative leading-relaxed">
             Unlock your full potential. Connect with top talents and get hired
             for your skills.
           </p>
           <Link href="/auth/register" className="w-full relative">
-            <Button className="w-full bg-primary hover:bg-primary-hover cursor-pointer text-white font-bold h-10 rounded-lg transition-all">
+            <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer text-primary-foreground font-bold h-10 rounded-lg transition-all">
               Sign Up Now
             </Button>
           </Link>
@@ -31,10 +31,10 @@ export default function RightSidebar() {
       )}
 
       {/* Suggested Talents */}
-      <div className="bg-surface-dark rounded-2xl p-5 border border-border-dark">
+      <div className="bg-card rounded-2xl p-5 border border-border">
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-white font-bold text-sm">Suggested Talents</h3>
-          <button className="text-primary text-xs font-semibold hover:text-white transition-colors">
+          <h3 className="text-foreground font-bold text-sm">Suggested Talents</h3>
+          <button className="text-primary text-xs font-semibold hover:text-foreground transition-colors">
             See All
           </button>
         </div>
@@ -64,7 +64,7 @@ export default function RightSidebar() {
               className="flex items-center justify-between group cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-border-dark group-hover:border-primary transition-colors">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-border group-hover:border-primary transition-colors">
                   <Image
                     src={talent.image}
                     alt={talent.name}
@@ -73,13 +73,13 @@ export default function RightSidebar() {
                   />
                 </div>
                 <div>
-                  <p className="text-white text-sm font-bold group-hover:text-primary transition-colors">
+                  <p className="text-foreground text-sm font-bold group-hover:text-primary transition-colors">
                     {talent.name}
                   </p>
-                  <p className="text-gray-500 text-xs">{talent.role}</p>
+                  <p className="text-muted-foreground text-xs">{talent.role}</p>
                 </div>
               </div>
-              <button className="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors">
+              <button className="text-muted-foreground hover:text-foreground p-2 hover:bg-accent rounded-full transition-colors">
                 <UserPlus className="h-4 w-4" />
               </button>
             </div>
@@ -88,10 +88,10 @@ export default function RightSidebar() {
       </div>
 
       {/* Trending Now */}
-      <div className="bg-surface-dark rounded-2xl p-5 border border-border-dark">
+      <div className="bg-card rounded-2xl p-5 border border-border">
         <div className="flex items-center gap-2 mb-5">
           <TrendingUp className="h-4 w-4 text-primary" />
-          <h3 className="text-white font-bold text-sm">Trending Now</h3>
+          <h3 className="text-foreground font-bold text-sm">Trending Now</h3>
         </div>
         <div className="space-y-4">
           {[
@@ -106,18 +106,18 @@ export default function RightSidebar() {
             >
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs text-gray-500 font-medium">
+                  <span className="text-xs text-muted-foreground font-medium">
                     {trend.category}
                   </span>
-                  <span className="w-1 h-1 rounded-full bg-gray-600"></span>
-                  <span className="text-[10px] text-gray-600">Trending</span>
+                  <span className="w-1 h-1 rounded-full bg-muted-foreground"></span>
+                  <span className="text-[10px] text-muted-foreground">Trending</span>
                 </div>
-                <p className="text-white text-sm font-bold group-hover:text-primary transition-colors mb-0.5">
+                <p className="text-foreground text-sm font-bold group-hover:text-primary transition-colors mb-0.5">
                   {trend.tag}
                 </p>
-                <p className="text-gray-500 text-xs">{trend.posts} posts</p>
+                <p className="text-muted-foreground text-xs">{trend.posts} posts</p>
               </div>
-              <button className="text-gray-500 hover:text-white opacity-0 group-hover:opacity-100 transition-all">
+              <button className="text-muted-foreground hover:text-foreground opacity-0 group-hover:opacity-100 transition-all">
                 <MoreHorizontal className="h-4 w-4" />
               </button>
             </div>

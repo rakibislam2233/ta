@@ -2,38 +2,76 @@
 
 @layer base {
   :root {
-    /* Minimal black dark theme with your purple primary */
-    --background: 0 0% 0%; /* #1C1C1D - Pure black background */
-    --foreground: 0 0% 100%; /* White text */
-    --card: 0 0% 7%; /* #121212 - Dark surface (Instagram/TikTok style) */
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
+    /* Instagram-like light mode theme */
+    --background: 0 0% 100%; /* #FFFFFF - White background */
+    --foreground: 0 0% 0%; /* #000000 - Black text */
+    --card: 0 0% 96%; /* #F5F5F5 - Light gray surface */
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%; /* #FFFFFF - White popover */
+    --popover-foreground: 0 0% 0%;
     
     /* Your primary purple retained */
     --primary: 277 85% 27%; /* #500e7c */
     --primary-foreground: 0 0% 100%; /* White text on primary */
     
-    --secondary: 0 0% 10%; /* #1a1a1a */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 70%; /* #b3b3b3 - Secondary text */
-    --accent: 0 0% 7%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
+    --secondary: 0 0% 96%; /* #F5F5F5 - Light gray */
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%; /* #F5F5F5 - Light gray */
+    --muted-foreground: 0 0% 40%; /* #666666 - Medium gray text */
+    --accent: 0 0% 98%; /* #FAFAFA - Very light gray */
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%; /* #EF4444 - Red */
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 12%; /* #1f1f1f - Subtle borders */
-    --input: 0 0% 10%;
+    --border: 0 0% 90%; /* #E6E6E6 - Light gray border */
+    --input: 0 0% 90%; /* #E6E6E6 - Light gray input */
     --ring: 277 85% 27%; /* Ring matches your primary */
     --radius: 0.5rem;
 
     /* Custom colors */
     --color-primary: #500e7c;
     --color-primary-hover: #6a1b9a; /* Slightly lighter hover */
-    --color-background-dark: #1C1C1D;
-    --color-surface-dark: #121212;
-    --color-border-dark: #1f1f1f;
-    --color-text-secondary: #b3b3b3;
+    --color-background-light: #FFFFFF;
+    --color-surface-light: #F5F5F5;
+    --color-border-light: #E6E6E6;
+    --color-text-primary: #262626;
+    --color-text-secondary: #8E8E8E;
+    --color-text-tertiary: #C7C7CC;
+  }
+  
+  .dark {
+    /* Instagram-like dark mode theme */
+    --background: 0 0% 4%; /* #0A0A0A - Almost black background */
+    --foreground: 0 0% 95%; /* #F2F2F2 - Near white text */
+    --card: 0 0% 8%; /* #141414 - Dark surface */
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%; /* #1E1E1E - Dark popover */
+    --popover-foreground: 0 0% 95%;
+    
+    /* Your primary purple in dark mode */
+    --primary: 277 85% 35%; /* Slightly brighter in dark mode */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    
+    --secondary: 0 0% 12%; /* #1E1E1E - Dark gray */
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 12%; /* #1E1E1E - Dark gray */
+    --muted-foreground: 0 0% 60%; /* #999999 - Medium gray text */
+    --accent: 0 0% 10%; /* #1A1A1A - Dark gray */
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 72.2% 50.6%; /* #DC2626 - Darker red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%; /* #262626 - Dark gray border */
+    --input: 0 0% 15%; /* #262626 - Dark gray input */
+    --ring: 277 85% 35%; /* Ring matches primary in dark mode */
+
+    /* Custom colors for dark mode */
+    --color-primary: #833AB4; /* Instagram purple accent */
+    --color-primary-hover: #9146FF; /* Lighter purple on hover */
+    --color-background-dark: #0A0A0A;
+    --color-surface-dark: #141414;
+    --color-border-dark: #262626;
+    --color-text-primary: #F2F2F2;
+    --color-text-secondary: #8E8E8E;
+    --color-text-tertiary: #636366;
   }
 }
 
@@ -60,10 +98,15 @@
 
   /* Custom */
   --color-primary-hover: #6a1b9a;
-  --color-background-dark: #1C1C1D;
-  --color-surface-dark: #121212;
-  --color-border-dark: #1f1f1f;
-  --color-text-secondary: #b3b3b3;
+  --color-background-light: #FFFFFF;
+  --color-surface-light: #F5F5F5;
+  --color-border-light: #E6E6E6;
+  --color-background-dark: #0A0A0A;
+  --color-surface-dark: #141414;
+  --color-border-dark: #262626;
+  --color-text-primary: #262626;
+  --color-text-secondary: #8E8E8E;
+  --color-text-tertiary: #C7C7CC;
 
   /* Radius */
   --radius-sm: 0.375rem;
@@ -87,10 +130,18 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #1C1C1D;
+    background: var(--color-surface-light);
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: var(--color-surface-dark);
   }
   ::-webkit-scrollbar-thumb {
-    background: #1f1f1f;
+    background: var(--color-border-light);
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--color-border-dark);
+  }
+  ::-webkit-scrollbar-thumb {
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {

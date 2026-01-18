@@ -19,7 +19,7 @@ export default function MainLayout({
     pathname.includes("/auth");
 
   return (
-    <div className="flex min-h-screen bg-background-dark text-white font-display selection:bg-primary selection:text-white overflow-hidden md:pl-64">
+    <div className="flex min-h-screen bg-background text-foreground font-display selection:bg-primary selection:text-primary-foreground overflow-hidden md:pl-64">
       <Sidebar />
       <MobileBottomNav />
       <main className="flex-1 flex flex-col h-screen overflow-hidden relative group/main w-full">

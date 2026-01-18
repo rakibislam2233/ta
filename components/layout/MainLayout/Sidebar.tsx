@@ -1,5 +1,6 @@
 "use client";
 import CreatePostModal from "@/components/modals/CreatePostModal";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useAuth } from "@/context/AuthContext";
 import {
   Bell,
@@ -51,19 +52,19 @@ export default function Sidebar() {
   const currentNavItems = isAuthenticated ? authNavItems : publicNavItems;
 
   return (
-    <aside className="w-64 h-full flex-col border-r border-border-dark bg-background-dark shrink-0 z-20 hidden md:flex fixed top-0 left-0">
+    <aside className="w-64 h-full flex-col border-r border-border bg-background shrink-0 z-20 hidden md:flex fixed top-0 left-0">
       <div className="p-6 flex flex-col h-full">
         {/* Logo */}
         <Link href={"/"}>
           <div className="flex items-center gap-3 mb-10 cursor-pointer">
-            <div className="size-10 rounded-xl bg-linear-to-br from-primary to-purple-400 flex items-center justify-center shadow-glow">
-              <Sparkles className="text-white h-6 w-6 fill-white" />
+            <div className="size-10 rounded-xl bg-gradient-to-br from-primary to-purple-400 flex items-center justify-center shadow-glow">
+              <Sparkles className="text-primary-foreground h-6 w-6 fill-primary-foreground" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-xl font-bold tracking-tight text-white">
+              <h1 className="text-xl font-bold tracking-tight text-foreground">
                 Talenzy
               </h1>
-              <p className="text-text-secondary text-xs font-medium">
+              <p className="text-muted-foreground text-xs font-medium">
                 Unleash Your Potential
               </p>
             </div>
@@ -78,10 +79,10 @@ export default function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-4 px-4 py-3.5 rounded-xl   to-transparent border-l-4  text-white group transition-all ${
+                className={`flex items-center gap-4 px-4 py-3.5 rounded-xl   to-transparent border-l-4  text-foreground group transition-all ${
                   active
-                    ? "bg-surface-dark text-white  border-primary shadow-sm"
-                    : "text-text-secondary hover:bg-surface-dark hover:text-white border-transparent"
+                    ? "bg-accent text-foreground  border-primary shadow-sm"
+                    : "text-muted-foreground hover:bg-accent hover:text-foreground border-transparent"
                 }`}
               >
                 <item.icon
@@ -105,7 +106,7 @@ export default function Sidebar() {
             {isAuthenticated && (
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-linear-to-r from-primary to-purple-600  text-white font-bold rounded-xl shadow-lg shadow-purple-900/20 transition-all cursor-pointer"
+                className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary to-purple-600  text-primary-foreground font-bold rounded-xl shadow-lg shadow-purple-900/20 transition-all cursor-pointer"
               >
                 <PlusCircle className="h-6 w-6 transition-colors group-hover:text-primary" />
                 Create Post
@@ -122,22 +123,27 @@ export default function Sidebar() {
 
         {/* Footer Buttons */}
         <div className="flex flex-col gap-3 mt-auto">
+          {/* Theme Toggle */}
+          <div className="w-full h-10 rounded-xl bg-surface-dark border border-border flex items-center justify-center hover:bg-accent transition-colors duration-200">
+            <ThemeToggle />
+          </div>
+          
           {isAuthenticated ? (
             <button
               onClick={logout}
-              className="w-full h-10 rounded-lg border border-border-dark hover:bg-surface-dark text-white text-sm font-bold transition-all"
+              className="w-full h-10 rounded-lg border border-border hover:bg-accent text-foreground text-sm font-bold transition-all"
             >
               Log Out
             </button>
           ) : (
             <>
               <Link href="/auth/register" className="w-full">
-                <button className="w-full h-10 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold shadow-glow transition-all cursor-pointer">
+                <button className="w-full h-10 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-bold shadow-glow transition-all cursor-pointer">
                   Sign Up
                 </button>
               </Link>
               <Link href="/auth/login" className="w-full">
-                <button className="w-full h-10 rounded-lg border border-border-dark hover:bg-surface-dark text-white text-sm font-bold transition-all cursor-pointer">
+                <button className="w-full h-10 rounded-lg border border-border hover:bg-accent text-foreground text-sm font-bold transition-all cursor-pointer">
                   Log In
                 </button>
               </Link>

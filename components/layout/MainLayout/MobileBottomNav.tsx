@@ -1,6 +1,7 @@
 "use client";
 
 import CreatePostModal from "@/components/modals/CreatePostModal";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useAuth } from "@/context/AuthContext";
 import { Bell, Compass, Home, MessageCircle, Plus, User } from "lucide-react";
 import Link from "next/link";
@@ -17,17 +18,13 @@ export default function MobileBottomNav() {
     return pathname?.startsWith(href);
   };
 
-  /* navItems removed as we are using manual layout */
-
-  // We want a layout like: [Item] [Item] [Plus] [Item] [Item]
-  // Ideally 5 slots.
-  // For unauthenticated, maybe just show Login instead of Create?
-  // Let's stick to the requested behavior: "Create Post or plus icon"
-
   return (
     <>
-      <div className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0f0f12] border-t border-border-dark flex items-center justify-between px-6 z-40 pb-safe">
-        {/* Left Side */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-background border-t border-border flex items-center justify-between px-6 z-40 pb-safe">
+        {/* Theme Toggle - Added as leftmost item */}
+        <ThemeToggle />
+
+        {/* Original Left Side */}
         <Link
           href="/"
           className={`flex flex-col items-center gap-1 ${
@@ -52,7 +49,7 @@ export default function MobileBottomNav() {
         <div className="relative -top-5">
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="w-14 h-14 rounded-full bg-linear-to-r from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/40 border-4 border-[#0f0f12] active:scale-95 transition-transform"
+            className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/40 border-4 border-background active:scale-95 transition-transform"
           >
             <Plus className="h-7 w-7 text-white" />
           </button>
