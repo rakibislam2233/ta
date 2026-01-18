@@ -123,33 +123,33 @@ export default function RightSidebar() {
             </div>
           ))}
         </div>
-        <button className="w-full mt-4 py-2 text-primary text-xs font-bold hover:text-white transition-colors border-t border-border-dark/50">
+        <button className="w-full mt-4 py-2 text-primary text-xs font-bold hover:text-foreground transition-colors border-t border-border/50">
           Show More
         </button>
       </div>
 
       {/* Footer Links */}
-      <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-gray-500 font-medium px-2">
-        <Link href="#" className="hover:text-white transition-colors">
+      <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-muted-foreground font-medium px-2">
+        <Link href="#" className="hover:text-foreground transition-colors">
           About
         </Link>
-        <Link href="#" className="hover:text-white transition-colors">
+        <Link href="#" className="hover:text-foreground transition-colors">
           Help
         </Link>
-        <Link href="#" className="hover:text-white transition-colors">
+        <Link href="#" className="hover:text-foreground transition-colors">
           Privacy
         </Link>
-        <Link href="#" className="hover:text-white transition-colors">
+        <Link href="#" className="hover:text-foreground transition-colors">
           Terms
         </Link>
-        <Link href="#" className="hover:text-white transition-colors">
+        <Link href="#" className="hover:text-foreground transition-colors">
           Locations
         </Link>
-        <Link href="#" className="hover:text-white transition-colors">
+        <Link href="#" className="hover:text-foreground transition-colors">
           Language
         </Link>
       </div>
-      <p className="text-[11px] text-gray-600 px-2 mt-2">
+      <p className="text-[11px] text-muted-foreground px-2 mt-2">
         © 2025 Talenzy, Inc.
       </p>
     </aside>
