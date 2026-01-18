@@ -105,7 +105,7 @@ export default function Header() {
 
           {/* Desktop Right Side Actions */}
           <div className="hidden md:flex items-center gap-2">
-            {isAuthenticated ? (
+            {isAuthenticated && (
               <div className="w-full flex gap-2">
                 <button
                   className="p-2 text-text-secondary hover:text-white transition-colors"
@@ -136,21 +136,6 @@ export default function Header() {
                       className="size-10 rounded-full "
                     />
                   </div>
-                </Link>
-              </div>
-            ) : (
-              <div className="w-full flex items-center gap-2">
-                <Link
-                  href="/auth/login"
-                  className="text-sm font-semibold text-white hover:text-primary transition-colors px-3 py-1.5"
-                >
-                  Log In
-                </Link>
-                <Link
-                  href="/auth/register"
-                  className="text-sm font-bold bg-white text-primary hover:bg-gray-100 px-4 py-1.5 rounded-full transition-colors"
-                >
-                  Sign Up
                 </Link>
               </div>
             )}

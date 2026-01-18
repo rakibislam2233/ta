@@ -3,7 +3,7 @@
 @layer base {
   :root {
     /* Minimal black dark theme with your purple primary */
-    --background: 0 0% 0%; /* #000000 - Pure black background */
+    --background: 0 0% 0%; /* #1C1C1D - Pure black background */
     --foreground: 0 0% 100%; /* White text */
     --card: 0 0% 7%; /* #121212 - Dark surface (Instagram/TikTok style) */
     --card-foreground: 0 0% 100%;
@@ -30,7 +30,7 @@
     /* Custom colors */
     --color-primary: #500e7c;
     --color-primary-hover: #6a1b9a; /* Slightly lighter hover */
-    --color-background-dark: #000000;
+    --color-background-dark: #1C1C1D;
     --color-surface-dark: #121212;
     --color-border-dark: #1f1f1f;
     --color-text-secondary: #b3b3b3;
@@ -60,7 +60,7 @@
 
   /* Custom */
   --color-primary-hover: #6a1b9a;
-  --color-background-dark: #000000;
+  --color-background-dark: #1C1C1D;
   --color-surface-dark: #121212;
   --color-border-dark: #1f1f1f;
   --color-text-secondary: #b3b3b3;
@@ -87,7 +87,7 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #1C1C1D;
   }
   ::-webkit-scrollbar-thumb {
     background: #1f1f1f;

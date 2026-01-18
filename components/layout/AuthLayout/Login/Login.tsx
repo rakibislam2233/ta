@@ -38,7 +38,7 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto fade-in">
+    <section className="w-full max-w-md mx-auto fade-in">
       <div className="bg-transparent lg:bg-surface-dark lg:rounded-2xl lg:p-8 lg:shadow-2xl lg:border lg:border-border-dark/30">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-white mb-2">Welcome Back!</h2>
@@ -118,64 +118,12 @@ export default function Login() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 bg-linear-to-r from-primary to-[#7a14c4] hover:from-[#7a14c4] hover:to-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/25 transition-all mt-2"
+            className="w-full h-12 bg-linear-to-r from-primary to-[#7a14c4] hover:from-[#7a14c4] hover:to-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/25 transition-all mt-2 cursor-pointer"
           >
             {isSubmitting ? "Signing in..." : "Sign In"}
           </Button>
-
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-700"></div>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-surface-dark px-2 text-gray-500">
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          {/* Social Login */}
-          <div className="grid grid-cols-2 gap-4">
-            <Button
-              type="button"
-              variant="outline"
-              className="h-12 bg-[#2a2330] border-border-dark text-white hover:bg-[#332840] rounded-lg"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 24 24">
-                <path
-                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                  fill="#4285F4"
-                />
-                <path
-                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                  fill="#EA4335"
-                />
-              </svg>
-              Google
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              className="h-12 bg-[#1877F2] border-transparent text-white hover:bg-[#1877F2]/90 rounded-lg"
-            >
-              <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.797 1.603-2.797 4.16v1.912h4.141l-.542 3.667h-3.599v7.98c0 .103.016.204.016.307a10.04 10.04 0 0 0 5.067-8.287l.006-.006c0-5.523-4.477-10-10-10S-.217 6.477-.217 12l.004.008a10.04 10.04 0 0 0 5.068 8.287c.01-.103.016-.204.025-.307l4.221-16.303Z" />
-              </svg>
-              Facebook
-            </Button>
-          </div>
-
           <p className="text-center text-gray-400 text-sm mt-8">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               href="/auth/register"
               className="text-primary hover:text-[#a824f0] font-semibold transition-colors"
@@ -185,6 +133,6 @@ export default function Login() {
           </p>
         </form>
       </div>
-    </div>
+    </section>
   );
 }

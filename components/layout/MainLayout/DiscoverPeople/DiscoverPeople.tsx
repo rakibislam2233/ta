@@ -1,6 +1,4 @@
 "use client";
-
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -8,9 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChevronDown, Search } from "lucide-react";
 import { useState } from "react";
 import DiscoverPeopleCard from "./DiscoverPeopleCard";
+import { Input } from "@/components/ui/input";
 
 const DiscoverPeople = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -148,11 +146,11 @@ const DiscoverPeople = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-32">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-32">
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-1">
+          <h1 className="text-2xl sm:text-3xl font-black text-white  tracking-tight mb-1">
             Discover <span className="text-primary">Talent</span>
           </h1>
           <p className="text-gray-400 text-sm sm:text-base">
@@ -162,14 +160,13 @@ const DiscoverPeople = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-surface-dark/50 p-4 sm:p-5 rounded-2xl border border-border-dark/40 mb-10 shadow-xl backdrop-blur-md">
+      <div className="bg-surface-dark/50 p-4 sm:p-5 rounded-lg border  mb-10 shadow-xl backdrop-blur-md">
         <div className="flex flex-col lg:flex-row gap-5">
           <div className="flex-1 relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 group-focus-within:text-primary transition-colors" />
-            <input
+            <Input
               type="text"
-              placeholder="Search by name, role, or username..."
-              className="w-full h-12 bg-background-dark/80 border border-border-dark/50 rounded-xl pl-12 pr-4 text-sm text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-gray-600"
+              placeholder="Search by name or username"
+              className="border"
             />
           </div>
 
@@ -178,7 +175,7 @@ const DiscoverPeople = () => {
               value={selectedCategory}
               onValueChange={setSelectedCategory}
             >
-              <SelectTrigger className="min-w-[150px]">
+              <SelectTrigger>
                 <SelectValue placeholder="All Categories" />
               </SelectTrigger>
               <SelectContent>
@@ -195,7 +192,7 @@ const DiscoverPeople = () => {
               value={selectedLocation}
               onValueChange={setSelectedLocation}
             >
-              <SelectTrigger className="min-w-[140px]">
+              <SelectTrigger>
                 <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent>
@@ -209,7 +206,7 @@ const DiscoverPeople = () => {
             </Select>
 
             <Select value={selectedSkill} onValueChange={setSelectedSkill}>
-              <SelectTrigger className="min-w-[130px]">
+              <SelectTrigger>
                 <SelectValue placeholder="Skills" />
               </SelectTrigger>
               <SelectContent>
@@ -226,7 +223,7 @@ const DiscoverPeople = () => {
               value={selectedExperience}
               onValueChange={setSelectedExperience}
             >
-              <SelectTrigger className="min-w-[150px]">
+              <SelectTrigger className="min-w-37.5">
                 <SelectValue placeholder="Experience" />
               </SelectTrigger>
               <SelectContent>
@@ -241,30 +238,6 @@ const DiscoverPeople = () => {
             </Select>
           </div>
         </div>
-
-        {/* Popular Tags */}
-        <div className="flex items-center gap-4 mt-5">
-          <span className="text-gray-600 text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap">
-            Trending:
-          </span>
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide scroll-smooth">
-            {[
-              "#Musicians",
-              "#Designers",
-              "#Dancers",
-              "#Photographers",
-              "#Editors",
-              "#Writers",
-            ].map((tag) => (
-              <button
-                key={tag}
-                className="bg-background-dark hover:bg-primary hover:text-white text-gray-500 px-4 py-1.5 rounded-full transition-all text-[11px] font-bold border border-border-dark/30 whitespace-nowrap shadow-sm hover:shadow-primary/20"
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Grid */}
@@ -272,15 +245,6 @@ const DiscoverPeople = () => {
         {profiles.map((profile) => (
           <DiscoverPeopleCard key={profile.id} profile={profile} />
         ))}
-      </div>
-
-      <div className="flex justify-center mt-12 mb-8">
-        <Button
-          variant="outline"
-          className="rounded-full px-6 py-6 border-border-dark bg-[#2a2330] text-white hover:bg-[#332840]"
-        >
-          Load More People <ChevronDown className="ml-2 h-4 w-4" />
-        </Button>
       </div>
     </div>
   );

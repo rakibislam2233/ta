@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import IProfile from "@/interface/profile.interface";
-import { Check, MessageSquare } from "lucide-react";
+import { Check, MessageSquare, Verified } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ const DiscoverPeopleCard = ({ profile }: DiscoverPeopleCardProps) => {
   return (
     <div
       key={profile.id}
-      className="bg-surface-dark rounded-3xl p-6 border border-border-dark/30 group relative overflow-hidden cursor-pointer "
+      className="bg-surface-dark rounded-lg p-6 border border-border-dark/30 group relative overflow-hidden cursor-pointer "
     >
       {/* Gradient Background Effect */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-[#2a2330] to-transparent opacity-50"></div>
@@ -39,11 +39,7 @@ const DiscoverPeopleCard = ({ profile }: DiscoverPeopleCardProps) => {
 
         <div className="flex items-center gap-1.5 mb-1">
           <h3 className="text-white font-bold text-lg">{profile.name}</h3>
-          {profile.verified && (
-            <div className="bg-blue-500 p-0.5 rounded-full">
-              <Check className="w-2 h-2 text-white" />
-            </div>
-          )}
+          {profile.verified && <Verified className="h-4 w-4 text-blue-500" />}
         </div>
         <p className="text-primary text-sm font-medium mb-3">
           {profile.username}

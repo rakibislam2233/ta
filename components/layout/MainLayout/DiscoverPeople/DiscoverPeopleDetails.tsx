@@ -416,10 +416,7 @@ const DiscoverPeopleDetails = () => {
               <p className="text-gray-400 text-sm mb-6">
                 Send a gift to show your appreciation!
               </p>
-              <Button
-                onClick={() => toast.gift(usernameParam)}
-                className="bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow"
-              >
+              <Button className="bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow">
                 <Gift className="h-4 w-4 mr-2" />
                 Send Gift
               </Button>

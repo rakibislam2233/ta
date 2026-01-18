@@ -101,7 +101,7 @@ export default function Sidebar() {
           })}
 
           {/* Create Post Button (Only for Authenticated Users) */}
-          <div className="w-full mt-24">
+          <div className="w-full mt-16">
             {isAuthenticated && (
               <button
                 onClick={() => setIsCreateModalOpen(true)}
@@ -132,12 +132,12 @@ export default function Sidebar() {
           ) : (
             <>
               <Link href="/auth/register" className="w-full">
-                <button className="w-full h-10 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold shadow-glow transition-all">
+                <button className="w-full h-10 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold shadow-glow transition-all cursor-pointer">
                   Sign Up
                 </button>
               </Link>
               <Link href="/auth/login" className="w-full">
-                <button className="w-full h-10 rounded-lg border border-border-dark hover:bg-surface-dark text-white text-sm font-bold transition-all">
+                <button className="w-full h-10 rounded-lg border border-border-dark hover:bg-surface-dark text-white text-sm font-bold transition-all cursor-pointer">
                   Log In
                 </button>
               </Link>

@@ -23,7 +23,7 @@ export default function RightSidebar() {
             for your skills.
           </p>
           <Link href="/auth/register" className="w-full relative">
-            <Button className="w-full bg-primary hover:bg-primary-hover text-white font-bold h-10 shadow-lg shadow-primary/25 transition-all">
+            <Button className="w-full bg-primary hover:bg-primary-hover cursor-pointer text-white font-bold h-10 rounded-lg transition-all">
               Sign Up Now
             </Button>
           </Link>
