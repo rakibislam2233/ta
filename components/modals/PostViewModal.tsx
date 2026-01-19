@@ -319,7 +319,7 @@ export default function PostViewModal({
           {/* Close Button - Desktop */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 bg-foreground/10 hover:bg-foreground/20 rounded-full text-foreground transition-colors cursor-pointer z-20 hidden lg:block"
+            className="absolute top-6 right-6 p-2.5 bg-foreground/10 hover:bg-foreground/20 rounded-full text-white transition-colors cursor-pointer z-20 hidden lg:block"
           >
             <X className="h-6 w-6" />
           </button>
@@ -328,7 +328,7 @@ export default function PostViewModal({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="bg-background w-full max-w-6xl h-full lg:h-[90vh] overflow-hidden flex flex-col lg:flex-row shadow-2xl relative lg:rounded-3xl border-none lg:border border-border"
+            className="bg-background w-full max-w-6xl h-full lg:h-[90vh] overflow-hidden flex flex-col lg:flex-row shadow-2xl relative rounded-lg border border-border"
           >
             {/* Left Column: Media */}
             <div className="relative w-full h-[50vh] lg:h-full lg:w-[60%] bg-background flex items-center justify-center overflow-hidden group">

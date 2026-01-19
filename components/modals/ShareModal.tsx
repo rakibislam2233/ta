@@ -3,18 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Post } from "@/lib/types";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-    Copy,
-    Facebook,
-    Linkedin,
-    LucideIcon,
-    MessageCircle,
-    MoreHorizontal,
-    QrCode,
-    Repeat2,
-    Send,
-    Share2,
-    Twitter,
-    X as XIcon,
+  Copy,
+  Facebook,
+  Linkedin,
+  LucideIcon,
+  MessageCircle,
+  MoreHorizontal,
+  QrCode,
+  Repeat2,
+  Send,
+  Share2,
+  Twitter,
+  X as XIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { useState, useSyncExternalStore } from "react";
@@ -44,13 +44,12 @@ export default function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-10 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-70 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-foreground/60 backdrop-blur-md"
           />
           <motion.div
             initial={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -195,7 +194,7 @@ export default function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
         </div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 }
 
@@ -214,7 +213,9 @@ function QuickActionButton({
     <button
       onClick={onClick}
       className={`flex flex-col items-center justify-center gap-3 p-4 rounded-2xl border border-border/50 transition-all w-full ${
-        active ? "bg-primary/20 border-primary" : "bg-background/50 hover:bg-accent"
+        active
+          ? "bg-primary/20 border-primary"
+          : "bg-background/50 hover:bg-accent"
       }`}
     >
       <div
@@ -247,7 +248,9 @@ function SocialLink({
       >
         <Icon className="h-5 w-5" />
       </div>
-      <span className="text-muted-foreground text-[10px] font-medium">{label}</span>
+      <span className="text-muted-foreground text-[10px] font-medium">
+        {label}
+      </span>
     </button>
   );
 }
@@ -258,6 +261,6 @@ function useMounted() {
   return useSyncExternalStore(
     subscribe,
     () => true,
-    () => false
+    () => false,
   );
 }

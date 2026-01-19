@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowLeft, Lock, Mail, RefreshCw } from "lucide-react"
-import Link from "next/link"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowLeft, Lock, Mail, RefreshCw } from "lucide-react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const forgotPasswordSchema = z.object({
   email: z.string().email("Invalid email address"),
-})
+});
 
-type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>
+type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
 
 export default function ForgotPassword() {
   const form = useForm<ForgotPasswordFormValues>({
@@ -28,12 +28,12 @@ export default function ForgotPassword() {
     defaultValues: {
       email: "",
     },
-  })
+  });
 
   const onSubmit = (data: ForgotPasswordFormValues) => {
-    console.log(data)
+    console.log(data);
     // Handle forgot password logic here
-  }
+  };
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -50,9 +50,12 @@ export default function ForgotPassword() {
         </div>
 
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Forgot Password?</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            Forgot Password?
+          </h1>
           <p className="text-muted-foreground text-sm">
-            Enter the email associated with your account and we&apos;ll send you a link to reset your password.
+            Enter the email associated with your account and we&apos;ll send you
+            a link to reset your password.
           </p>
         </div>
 
@@ -63,16 +66,16 @@ export default function ForgotPassword() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-foreground">Email Address</FormLabel>
+                  <FormLabel className="text-sm font-medium text-foreground/70">
+                    Email Address
+                  </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         {...field}
                         type="email"
                         placeholder="name@example.com"
-                        className="bg-background border-border text-foreground placeholder:text-muted-foreground h-12 pl-12 pr-4 rounded-lg focus:border-primary focus:ring-primary"
                       />
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -82,7 +85,7 @@ export default function ForgotPassword() {
 
             <Button
               type="submit"
-              className="w-full h-12 bg-gradient-to-r from-primary to-[#7a14c4] text-primary-foreground rounded-lg hover:from-primary-hover hover:to-[#8a19d4] transition-all font-semibold"
+              className="w-full"
             >
               Send Reset Link
             </Button>
@@ -100,5 +103,5 @@ export default function ForgotPassword() {
         </div>
       </div>
     </div>
-  )
+  );
 }

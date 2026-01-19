@@ -2,22 +2,20 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-    Bookmark,
-    Briefcase,
-    Gift,
-    Heart,
-    MessageCircle,
-    Pause,
-    Play,
-    Share,
-    Share2,
-    Volume2,
-    VolumeX,
+  Bookmark,
+  Briefcase,
+  Gift,
+  Heart,
+  MessageCircle,
+  Pause,
+  Play,
+  Share2,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { IoIosHeart } from "react-icons/io";
-import { FaCommentDots } from "react-icons/fa";
+
 import { toast } from "@/hooks/use-toast";
 import { Post } from "@/lib/types";
 import { usePathname } from "next/navigation";
@@ -185,7 +183,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               )}
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/90 pointer-events-none"></div>
 
           {/* Dot Indicators */}
           {mediaItems.length > 1 && (
@@ -223,16 +221,16 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           >
             <div
               className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
-                liked ? "bg-red-500/30" : "bg-accent/80"
+                liked ? "bg-red-500/30" : "bg-white/10 hover:bg-white/20"
               }`}
             >
-              <IoIosHeart
-                className={`size-6 md:size-7 transition-colors ${
-                  liked ? "text-red-500 fill-current" : "text-foreground"
+              <Heart
+                className={`h-5 w-5 md:h-7 md:w-7 transition-colors ${
+                  liked ? "text-red-500 fill-current" : "text-white"
                 }`}
               />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
               {liked ? "1.3k" : post.likes}
             </span>
           </button>
@@ -240,10 +238,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             onClick={(e) => handleOpenView(e)}
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
-            <div className="p-2 md:p-3 rounded-full backdrop-blur-sm bg-accent/80 transition-all">
-              <FaCommentDots className="size-5 md:size-6 text-foreground" />
+            <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
+              <MessageCircle className="h-5 w-5 md:h-7 md:w-7 text-white" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-foreground-mute drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
               {post.comments}
             </span>
           </button>
@@ -255,9 +253,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
             <div className="p-2 md:p-3 rounded-full bg-primary/80 backdrop-blur-sm shadow-glow hover:scale-110 transition-all">
-              <Gift className="h-5 w-5 md:h-7 md:w-7 text-primary-foreground" />
+              <Gift className="h-5 w-5 md:h-7 md:w-7 text-white" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
               Gift
             </span>
           </button>
@@ -267,16 +265,16 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           >
             <div
               className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
-                saved ? "bg-primary/30" : "bg-accent/80"
+                saved ? "bg-primary/30" : "bg-white/10 hover:bg-white/20"
               }`}
             >
               <Bookmark
-                className={`h-5 w-5 md:h-7 md:w-7 text-foreground ${
+                className={`h-5 w-5 md:h-7 md:w-7 text-white ${
                   saved ? "fill-current" : ""
                 }`}
               />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
               Save
             </span>
           </button>
@@ -287,17 +285,17 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             }}
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
-            <div className="p-2 md:p-3 rounded-full backdrop-blur-sm bg-accent/80 transition-all">
-              <Share className="h-5 w-5 md:h-7 md:w-7 text-foreground" />
+            <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
+              <Share2 className="h-5 w-5 md:h-7 md:w-7 text-white" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
               Share
             </span>
           </button>
         </div>
 
         {/* Bottom Info Overlay */}
-        <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 pr-16 md:pr-20 text-left">
+        <div className="absolute bottom-0 left-0 w-full p-4 pr-16 md:pr-20 text-left">
           <div className="flex items-center justify-between mb-2 md:mb-3">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="size-8 md:size-10 rounded-full border-2 border-primary p-0.5 pointer-events-none relative">
@@ -314,7 +312,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 <h3 className="text-white font-bold text-sm md:text-base shadow-black drop-shadow-md">
                   {post.username}
                 </h3>
-                <span className="text-[10px] md:text-xs text-white font-medium">
+                <span className="text-[10px] md:text-xs text-white/60 font-medium">
                   {post.audioName || "Original Audio"} • {post.timestamp}
                 </span>
               </div>

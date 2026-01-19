@@ -41,7 +41,9 @@ export default function Login() {
     <section className="w-full max-w-md mx-auto fade-in">
       <div className="bg-transparent lg:bg-background lg:rounded-2xl lg:p-8 lg:shadow-2xl lg:border lg:border-border/30">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-foreground mb-2">Welcome Back!</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-2">
+            Welcome Back!
+          </h2>
           <p className="text-muted-foreground text-sm">
             Please enter your details to sign in.
           </p>
@@ -118,7 +120,7 @@ export default function Login() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 bg-gradient-to-r from-primary to-[#7a14c4] hover:from-[#7a14c4] hover:to-primary text-primary-foreground font-semibold rounded-lg shadow-lg shadow-primary/25 transition-all mt-2 cursor-pointer"
+            className="w-full cursor-pointer"
           >
             {isSubmitting ? "Signing in..." : "Sign In"}
           </Button>
