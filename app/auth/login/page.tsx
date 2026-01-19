@@ -1,5 +1,5 @@
+import Login from "@/components/pages/Auth/Login/Login";
 import type { Metadata } from "next";
-import Login from "@/components/layout/AuthLayout/Login/Login"
 
 export const metadata: Metadata = {
   title: "Login | Talenzy",

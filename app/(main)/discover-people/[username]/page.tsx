@@ -1,4 +1,4 @@
-import DiscoverPeopleDetails from "@/components/layout/MainLayout/DiscoverPeople/DiscoverPeopleDetails/DiscoverPeopleDetails";
+import DiscoverPeopleDetails from "@/components/pages/Main/DiscoverPeople/DiscoverPeopleDetails/DiscoverPeopleDetails";
 
 const page = () => {
   return <DiscoverPeopleDetails />;

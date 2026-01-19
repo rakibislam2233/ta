@@ -1,5 +1,4 @@
-import Hiring from "@/components/layout/MainLayout/Hiring/Hiring";
-import React from "react";
+import Hiring from "@/components/pages/Main/Hiring/Hiring";
 
 const page = () => {
   return <Hiring />;

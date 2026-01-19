@@ -10,8 +10,6 @@ import {
   FolderHeart,
   Link as LinkIcon,
   MapPin,
-  Pencil,
-  Settings,
   Share,
   Star,
   Verified,

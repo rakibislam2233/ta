@@ -2,9 +2,9 @@
 
 import RightSidebar from "@/components/RightSidebar";
 import { usePathname } from "next/navigation";
-import Header from "./Header";
-import MobileBottomNav from "./MobileBottomNav";
-import Sidebar from "./Sidebar";
+import Header from "../pages/Main/Header";
+import MobileBottomNav from "../pages/Main/MobileBottomNav";
+import Sidebar from "../pages/Main/Sidebar";
 
 export default function MainLayout({
   children,

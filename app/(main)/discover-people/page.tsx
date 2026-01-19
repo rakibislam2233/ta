@@ -1,4 +1,4 @@
-import DiscoverPeople from "@/components/layout/MainLayout/DiscoverPeople/DiscoverPeople";
+import DiscoverPeople from "@/components/pages/Main/DiscoverPeople/DiscoverPeople";
 
 
 const page = () => {
