@@ -216,7 +216,7 @@ const DiscoverPeopleDetails = () => {
               <p className="text-foreground font-bold text-lg sm:text-xl">
                 {profile.followers}
               </p>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 FOLLOWERS
               </p>
             </div>
@@ -225,7 +225,7 @@ const DiscoverPeopleDetails = () => {
               <p className="text-foreground font-bold text-lg sm:text-xl">
                 {profile.following}
               </p>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 FOLLOWING
               </p>
             </div>
@@ -237,7 +237,7 @@ const DiscoverPeopleDetails = () => {
                 </p>
                 <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
               </div>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 RATING
               </p>
             </div>
@@ -252,7 +252,7 @@ const DiscoverPeopleDetails = () => {
               onClick={() => {
                 setActiveTab(tab);
               }}
-              className={`pb-4 px-1 border-b-2 transition-all text-xs sm:text-sm font-black uppercase tracking-widest whitespace-nowrap ${
+              className={`pb-4 px-1 border-b-2 transition-all text-xs sm:text-sm  uppercase tracking-widest whitespace-nowrap ${
                 activeTab === tab
                   ? "border-primary text-foreground"
                   : "border-transparent text-muted-foreground hover:text-foreground"

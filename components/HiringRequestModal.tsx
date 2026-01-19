@@ -82,7 +82,7 @@ export default function HiringRequestModal({
               />
             </div>
             <div>
-              <h2 className="text-xl font-black text-foreground uppercase tracking-tight">
+              <h2 className="text-xl  text-foreground uppercase tracking-tight">
                 Hire {talentName}
               </h2>
               <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">
@@ -108,7 +108,7 @@ export default function HiringRequestModal({
                 name="projectTitle"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                    <FormLabel className="text-foreground  uppercase text-[10px] tracking-widest ml-1">
                       Project Title
                     </FormLabel>
                     <FormControl>
@@ -131,7 +131,7 @@ export default function HiringRequestModal({
                 name="category"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                    <FormLabel className="text-foreground  uppercase text-[10px] tracking-widest ml-1">
                       Category
                     </FormLabel>
                     <FormControl>
@@ -157,7 +157,7 @@ export default function HiringRequestModal({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                  <FormLabel className="text-foreground  uppercase text-[10px] tracking-widest ml-1">
                     Project Requirements / Description
                   </FormLabel>
                   <FormControl>
@@ -181,7 +181,7 @@ export default function HiringRequestModal({
                 name="offerAmount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                    <FormLabel className="text-foreground  uppercase text-[10px] tracking-widest ml-1">
                       Offer Amount ($)
                     </FormLabel>
                     <FormControl>
@@ -205,7 +205,7 @@ export default function HiringRequestModal({
                 name="deadline"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                    <FormLabel className="text-foreground  uppercase text-[10px] tracking-widest ml-1">
                       Expected Deadline
                     </FormLabel>
                     <FormControl>
@@ -230,13 +230,13 @@ export default function HiringRequestModal({
                 type="button"
                 variant="outline"
                 onClick={onClose}
-                className="flex-1 bg-transparent border-border/60 text-muted-foreground hover:bg-accent hover:text-foreground rounded-2xl h-14 font-black uppercase tracking-widest text-xs transition-all"
+                className="flex-1 bg-transparent border-border/60 text-muted-foreground hover:bg-accent hover:text-foreground rounded-2xl h-14  uppercase tracking-widest text-xs transition-all"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="flex-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl h-14 font-black uppercase tracking-widest text-xs shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group transition-all"
+                className="flex-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl h-14  uppercase tracking-widest text-xs shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group transition-all"
               >
                 Send Hire Request
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

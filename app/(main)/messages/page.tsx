@@ -1,4 +1,5 @@
 'use client'
+import { Input } from "@/components/ui/input";
 import {
   CheckCheck,
   FileText,
@@ -76,7 +77,7 @@ export default function Messages() {
   const [selectedContact, setSelectedContact] = useState<number | null>(1); 
 
   return (
-    <div className="flex h-[calc(100vh-140px)] sm:h-[calc(100vh-100px)] m-0 sm:m-4 bg-background sm:rounded-3xl border-0 sm:border border-border/30 overflow-hidden backdrop-blur-md  relative">
+    <div className="flex h-[calc(100vh-140px)] sm:h-[calc(100vh-100px)] m-0 sm:m-4 bg-background rounded-xl border border-border overflow-hidden backdrop-blur-md  relative">
       {/* Left Sidebar: Chat List */}
       <div
         className={`w-full sm:w-80 border-r border-border/30 flex flex-col bg-background/50 absolute sm:relative z-20 inset-0 transition-transform duration-300 ${
@@ -85,28 +86,21 @@ export default function Messages() {
       >
         <div className="p-4 sm:p-6 border-b border-border/30">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-xl sm:text-2xl font-black text-foreground ">
+            <h1 className="text-xl sm:text-2xl  text-foreground ">
               Inbox
             </h1>
-            <button className="text-primary hover:text-foreground transition-colors bg-accent p-2.5 rounded-xl border border-border">
-              <PlusIcon />
-            </button>
           </div>
 
           <div className="relative mb-6 group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-            <input
-              type="text"
-              placeholder="Search conversations..."
-              className="w-full bg-background/80 border border-border/30 rounded-2xl h-12 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-all"
-            />
+            <Input placeholder="Search conversations..." className="w-full pl-10 pr-4"/>
           </div>
 
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-2 no-scrollbar">
             {["All Chats", "Unread", "Hiring", "Starred"].map((filter, i) => (
               <button
                 key={filter}
-                className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
+                className={`px-4 py-2 rounded-xl text-[10px]  uppercase tracking-widest whitespace-nowrap transition-all ${
                   i === 0
                     ? "bg-primary text-primary-foreground"
                     : "bg-secondary text-muted-foreground border border-border/50 hover:text-foreground"
@@ -132,7 +126,7 @@ export default function Messages() {
               )}
               <div className="relative">
                 <div
-                  className={`size-12 sm:size-14 rounded-2xl overflow-hidden flex items-center justify-center border border-border/50 relative ${
+                  className={`size-9 sm:size-10 rounded-2xl overflow-hidden flex items-center justify-center border border-border/50 relative ${
                     contact.image ? "" : contact.color || "bg-muted"
                   }`}
                 >
@@ -144,22 +138,22 @@ export default function Messages() {
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : (
-                    <span className="text-foreground font-black text-lg">
+                    <span className="text-foreground  text-lg">
                       {contact.avatar}
                     </span>
                   )}
                 </div>
                 {contact.online && (
-                  <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-background rounded-full shadow-lg" />
+                  <div className="absolute bottom-2 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-background rounded-full shadow-lg" />
                 )}
               </div>
               <div className="flex-1 min-w-0 flex flex-col justify-center">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-foreground font-black truncate text-sm sm:text-base uppercase tracking-tight">
+                  <span className="text-foreground text-sm sm:text-base">
                     {contact.name}
-                  </h3>
+                  </span>
                   <span
-                    className={`text-[10px] font-black uppercase tracking-tighter ${
+                    className={`text-[10px]   ${
                       contact.unread > 0 ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
@@ -167,7 +161,7 @@ export default function Messages() {
                   </span>
                 </div>
                 <p
-                  className={`text-xs sm:text-sm truncate leading-relaxed ${
+                  className={`text-xs  truncate leading-relaxed ${
                     contact.unread > 0
                       ? "text-foreground font-bold"
                       : "text-muted-foreground font-medium"
@@ -179,7 +173,7 @@ export default function Messages() {
               {contact.unread > 0 && (
                 <div className="flex flex-col justify-center">
                   <div className="size-5 bg-primary rounded-lg flex items-center justify-center">
-                    <span className="text-primary-foreground text-[10px] font-black">
+                    <span className="text-primary-foreground text-[10px] ">
                       {contact.unread}
                     </span>
                   </div>
@@ -219,14 +213,14 @@ export default function Messages() {
             </button>
             <div className="size-10 sm:size-12 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 p-px">
               <div className="size-full bg-background rounded-2xl flex items-center justify-center">
-                <span className="text-green-500 font-black text-xs sm:text-sm">
+                <span className="text-green-500  text-xs sm:text-sm">
                   CA
                 </span>
               </div>
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <h2 className="text-foreground font-black text-sm sm:text-lg uppercase tracking-tight truncate">
+                <h2 className="text-foreground  text-sm sm:text-lg uppercase tracking-tight truncate">
                   CreativeAgency
                 </h2>
                 <div className="bg-blue-500 p-0.5 rounded-full shrink-0">
@@ -265,7 +259,7 @@ export default function Messages() {
           {/* Message Bubble: Received */}
           <div className="flex justify-start items-end gap-3">
             <div className="size-8 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0">
-              <span className="text-purple-500 text-[10px] font-black">AT</span>
+              <span className="text-purple-500 text-[10px] ">AT</span>
             </div>
             <div className="bg-secondary/80 rounded-[24px] rounded-bl-none p-4 sm:p-5 max-w-[85%] sm:max-w-[70%] border border-border/30">
               <p className="text-foreground/90 text-sm sm:text-base leading-relaxed font-medium">
@@ -284,7 +278,7 @@ export default function Messages() {
           {/* Date Divider */}
           <div className="flex justify-center items-center gap-4 my-8">
             <div className="h-px bg-border/30 flex-1"></div>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-secondary px-4 py-1.5 rounded-full border border-border/30">
+            <span className="text-[10px]  uppercase tracking-[0.2em] text-muted-foreground bg-secondary px-4 py-1.5 rounded-full border border-border/30">
               October 28
             </span>
             <div className="h-px bg-border/30 flex-1"></div>
@@ -298,7 +292,7 @@ export default function Messages() {
                   <FileText className="h-6 w-6 text-red-500" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-foreground text-sm font-black truncate uppercase tracking-tight">
+                  <p className="text-foreground text-sm  truncate uppercase tracking-tight">
                     Job_Requirements.pdf
                   </p>
                   <p className="text-muted-foreground text-[10px] font-bold">
@@ -332,7 +326,7 @@ export default function Messages() {
               </div>
             </div>
             <div className="size-8 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center shrink-0">
-              <span className="text-green-500 text-[10px] font-black">CA</span>
+              <span className="text-green-500 text-[10px] ">CA</span>
             </div>
           </div>
 
@@ -345,14 +339,14 @@ export default function Messages() {
                 ready in an hour.
               </p>
               <div className="flex items-center justify-end gap-1.5 mt-2 relative z-10">
-                <span className="text-primary-foreground/60 text-[10px] font-black uppercase">
+                <span className="text-primary-foreground/60 text-[10px]  uppercase">
                   10:40 AM
                 </span>
                 <CheckCheck className="h-3 w-3 text-primary-foreground" />
               </div>
             </div>
             <div className="size-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-              <span className="text-primary text-[10px] font-black italic">
+              <span className="text-primary text-[10px]  italic">
                 AT
               </span>
             </div>
@@ -375,7 +369,7 @@ export default function Messages() {
               />
               <button className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors">
                 <div className="size-6 rounded-lg border-2 border-border/60 flex items-center justify-center opacity-60 hover:opacity-100">
-                  <span className="text-[10px] font-black leading-none">☺</span>
+                  <span className="text-[10px]  leading-none">☺</span>
                 </div>
               </button>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3 text-muted-foreground">

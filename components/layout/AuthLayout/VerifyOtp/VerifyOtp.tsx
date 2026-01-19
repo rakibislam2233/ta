@@ -75,7 +75,7 @@ export default function VerifyOtp() {
                       type="text"
                       placeholder="000000"
                       maxLength={6}
-                      className="bg-background border-border text-foreground placeholder:text-muted-foreground h-14 text-center text-2xl tracking-widest font-mono rounded-lg focus:border-primary focus:ring-primary"
+                      className="text-center tracking-[1rem] text-lg font-bold"
                       onChange={(e) => {
                         const value = e.target.value.replace(/\D/g, "");
                         field.onChange(value);
@@ -103,7 +103,7 @@ export default function VerifyOtp() {
                 </div>
                 <button
                   type="button"
-                  className="text-primary text-sm hover:underline"
+                  className="text-primary text-sm hover:underline cursor-pointer"
                   onClick={() => {
                     // Handle resend logic
                     setResendTimer(59);
@@ -114,10 +114,7 @@ export default function VerifyOtp() {
               </div>
             </div>
 
-            <Button
-              type="submit"
-              className="w-full h-12 bg-gradient-to-r from-primary to-[#7a14c4] text-primary-foreground rounded-lg hover:from-primary-hover hover:to-[#8a19d4] transition-all font-semibold"
-            >
+            <Button type="submit" className="w-full cursor-pointer">
               Verify Account
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

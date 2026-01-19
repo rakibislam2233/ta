@@ -87,16 +87,16 @@ export default function NotificationsPage() {
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 pb-32">
       <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight uppercase italic">
+          <h1 className="text-3xl sm:text-4xl  text-foreground tracking-tight uppercase italic">
             Activity<span className="text-primary">.</span>
           </h1>
-          <p className="text-muted-foreground text-xs font-black uppercase tracking-widest mt-1">
+          <p className="text-muted-foreground text-xs  uppercase tracking-widest mt-1">
             Stay updated with your community
           </p>
         </div>
         <Button
           variant="ghost"
-          className="text-primary hover:text-primary-hover hover:bg-primary/5 font-black uppercase tracking-tighter text-xs h-10 px-4 rounded-xl border border-primary/10"
+          className="text-primary hover:text-primary-hover hover:bg-primary/5  uppercase tracking-tighter text-xs h-10 px-4 rounded-xl border border-primary/10"
         >
           Clear All
         </Button>
@@ -122,7 +122,7 @@ export default function NotificationsPage() {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mb-1.5">
-                    <span className="text-foreground font-black text-sm sm:text-base uppercase tracking-tight">
+                    <span className="text-foreground  text-sm sm:text-base uppercase tracking-tight">
                       {notification.user}
                     </span>
                     <span className="text-muted-foreground font-medium text-xs sm:text-sm">
@@ -130,11 +130,11 @@ export default function NotificationsPage() {
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-muted-foreground/60 text-[10px] font-black uppercase tracking-widest">
+                    <span className="text-muted-foreground/60 text-[10px]  uppercase tracking-widest">
                       {notification.time}
                     </span>
                     {notification.type === "hire" && (
-                      <span className="px-2 py-0.5 bg-primary/20 text-primary text-[8px] font-black rounded uppercase tracking-tighter border border-primary/20 animate-pulse">
+                      <span className="px-2 py-0.5 bg-primary/20 text-primary text-[8px]  rounded uppercase tracking-tighter border border-primary/20 animate-pulse">
                         Priority
                       </span>
                     )}
@@ -144,7 +144,7 @@ export default function NotificationsPage() {
                 <div className="relative group/avatar">
                   <div className="size-10 sm:size-12 rounded-xl bg-gradient-to-br from-primary to-purple-800 p-[1px]">
                     <div className="size-full bg-background rounded-xl flex items-center justify-center">
-                      <span className="text-foreground font-black text-xs sm:text-sm italic">
+                      <span className="text-foreground  text-xs sm:text-sm italic">
                         {notification.avatar}
                       </span>
                     </div>
@@ -161,7 +161,7 @@ export default function NotificationsPage() {
 
       <div className="mt-12 text-center relative">
         <div className="absolute inset-x-0 top-1/2 h-px bg-border/20 -z-10"></div>
-        <span className="bg-background px-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">
+        <span className="bg-background px-6 text-[10px]  text-muted-foreground uppercase tracking-[0.3em]">
           No more activity
         </span>
       </div>

@@ -3,12 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
-    ArrowLeft,
-    CheckCircle2,
-    Clock,
-    DollarSign,
-    MessageSquare,
-    Upload,
+  ArrowLeft,
+  CheckCircle2,
+  Clock,
+  DollarSign,
+  MessageSquare,
+  Upload,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -181,7 +181,7 @@ export default function WhoHiredMeDetailPage() {
                     <CheckCircle2 className="size-4 text-primary-foreground" />
                   </div>
                 </div>
-                <h3 className="text-xl font-black text-foreground uppercase tracking-tight">
+                <h3 className="text-xl  text-foreground uppercase tracking-tight">
                   {requestData.client.name}
                 </h3>
                 <p className="text-primary text-sm font-bold">
@@ -191,14 +191,14 @@ export default function WhoHiredMeDetailPage() {
 
               <div className="border-t border-border/30 pt-6 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground text-xs font-black uppercase tracking-widest">
+                  <span className="text-muted-foreground text-xs  uppercase tracking-widest">
                     Current Offer
                   </span>
-                  <span className="text-foreground font-black text-xl">
+                  <span className="text-foreground  text-xl">
                     ${requestData.financials.currentOffer}
                   </span>
                 </div>
-                <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-xl h-12 font-black uppercase tracking-widest text-xs">
+                <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-xl h-12  uppercase tracking-widest text-xs">
                   <MessageSquare className="size-4 mr-2" />
                   Message Client
                 </Button>
@@ -208,7 +208,7 @@ export default function WhoHiredMeDetailPage() {
             {/* Financial Status After Acceptance */}
             {(status === "ACCEPTED" || status === "IN_PROGRESS") && (
               <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 border border-border/40">
-                <h4 className="text-foreground font-black uppercase text-xs tracking-widest mb-4">
+                <h4 className="text-foreground  uppercase text-xs tracking-widest mb-4">
                   Escrow Status
                 </h4>
                 <div className="space-y-3">
@@ -233,18 +233,18 @@ export default function WhoHiredMeDetailPage() {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border/40">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs text-muted-foreground uppercase font-black">
+                <span className="text-xs text-muted-foreground uppercase ">
                   Request #{requestData.id}
                 </span>
                 <span
                   className={`${
                     getStatusBadge().color
-                  } px-2 py-0.5 rounded text-[10px] font-black uppercase`}
+                  } px-2 py-0.5 rounded text-[10px]  uppercase`}
                 >
                   {getStatusBadge().text}
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-foreground mb-6 uppercase tracking-tight">
+              <h1 className="text-2xl sm:text-3xl  text-foreground mb-6 uppercase tracking-tight">
                 {requestData.title}
               </h1>
 
@@ -259,10 +259,10 @@ export default function WhoHiredMeDetailPage() {
                           <DollarSign className="size-5 text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-blue-400 font-black uppercase text-xs tracking-widest mb-1">
+                          <p className="text-blue-400  uppercase text-xs tracking-widest mb-1">
                             Latest Client Offer
                           </p>
-                          <h4 className="text-2xl font-black text-foreground mb-1">
+                          <h4 className="text-2xl  text-foreground mb-1">
                             ${latestOffer.amount}
                           </h4>
                           <p className="text-muted-foreground text-xs">
@@ -276,20 +276,20 @@ export default function WhoHiredMeDetailPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
                         <Button
                           onClick={handleAcceptOffer}
-                          className="bg-green-500 hover:bg-green-600 text-primary-foreground rounded-xl h-11 font-black uppercase tracking-widest text-xs shadow-lg shadow-green-500/20"
+                          className="bg-green-500 hover:bg-green-600 text-primary-foreground rounded-xl h-11  uppercase tracking-widest text-xs shadow-lg shadow-green-500/20"
                         >
                           Accept Offer
                         </Button>
                         <Button
                           onClick={handleRejectOffer}
                           variant="outline"
-                          className="bg-transparent border-red-500/50 text-red-500 hover:bg-red-500/10 rounded-xl h-11 font-black uppercase tracking-widest text-xs"
+                          className="bg-transparent border-red-500/50 text-red-500 hover:bg-red-500/10 rounded-xl h-11  uppercase tracking-widest text-xs"
                         >
                           Reject Offer
                         </Button>
                         <Button
                           onClick={() => setShowNegotiation(true)}
-                          className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-11 font-black uppercase tracking-widest text-xs"
+                          className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-11  uppercase tracking-widest text-xs"
                         >
                           Counter Offer
                         </Button>
@@ -300,7 +300,7 @@ export default function WhoHiredMeDetailPage() {
                   {!isClientTurn && (
                     <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 text-center">
                       <Clock className="size-8 text-primary mx-auto mb-3 animate-pulse" />
-                      <p className="text-primary font-black uppercase text-xs tracking-widest mb-1">
+                      <p className="text-primary  uppercase text-xs tracking-widest mb-1">
                         Waiting for Client
                       </p>
                       <p className="text-muted-foreground text-xs">
@@ -312,7 +312,7 @@ export default function WhoHiredMeDetailPage() {
 
                   {showNegotiation && (
                     <div className="p-6 bg-background/50 rounded-2xl border border-border/30 animate-in zoom-in-95 duration-200">
-                      <label className="text-foreground font-black uppercase text-[10px] tracking-widest mb-3 block">
+                      <label className="text-foreground  uppercase text-[10px] tracking-widest mb-3 block">
                         Your New Offer ($)
                       </label>
                       <input
@@ -325,14 +325,14 @@ export default function WhoHiredMeDetailPage() {
                       <div className="flex gap-3">
                         <Button
                           onClick={handleSendCounterOffer}
-                          className="flex-1 bg-primary text-primary-foreground h-11 font-black uppercase text-xs"
+                          className="flex-1 bg-primary text-primary-foreground h-11  uppercase text-xs"
                         >
                           Send Offer
                         </Button>
                         <Button
                           onClick={() => setShowNegotiation(false)}
                           variant="ghost"
-                          className="flex-1 text-muted-foreground h-11 font-black uppercase text-xs"
+                          className="flex-1 text-muted-foreground h-11  uppercase text-xs"
                         >
                           Cancel
                         </Button>
@@ -342,7 +342,7 @@ export default function WhoHiredMeDetailPage() {
 
                   {/* Negotiation History */}
                   <div className="space-y-4 mt-8">
-                    <h4 className="text-muted-foreground font-black uppercase text-xs tracking-widest">
+                    <h4 className="text-muted-foreground  uppercase text-xs tracking-widest">
                       Negotiation History
                     </h4>
                     {negotiations.map((neg, i) => (
@@ -360,14 +360,14 @@ export default function WhoHiredMeDetailPage() {
                           }`}
                         >
                           <div className="flex justify-between gap-4 mb-2">
-                            <span className="text-[10px] font-black uppercase tracking-tight text-muted-foreground">
+                            <span className="text-[10px]  uppercase tracking-tight text-muted-foreground">
                               {neg.from === "client" ? "Client" : "You"}
                             </span>
                             <span className="text-[10px] text-muted-foreground font-bold">
                               {neg.timestamp}
                             </span>
                           </div>
-                          <p className="text-foreground font-black text-lg">
+                          <p className="text-foreground  text-lg">
                             ${neg.amount}
                           </p>
                           <p className="text-muted-foreground text-xs mt-1">
@@ -387,7 +387,7 @@ export default function WhoHiredMeDetailPage() {
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="size-6 text-green-500" />
                       <div>
-                        <p className="text-green-500 font-black uppercase text-xs tracking-widest">
+                        <p className="text-green-500  uppercase text-xs tracking-widest">
                           Offer Accepted!
                         </p>
                         <p className="text-muted-foreground text-sm">
@@ -400,7 +400,7 @@ export default function WhoHiredMeDetailPage() {
                   </div>
 
                   <div className="bg-background/30 rounded-2xl p-6 border border-border/20">
-                    <h3 className="text-foreground font-black uppercase text-sm tracking-widest mb-4">
+                    <h3 className="text-foreground  uppercase text-sm tracking-widest mb-4">
                       Submit Deliverables
                     </h3>
                     <Textarea
@@ -415,7 +415,7 @@ export default function WhoHiredMeDetailPage() {
                         Drop files here or click to upload
                       </p>
                     </div>
-                    <Button className="w-full bg-primary hover:bg-primary-600 text-primary-foreground rounded-xl h-12 font-black uppercase tracking-widest text-xs mt-6 shadow-xl shadow-primary/20">
+                    <Button className="w-full bg-primary hover:bg-primary-600 text-primary-foreground rounded-xl h-12  uppercase tracking-widest text-xs mt-6 shadow-xl shadow-primary/20">
                       Submit Work for Review
                     </Button>
                   </div>
@@ -425,7 +425,7 @@ export default function WhoHiredMeDetailPage() {
 
             {/* Description Card */}
             <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border/40">
-              <h3 className="text-foreground font-black uppercase text-sm tracking-widest mb-4">
+              <h3 className="text-foreground  uppercase text-sm tracking-widest mb-4">
                 Project Requirements
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">

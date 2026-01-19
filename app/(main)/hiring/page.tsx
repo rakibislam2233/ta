@@ -141,7 +141,7 @@ export default function Hire() {
       {/* Inner Filter Sidebar */}
       <div className="w-64 p-6 border-r border-border/30 hidden lg:block overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-foreground font-black text-lg uppercase tracking-tight">
+          <h2 className="text-foreground  text-lg uppercase tracking-tight">
             Filters
           </h2>
           <button
@@ -194,7 +194,7 @@ export default function Hire() {
               step={10}
               className="mb-3"
             />
-            <div className="text-center text-primary font-black text-sm">
+            <div className="text-center text-primary  text-sm">
               ${priceRange[0]}/hr
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function Hire() {
             />
           </div>
 
-          <Button className="w-full bg-primary hover:bg-primary-hover text-primary-foreground font-black uppercase tracking-wider text-xs h-12 rounded-xl shadow-xl shadow-primary/20">
+          <Button className="w-full bg-primary hover:bg-primary-hover text-primary-foreground  uppercase tracking-wider text-xs h-12 rounded-xl shadow-xl shadow-primary/20">
             Apply Filters
           </Button>
           <Button
@@ -270,7 +270,7 @@ export default function Hire() {
           <div className="absolute top-0 left-0 w-48 h-48 bg-foreground/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 group-hover:bg-foreground/10 transition-colors" />
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-foreground/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 group-hover:bg-foreground/10 transition-colors" />
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-primary-foreground mb-3 relative ">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl  text-primary-foreground mb-3 relative ">
             Hire Top <span className="text-purple-300">Talent</span>
           </h1>
           <p className="text-primary-foreground/70 mb-8 max-w-lg mx-auto relative text-sm sm:text-base font-medium leading-relaxed">
@@ -298,7 +298,7 @@ export default function Hire() {
               activeTab === "all"
                 ? "text-primary border-b-2 border-primary"
                 : "text-muted-foreground hover:text-foreground"
-            } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm  tracking-widest transition-all`}
+            }  pb-4 px-2 whitespace-nowrap text-xs sm:text-sm  tracking-widest transition-all`}
           >
             All People
           </button>
@@ -308,7 +308,7 @@ export default function Hire() {
               activeTab === "my-requests"
                 ? "text-primary border-b-2 border-primary"
                 : "text-muted-foreground hover:text-foreground"
-            } font-black pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
+            }  pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
           >
             My Hire Requests
           </button>
@@ -318,7 +318,7 @@ export default function Hire() {
               activeTab === "hired-me"
                 ? "text-primary border-b-2 border-primary"
                 : "text-muted-foreground hover:text-foreground"
-            } font-black pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
+            }  pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
           >
             Who Hired Me
           </button>
@@ -363,7 +363,7 @@ export default function Hire() {
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5 mb-0.5">
-                        <h3 className="text-foreground font-black text-base sm:text-lg tracking-tight uppercase">
+                        <h3 className="text-foreground  text-base sm:text-lg tracking-tight uppercase">
                           {talent.name}
                         </h3>
                         <div className="bg-blue-500 p-0.5 rounded-full">
@@ -380,7 +380,7 @@ export default function Hire() {
                         {talent.username}
                       </p>
                       <div className="flex items-center gap-2 mt-2">
-                        <span className="bg-yellow-500/10 text-yellow-500 text-[10px] font-black px-2 py-0.5 rounded flex items-center gap-1">
+                        <span className="bg-yellow-500/10 text-yellow-500 text-[10px]  px-2 py-0.5 rounded flex items-center gap-1">
                           <Star className="size-2.5 fill-current" />
                           {talent.rating}
                         </span>
@@ -409,24 +409,24 @@ export default function Hire() {
 
                 <div className="grid grid-cols-2 gap-4 py-6 border-t border-border/30 relative z-10">
                   <div className="text-left">
-                    <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
+                    <p className="text-muted-foreground text-[10px]  uppercase tracking-widest mb-1 leading-none">
                       Audience
                     </p>
-                    <p className="text-foreground font-black text-lg tracking-tight">
+                    <p className="text-foreground  text-lg tracking-tight">
                       {talent.followers}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
+                    <p className="text-muted-foreground text-[10px]  uppercase tracking-widest mb-1 leading-none">
                       Starting At
                     </p>
-                    <p className="text-foreground font-black text-lg tracking-tight">
+                    <p className="text-foreground  text-lg tracking-tight">
                       {talent.rate}
                     </p>
                   </div>
                 </div>
 
-                <Button className="w-full h-12 cursor-pointer bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-black tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10">
+                <Button className="w-full h-12 cursor-pointer bg-primary hover:bg-primary-hover text-primary-foreground text-sm  tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10">
                   Hire Now
                 </Button>
 
@@ -493,7 +493,7 @@ export default function Hire() {
                         Order #{order.id}
                       </span>
                       <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
+                        className={`px-2 py-0.5 rounded text-[10px]  uppercase ${
                           order.status === "COMPLETED"
                             ? "bg-green-500/20 text-green-500"
                             : order.status === "IN PROGRESS"
@@ -504,7 +504,7 @@ export default function Hire() {
                         {order.status}
                       </span>
                     </div>
-                    <h3 className="text-foreground font-black text-lg mb-2 uppercase tracking-tight">
+                    <h3 className="text-foreground  text-lg mb-2 uppercase tracking-tight">
                       {order.title}
                     </h3>
                     <p className="text-muted-foreground text-xs font-medium">
@@ -538,7 +538,7 @@ export default function Hire() {
                     <span className="text-xs font-bold text-muted-foreground uppercase">
                       Progress
                     </span>
-                    <span className="text-sm font-black text-primary">
+                    <span className="text-sm  text-primary">
                       {order.progress}%
                     </span>
                   </div>
@@ -555,7 +555,7 @@ export default function Hire() {
                     <p className="text-muted-foreground text-xs font-medium">
                       Total Budget
                     </p>
-                    <p className="text-foreground font-black text-xl">
+                    <p className="text-foreground  text-xl">
                       ${order.budget}
                     </p>
                   </div>
@@ -564,7 +564,7 @@ export default function Hire() {
                       e.stopPropagation();
                       router.push(`/hiring/${order.id}`);
                     }}
-                    className="bg-foreground text-primary hover:bg-foreground/90 rounded-xl h-10 px-6 font-black uppercase text-xs"
+                    className="bg-foreground text-primary hover:bg-foreground/90 rounded-xl h-10 px-6  uppercase text-xs"
                   >
                     View Details
                   </Button>
@@ -617,7 +617,7 @@ export default function Hire() {
                         Request #{hire.id}
                       </span>
                       <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
+                        className={`px-2 py-0.5 rounded text-[10px]  uppercase ${
                           hire.status === "ACTIVE"
                             ? "bg-green-500/20 text-green-500"
                             : "bg-orange-500/20 text-orange-500"
@@ -626,7 +626,7 @@ export default function Hire() {
                         {hire.status}
                       </span>
                     </div>
-                    <h3 className="text-foreground font-black text-lg mb-2 uppercase tracking-tight">
+                    <h3 className="text-foreground  text-lg mb-2 uppercase tracking-tight">
                       {hire.title}
                     </h3>
                     <p className="text-muted-foreground text-xs font-medium">
@@ -660,7 +660,7 @@ export default function Hire() {
                     <p className="text-muted-foreground text-xs font-medium">
                       Project Budget
                     </p>
-                    <p className="text-foreground font-black text-xl">
+                    <p className="text-foreground  text-xl">
                       ${hire.budget}
                     </p>
                   </div>
@@ -669,7 +669,7 @@ export default function Hire() {
                       e.stopPropagation();
                       router.push(`/hiring/hired-me/${hire.id}`);
                     }}
-                    className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-10 px-6 font-black uppercase text-xs shadow-lg shadow-primary/20"
+                    className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-10 px-6  uppercase text-xs shadow-lg shadow-primary/20"
                   >
                     View Request
                   </Button>
@@ -684,7 +684,7 @@ export default function Hire() {
         <div className="flex justify-center mt-12 pb-12 relative z-10">
           <Button
             variant="outline"
-            className="rounded-2xl px-10 h-14 border-border text-foreground hover:bg-accent bg-transparent font-black uppercase tracking-widest text-xs"
+            className="rounded-2xl px-10 h-14 border-border text-foreground hover:bg-accent bg-transparent  uppercase tracking-widest text-xs"
           >
             Show More Talents
           </Button>

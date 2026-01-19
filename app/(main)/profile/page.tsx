@@ -162,21 +162,21 @@ export default function ProfilePage() {
           <div className="flex gap-4 sm:gap-8 p-4 bg-background/50 sm:p-5 sm:bg-background rounded-2xl border border-border w-full sm:w-fit mx-auto md:mx-0 justify-center sm:justify-start shadow-xl">
             <div className="text-center px-2">
               <p className="text-foreground font-bold text-lg sm:text-xl">142</p>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 POSTS
               </p>
             </div>
             <div className="w-px bg-border/50"></div>
             <div className="text-center px-2">
               <p className="text-foreground font-bold text-lg sm:text-xl">12.5k</p>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 FOLLOWERS
               </p>
             </div>
             <div className="w-px bg-border/50"></div>
             <div className="text-center px-2">
               <p className="text-foreground font-bold text-lg sm:text-xl">480</p>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 FOLLOWING
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function ProfilePage() {
                 <p className="text-foreground font-bold text-lg sm:text-xl">4.9</p>
                 <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
               </div>
-              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest ">
                 RATING
               </p>
             </div>
