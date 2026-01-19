@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/button";
 import { Post } from "@/lib/types";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ChevronLeft,
-  ChevronRight,
-  Gift,
-  Heart,
-  MessageCircle,
-  MoreVertical,
-  Music,
-  Pause,
-  Play,
-  Share2,
-  Smile,
-  Volume2,
-  VolumeX,
-  X,
+    ChevronLeft,
+    ChevronRight,
+    Gift,
+    Heart,
+    MessageCircle,
+    MoreVertical,
+    Music,
+    Pause,
+    Play,
+    Share2,
+    Smile,
+    Volume2,
+    VolumeX,
+    X,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
@@ -92,9 +92,9 @@ const CommentItem = ({
       <div
         className={`${
           isReply ? "size-6" : "size-8"
-        } rounded-full bg-linear-to-br from-primary to-purple-400 p-px shrink-0`}
+        } rounded-full bg-gradient-to-br from-primary to-purple-400 p-px shrink-0`}
       >
-        <div className="w-full h-full rounded-full bg-surface-dark relative overflow-hidden">
+        <div className="w-full h-full rounded-full bg-background relative overflow-hidden">
           <Image
             src={comment.avatarUrl}
             alt={comment.username}
@@ -105,25 +105,25 @@ const CommentItem = ({
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-white font-bold text-xs">
+          <span className="text-foreground font-bold text-xs">
             {comment.username}
           </span>
-          <span className="text-gray-500 text-[10px]">{comment.timestamp}</span>
+          <span className="text-muted-foreground text-[10px]">{comment.timestamp}</span>
         </div>
-        <p className="text-gray-300 text-xs leading-relaxed">
+        <p className="text-foreground text-xs leading-relaxed">
           {comment.content}
         </p>
         <div className="flex items-center gap-4 mt-2">
           <button
             onClick={() => onReply(comment.username)}
-            className="text-[10px] font-bold text-gray-500 hover:text-white transition-colors"
+            className="text-[10px] font-bold text-muted-foreground hover:text-foreground transition-colors"
           >
             Reply
           </button>
           <button
             onClick={toggleLike}
             className={`flex items-center gap-1 text-[10px] font-bold transition-colors ${
-              liked ? "text-primary" : "text-gray-500 hover:text-white"
+              liked ? "text-primary" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <Heart className={`h-3 w-3 ${liked ? "fill-current" : ""}`} />
@@ -132,7 +132,7 @@ const CommentItem = ({
         </div>
 
         {comment.replies && comment.replies.length > 0 && (
-          <div className="ml-2 border-l border-border-dark pl-4">
+          <div className="ml-2 border-l border-border pl-4">
             {comment.replies.map((reply) => (
               <CommentItem
                 key={reply.id}
@@ -209,11 +209,11 @@ const VideoPlayer = ({ src }: { src: string }) => {
       />
 
       {/* Custom Controls Overlay */}
-      <div className="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-foreground/80 to-transparent opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 pointer-events-none">
         <div className="flex flex-col gap-3 pointer-events-auto">
           {/* Progress Bar */}
           <div
-            className="w-full h-1.5 bg-white/20 rounded-full cursor-pointer relative group/progress"
+            className="w-full h-1.5 bg-foreground/20 rounded-full cursor-pointer relative group/progress"
             onClick={handleProgressChange}
           >
             <div
@@ -221,7 +221,7 @@ const VideoPlayer = ({ src }: { src: string }) => {
               style={{ width: `${progress}%` }}
             />
             <div
-              className="absolute size-3 bg-primary rounded-full top-1/2 -translate-y-1/2 -ml-1.5 opacity-0 group-hover/progress:opacity-100 transition-opacity shadow-glow"
+              className="absolute size-3 bg-primary rounded-full top-1/2 -translate-y-1/2 -ml-1.5 opacity-0 group-hover/progress:opacity-100 transition-opacity shadow-[0_0_10px_rgba(148,25,230,0.5)]"
               style={{ left: `${progress}%` }}
             />
           </div>
@@ -230,7 +230,7 @@ const VideoPlayer = ({ src }: { src: string }) => {
             <div className="flex items-center gap-4">
               <button
                 onClick={togglePlay}
-                className="text-white hover:text-primary transition-colors"
+                className="text-foreground hover:text-primary transition-colors"
               >
                 {isPlaying ? (
                   <Pause className="h-5 w-5 fill-current" />
@@ -240,7 +240,7 @@ const VideoPlayer = ({ src }: { src: string }) => {
               </button>
               <button
                 onClick={toggleMute}
-                className="text-white hover:text-primary transition-colors"
+                className="text-foreground hover:text-primary transition-colors"
               >
                 {isMuted ? (
                   <VolumeX className="h-5 w-5" />
@@ -259,9 +259,9 @@ const VideoPlayer = ({ src }: { src: string }) => {
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="p-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/20"
+            className="p-6 rounded-full bg-foreground/40 backdrop-blur-sm border border-white/20"
           >
-            <Play className="h-10 w-10 text-white fill-current" />
+            <Play className="h-10 w-10 text-foreground fill-current" />
           </motion.div>
         </div>
       )}
@@ -319,7 +319,7 @@ export default function PostViewModal({
           {/* Close Button - Desktop */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors cursor-pointer z-20 hidden lg:block"
+            className="absolute top-6 right-6 p-2 bg-foreground/10 hover:bg-foreground/20 rounded-full text-foreground transition-colors cursor-pointer z-20 hidden lg:block"
           >
             <X className="h-6 w-6" />
           </button>
@@ -328,10 +328,10 @@ export default function PostViewModal({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="bg-background-dark w-full max-w-6xl h-full lg:h-[90vh] overflow-hidden flex flex-col lg:flex-row shadow-2xl relative lg:rounded-3xl border-none lg:border border-border-dark"
+            className="bg-background w-full max-w-6xl h-full lg:h-[90vh] overflow-hidden flex flex-col lg:flex-row shadow-2xl relative lg:rounded-3xl border-none lg:border border-border"
           >
             {/* Left Column: Media */}
-            <div className="relative w-full h-[50vh] lg:h-full lg:w-[60%] bg-surface-dark flex items-center justify-center overflow-hidden group">
+            <div className="relative w-full h-[50vh] lg:h-full lg:w-[60%] bg-background flex items-center justify-center overflow-hidden group">
               {mediaItems[currentMediaIndex].type === "video" ? (
                 <VideoPlayer src={mediaItems[currentMediaIndex].url} />
               ) : (
@@ -349,13 +349,13 @@ export default function PostViewModal({
                 <>
                   <button
                     onClick={prevMedia}
-                    className="absolute left-4 p-2 md:p-3 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+                    className="absolute left-4 p-2 md:p-3 bg-foreground/50 hover:bg-black/70 rounded-full text-foreground backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
                   >
                     <ChevronLeft className="h-6 w-6" />
                   </button>
                   <button
                     onClick={nextMedia}
-                    className="absolute right-4 p-2 md:p-3 bg-black/50 hover:bg-black/70 rounded-full text-white backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+                    className="absolute right-4 p-2 md:p-3 bg-foreground/50 hover:bg-black/70 rounded-full text-foreground backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
                   >
                     <ChevronRight className="h-6 w-6" />
                   </button>
@@ -368,7 +368,7 @@ export default function PostViewModal({
                         className={`size-1.5 rounded-full transition-all ${
                           i === currentMediaIndex
                             ? "bg-primary w-4"
-                            : "bg-white/50"
+                            : "bg-foreground/50"
                         }`}
                       />
                     ))}
@@ -379,19 +379,19 @@ export default function PostViewModal({
               {/* Mobile Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 left-4 p-2 bg-black/50 backdrop-blur-md rounded-full text-white lg:hidden z-10"
+                className="absolute top-4 left-4 p-2 bg-foreground/50 backdrop-blur-md rounded-full text-foreground lg:hidden z-10"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Right Column: Details & Comments */}
-            <div className="w-full lg:w-[40%] bg-surface-dark flex flex-col h-full lg:h-full overflow-hidden">
+            <div className="w-full lg:w-[40%] bg-background flex flex-col h-full lg:h-full overflow-hidden">
               {/* Header: User Info */}
-              <div className="p-4 border-b border-border-dark flex items-center justify-between shrink-0">
+              <div className="p-4 border-b border-border flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-3">
-                  <div className="size-10 rounded-full bg-linear-to-br from-primary to-purple-400 p-px">
-                    <div className="w-full h-full rounded-full bg-surface-dark relative overflow-hidden">
+                  <div className="size-10 rounded-full bg-gradient-to-br from-primary to-purple-400 p-px">
+                    <div className="w-full h-full rounded-full bg-background relative overflow-hidden">
                       <Image
                         src={post.avatarUrl}
                         alt={post.username}
@@ -402,20 +402,20 @@ export default function PostViewModal({
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="text-white font-bold text-sm">
+                      <h4 className="text-foreground font-bold text-sm">
                         {post.username}
                       </h4>
-                      <span className="text-gray-500">•</span>
+                      <span className="text-muted-foreground">•</span>
                       <button className="text-primary text-xs font-bold hover:text-primary-hover">
                         Follow
                       </button>
                     </div>
-                    <p className="text-gray-400 text-[10px] md:text-xs">
+                    <p className="text-muted-foreground text-[10px] md:text-xs">
                       Los Angeles • {post.timestamp}
                     </p>
                   </div>
                 </div>
-                <button className="text-gray-400 hover:text-white p-2">
+                <button className="text-muted-foreground hover:text-foreground p-2">
                   <MoreVertical className="h-5 w-5" />
                 </button>
               </div>
@@ -423,8 +423,8 @@ export default function PostViewModal({
               {/* Scrollable Content (Caption + Comments) */}
               <div className="flex-1 overflow-y-auto custom-scrollbar">
                 {/* Caption Area */}
-                <div className="p-4 border-b border-border-dark/50">
-                  <p className="text-white text-sm leading-relaxed mb-3">
+                <div className="p-4 border-b border-border/50">
+                  <p className="text-foreground text-sm leading-relaxed mb-3">
                     {post.caption}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -437,25 +437,25 @@ export default function PostViewModal({
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center gap-2 text-gray-400 text-xs">
+                  <div className="flex items-center gap-2 text-muted-foreground text-xs">
                     <Music className="h-3 w-3" />
                     <span>Original Audio - {post.username}</span>
                   </div>
                 </div>
 
                 {/* Stats Bar */}
-                <div className="p-3 flex items-center justify-between text-xs text-gray-400 border-b border-border-dark/30">
+                <div className="p-3 flex items-center justify-between text-xs text-muted-foreground border-b border-border/30">
                   <div className="flex gap-4">
                     <span>
-                      <strong className="text-white">{post.likes}</strong> Likes
+                      <strong className="text-foreground">{post.likes}</strong> Likes
                     </span>
                     <span>
-                      <strong className="text-white">{post.comments}</strong>{" "}
+                      <strong className="text-foreground">{post.comments}</strong>{" "}
                       Comments
                     </span>
                   </div>
                   <span>
-                    <strong className="text-white">12.5k</strong> Views
+                    <strong className="text-foreground">12.5k</strong> Views
                   </span>
                 </div>
 
@@ -466,27 +466,27 @@ export default function PostViewModal({
                       onClick={() => setLiked(!liked)}
                       className={`flex flex-col items-center gap-1 transition-colors ${
                         liked
-                          ? "text-red-500"
-                          : "text-gray-400 hover:text-white"
+                          ? "text-destructive"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       <Heart
                         className={`h-6 w-6 ${liked ? "fill-current" : ""}`}
                       />
                     </button>
-                    <button className="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
+                    <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground">
                       <MessageCircle className="h-6 w-6" />
                     </button>
                     <button
                       onClick={() => setIsShareModalOpen(true)}
-                      className="flex flex-col items-center gap-1 text-gray-400 hover:text-white"
+                      className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground"
                     >
                       <Share2 className="h-6 w-6" />
                     </button>
                   </div>
                   <Button
                     onClick={() => setIsGiftModalOpen(true)}
-                    className="bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-5 font-bold shadow-lg shadow-primary/20 flex items-center gap-2"
+                    className="bg-primary hover:bg-primary-hover text-foreground rounded-full h-10 px-5 font-bold shadow-lg shadow-primary/20 flex items-center gap-2"
                   >
                     <Gift className="h-4 w-4" />
                     Gift
@@ -495,7 +495,7 @@ export default function PostViewModal({
 
                 {/* Comments List */}
                 <div className="p-4 pt-0 space-y-5">
-                  <h5 className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-2">
+                  <h5 className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-2">
                     Comments
                   </h5>
                   {getMockComments(post.avatarUrl).map((comment) => (
@@ -509,10 +509,10 @@ export default function PostViewModal({
               </div>
 
               {/* Bottom: Comment Input */}
-              <div className="p-4 border-t border-border-dark flex items-center gap-3 bg-surface-dark/95 backdrop-blur-md">
-                <div className="size-8 rounded-full bg-linear-to-br from-primary to-purple-400 p-px shrink-0">
-                  <div className="w-full h-full rounded-full bg-surface-dark relative overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white font-bold text-[10px]">
+              <div className="p-4 border-t border-border flex items-center gap-3 bg-background/95 backdrop-blur-md">
+                <div className="size-8 rounded-full bg-gradient-to-br from-primary to-purple-400 p-px shrink-0">
+                  <div className="w-full h-full rounded-full bg-background relative overflow-hidden">
+                    <div className="w-full h-full flex items-center justify-center bg-accent text-foreground font-bold text-[10px]">
                       AT
                     </div>
                   </div>
@@ -523,10 +523,10 @@ export default function PostViewModal({
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder="Add a comment..."
-                    className="w-full bg-background-dark border border-border-dark rounded-full py-2.5 pl-4 pr-20 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-all hover:border-gray-600"
+                    className="w-full bg-background border border-border rounded-full py-2.5 pl-4 pr-20 text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary/50 transition-all hover:border-border"
                   />
                   <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                    <button className="p-1 text-gray-500 hover:text-white">
+                    <button className="p-1 text-muted-foreground hover:text-foreground">
                       <Smile className="h-4 w-4" />
                     </button>
                     <button

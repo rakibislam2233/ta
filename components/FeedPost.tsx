@@ -9,13 +9,15 @@ import {
     MessageCircle,
     Pause,
     Play,
+    Share,
     Share2,
     Volume2,
     VolumeX,
 } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-
+import { IoIosHeart } from "react-icons/io";
+import { FaCommentDots } from "react-icons/fa";
 import { toast } from "@/hooks/use-toast";
 import { Post } from "@/lib/types";
 import { usePathname } from "next/navigation";
@@ -221,11 +223,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           >
             <div
               className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
-                liked ? "bg-red-500/30" : "bg-accent hover:bg-accent/80"
+                liked ? "bg-red-500/30" : "bg-accent/80"
               }`}
             >
-              <Heart
-                className={`h-5 w-5 md:h-7 md:w-7 transition-colors ${
+              <IoIosHeart
+                className={`size-6 md:size-7 transition-colors ${
                   liked ? "text-red-500 fill-current" : "text-foreground"
                 }`}
               />
@@ -238,10 +240,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             onClick={(e) => handleOpenView(e)}
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
-            <div className="p-2 md:p-3 rounded-full bg-accent backdrop-blur-sm hover:bg-accent/80 transition-all">
-              <MessageCircle className="h-5 w-5 md:h-7 md:w-7 text-foreground" />
+            <div className="p-2 md:p-3 rounded-full backdrop-blur-sm bg-accent/80 transition-all">
+              <FaCommentDots className="size-5 md:size-6 text-foreground" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-foreground-mute drop-shadow-md">
               {post.comments}
             </span>
           </button>
@@ -265,7 +267,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           >
             <div
               className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
-                saved ? "bg-primary/30" : "bg-accent hover:bg-accent/80"
+                saved ? "bg-primary/30" : "bg-accent/80"
               }`}
             >
               <Bookmark
@@ -285,8 +287,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             }}
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
-            <div className="p-2 md:p-3 rounded-full bg-accent backdrop-blur-sm hover:bg-accent/80 transition-all">
-              <Share2 className="h-5 w-5 md:h-7 md:w-7 text-foreground" />
+            <div className="p-2 md:p-3 rounded-full backdrop-blur-sm bg-accent/80 transition-all">
+              <Share className="h-5 w-5 md:h-7 md:w-7 text-foreground" />
             </div>
             <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
               Share
@@ -309,10 +311,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <h3 className="text-foreground font-bold text-sm md:text-base shadow-black drop-shadow-md">
+                <h3 className="text-white font-bold text-sm md:text-base shadow-black drop-shadow-md">
                   {post.username}
                 </h3>
-                <span className="text-[10px] md:text-xs text-muted-foreground font-medium">
+                <span className="text-[10px] md:text-xs text-white font-medium">
                   {post.audioName || "Original Audio"} • {post.timestamp}
                 </span>
               </div>
@@ -322,7 +324,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               Hire Me
             </button>
           </div>
-          <p className="text-foreground text-xs md:text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 text-left">
+          <p className="text-white text-xs md:text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 text-left">
             {post.caption.split(" ").map((word, i) =>
               word.startsWith("#") ? (
                 <span key={i} className="text-primary font-bold">

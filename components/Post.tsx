@@ -47,10 +47,10 @@ export default function Post({
             <div className="flex items-center gap-2">
               <span className="text-white font-semibold">{username}</span>
               {category && (
-                <span className="text-gray-400 text-sm">• {category}</span>
+                <span className="text-foreground text-sm">• {category}</span>
               )}
             </div>
-            <div className="flex items-center gap-2 text-gray-400 text-xs">
+            <div className="flex items-center gap-2 text-foreground text-xs">
               {location && <span>{location}</span>}
               {location && timeAgo && <span>•</span>}
               <span>{timeAgo}</span>
@@ -59,7 +59,7 @@ export default function Post({
         </div>
         <Button
           variant="ghost"
-          className="text-gray-400 hover:text-white hover:bg-[#2a2330] rounded-lg h-8 w-8 p-0"
+          className="text-foreground hover:text-white hover:bg-[#2a2330] rounded-lg h-8 w-8 p-0"
         >
           <MoreVertical className="h-5 w-5" />
         </Button>
@@ -86,31 +86,31 @@ export default function Post({
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-red-500 hover:bg-transparent p-0 h-auto"
+              className="text-foreground hover:text-red-500 hover:bg-transparent p-0 h-auto"
             >
               <Heart className="h-6 w-6" />
             </Button>
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-blue-500 hover:bg-transparent p-0 h-auto"
+              className="text-foreground hover:text-blue-500 hover:bg-transparent p-0 h-auto"
             >
               <MessageCircle className="h-6 w-6" />
             </Button>
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-yellow-500 hover:bg-transparent p-0 h-auto"
+              className="text-foreground hover:text-yellow-500 hover:bg-transparent p-0 h-auto"
             >
               <Gift className="h-6 w-6" />
             </Button>
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-white hover:bg-transparent p-0 h-auto"
+              className="text-foreground hover:text-white hover:bg-transparent p-0 h-auto"
             >
               <Bookmark className="h-6 w-6" />
             </Button>
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-white hover:bg-transparent p-0 h-auto"
+              className="text-foreground hover:text-white hover:bg-transparent p-0 h-auto"
             >
               <Share2 className="h-6 w-6" />
             </Button>
@@ -123,20 +123,20 @@ export default function Post({
             {likes.toLocaleString()} likes
           </p>
           {views && (
-            <p className="text-gray-400 text-sm">{views.toLocaleString()} views</p>
+            <p className="text-foreground text-sm">{views.toLocaleString()} views</p>
           )}
         </div>
 
         {/* Caption */}
         <div className="mb-2">
           <span className="text-white font-semibold text-sm mr-2">{username}</span>
-          <span className="text-gray-300 text-sm">{caption}</span>
+          <span className="text-white text-sm">{caption}</span>
           {hashtags && hashtags.length > 0 && (
             <div className="mt-1">
               {hashtags.map((tag, index) => (
                 <span
                   key={index}
-                  className="text-[#9419e6] text-sm mr-2 hover:underline cursor-pointer"
+                  className="text-white text-sm mr-2 hover:underline cursor-pointer"
                 >
                   {tag}
                 </span>
@@ -147,11 +147,11 @@ export default function Post({
 
         {/* Original Audio */}
         {originalAudio && (
-          <p className="text-gray-400 text-xs mb-2">{originalAudio}</p>
+          <p className="text-foreground text-xs mb-2">{originalAudio}</p>
         )}
 
         {/* Comments */}
-        <button className="text-gray-400 text-sm hover:text-white transition-colors">
+        <button className="text-foreground text-sm hover:text-white transition-colors">
           View all {comments} comments
         </button>
       </div>
