@@ -114,18 +114,18 @@ const DiscoverPeopleDetails = () => {
   return (
     <div className="max-w-6xl mx-auto pb-32 font-outfit">
       {/* Cover Image */}
-      <div className="relative h-64 bg-linear-to-br from-[#2d0845] to-primary overflow-hidden rounded-t-xl">
+      <div className="relative h-64 bg-gradient-to-br from-[#2d0845] to-primary overflow-hidden rounded-t-xl">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
-        <div className="absolute inset-0 bg-linear-to-t from-background-dark via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
       </div>
 
       {/* Profile Header */}
       <div className="px-4 sm:px-6 pb-6 relative">
         <div className="flex flex-col md:flex-row items-center md:items-end justify-between -mt-20 sm:-mt-24 mb-6 gap-6 md:gap-4">
           <div className="relative group">
-            <div className="size-32 sm:size-40 rounded-full p-1.5 bg-background-dark">
+            <div className="size-32 sm:size-40 rounded-full p-1.5 bg-background">
               <div className="w-full h-full rounded-full ring-4 ring-primary">
-                <div className="w-full h-full rounded-full bg-surface-dark overflow-hidden relative">
+                <div className="w-full h-full rounded-full bg-card overflow-hidden relative">
                   <Image
                     src={profile.avatar}
                     alt={profile.name}
@@ -140,14 +140,14 @@ const DiscoverPeopleDetails = () => {
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-3 mb-2 text-white w-full md:w-auto">
             <Button
               onClick={() => toast.follow(usernameParam)}
-              className="flex-1 md:flex-none bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow transition-all cursor-pointer hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              className="flex-1 md:flex-none bg-primary hover:bg-primary/90 text-primary-foreground rounded-full h-10 px-6 font-bold shadow-glow transition-all cursor-pointer hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               <UserPlus className="h-4 w-4" />
               Follow
             </Button>
             <Button
               variant="outline"
-              className="flex-1 cursor-pointer md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
+              className="flex-1 cursor-pointer md:flex-none bg-card border-border text-foreground hover:bg-accent hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
             >
               <MessageSquare className="h-4 w-4 mr-2" />
               Message
@@ -155,7 +155,7 @@ const DiscoverPeopleDetails = () => {
             <Button
               variant="outline"
               onClick={() => setIsHireModalOpen(true)}
-              className="flex-1 cursor-pointer md:flex-none bg-surface-dark border-border-dark text-white hover:bg-white/5 hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
+              className="flex-1 cursor-pointer md:flex-none bg-card border-border text-foreground hover:bg-accent hover:border-primary/50 hover:text-primary rounded-full h-10 px-4 font-semibold transition-all flex items-center justify-center"
             >
               <Gift className="h-4 w-4 mr-2" />
               Hire
@@ -163,7 +163,7 @@ const DiscoverPeopleDetails = () => {
             <Button
               variant="outline"
               size="icon"
-              className="shrink-0 bg-surface-dark border border-border-dark text-gray-400 hover:text-white hover:border-white/20 rounded-full h-10 w-10 flex items-center justify-center transition-all"
+              className="shrink-0 bg-card border border-border text-muted-foreground hover:text-foreground hover:border-border/50 rounded-full h-10 w-10 flex items-center justify-center transition-all"
             >
               <MoreHorizontal className="h-5 w-5" />
             </Button>
@@ -173,7 +173,7 @@ const DiscoverPeopleDetails = () => {
         {/* User Info */}
         <div className="mb-8 mt-2 md:mt-0 text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center gap-2 mb-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground uppercase tracking-tight">
               {profile.name}
             </h1>
             <div className="flex items-center gap-2">
@@ -190,11 +190,11 @@ const DiscoverPeopleDetails = () => {
           <p className="text-primary font-medium text-sm sm:text-base mb-4 lowercase tracking-tight">
             @{usernameParam}
           </p>
-          <p className="text-gray-300 mb-6 max-w-2xl leading-relaxed text-sm sm:text-base mx-auto md:mx-0">
+          <p className="text-muted-foreground mb-6 max-w-2xl leading-relaxed text-sm sm:text-base mx-auto md:mx-0">
             {profile.bio}
           </p>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-gray-400 text-[13px] mb-8">
+          <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-muted-foreground text-[13px] mb-8">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-primary/70" />
               <span>{profile.location}</span>
@@ -211,33 +211,33 @@ const DiscoverPeopleDetails = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 sm:gap-8 p-4 bg-surface-dark/50 sm:p-5 sm:bg-surface-dark rounded-2xl border border-border-dark w-full sm:w-fit mx-auto md:mx-0 justify-center sm:justify-start shadow-xl">
+          <div className="flex gap-4 sm:gap-8 p-4 bg-card/50 sm:p-5 sm:bg-card rounded-2xl border border-border w-full sm:w-fit mx-auto md:mx-0 justify-center sm:justify-start shadow-xl">
             <div className="text-center px-2">
-              <p className="text-white font-bold text-lg sm:text-xl">
+              <p className="text-foreground font-bold text-lg sm:text-xl">
                 {profile.followers}
               </p>
-              <p className="text-gray-500 text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
                 FOLLOWERS
               </p>
             </div>
-            <div className="w-px bg-border-dark/50"></div>
+            <div className="w-px bg-border/50"></div>
             <div className="text-center px-2">
-              <p className="text-white font-bold text-lg sm:text-xl">
+              <p className="text-foreground font-bold text-lg sm:text-xl">
                 {profile.following}
               </p>
-              <p className="text-gray-500 text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
                 FOLLOWING
               </p>
             </div>
-            <div className="w-px bg-border-dark/50"></div>
+            <div className="w-px bg-border/50"></div>
             <div className="text-center flex flex-col items-center px-2">
               <div className="flex items-center gap-1">
-                <p className="text-white font-bold text-lg sm:text-xl">
+                <p className="text-foreground font-bold text-lg sm:text-xl">
                   {profile.rating}
                 </p>
                 <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
               </div>
-              <p className="text-gray-500 text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
+              <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase tracking-widest font-black">
                 RATING
               </p>
             </div>
@@ -245,7 +245,7 @@ const DiscoverPeopleDetails = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-6 sm:gap-10 border-b border-border-dark mb-8 overflow-x-auto scrollbar-hide scroll-smooth">
+        <div className="flex gap-6 sm:gap-10 border-b border-border mb-8 overflow-x-auto scrollbar-hide scroll-smooth">
           {["Portfolio", "Videos", "About", "Gifts"].map((tab) => (
             <button
               key={tab}
@@ -254,8 +254,8 @@ const DiscoverPeopleDetails = () => {
               }}
               className={`pb-4 px-1 border-b-2 transition-all text-xs sm:text-sm font-black uppercase tracking-widest whitespace-nowrap ${
                 activeTab === tab
-                  ? "border-primary text-white"
-                  : "border-transparent text-gray-500 hover:text-white"
+                  ? "border-primary text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               {tab}
@@ -271,7 +271,7 @@ const DiscoverPeopleDetails = () => {
                 <div
                   key={item.id}
                   onClick={() => setSelectedPost(item)}
-                  className="relative aspect-square bg-surface-dark rounded-xl overflow-hidden group cursor-pointer border border-border-dark"
+                  className="relative aspect-square bg-card rounded-xl overflow-hidden group cursor-pointer border border-border"
                 >
                   <Image
                     src={item.mediaUrl}
@@ -293,7 +293,7 @@ const DiscoverPeopleDetails = () => {
               ))}
               {displayPosts.length === 0 && (
                 <div className="col-span-full py-20 text-center">
-                  <p className="text-gray-500 font-medium">
+                  <p className="text-muted-foreground font-medium">
                     No portfolio items yet.
                   </p>
                 </div>
@@ -313,7 +313,7 @@ const DiscoverPeopleDetails = () => {
                   <div
                     key={item.id}
                     onClick={() => setSelectedPost(item)}
-                    className="relative aspect-square bg-surface-dark rounded-xl overflow-hidden group cursor-pointer border border-border-dark"
+                    className="relative aspect-square bg-card rounded-xl overflow-hidden group cursor-pointer border border-border"
                   >
                     <Image
                       src={item.mediaUrl}
@@ -334,14 +334,14 @@ const DiscoverPeopleDetails = () => {
                   item.mediaItems?.some((m) => m.type === "video")
               ).length === 0 && (
                 <div className="col-span-full py-20 text-center">
-                  <p className="text-gray-500 font-medium">No videos found.</p>
+                  <p className="text-muted-foreground font-medium">No videos found.</p>
                 </div>
               )}
             </div>
           )}
 
           {activeTab === "About" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-500 text-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-500 text-foreground">
               <div className="col-span-full mb-4">
                 <h3 className="text-xl font-bold mb-4">
                   User Experience & Reviews
@@ -350,11 +350,11 @@ const DiscoverPeopleDetails = () => {
               {[1, 2, 3].map((id) => (
                 <div
                   key={id}
-                  className="bg-surface-dark p-6 rounded-2xl border border-border-dark flex flex-col gap-4 hover:border-primary/30 transition-colors"
+                  className="bg-card p-6 rounded-2xl border border-border flex flex-col gap-4 hover:border-primary/30 transition-colors"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="size-10 rounded-full overflow-hidden relative border border-border-dark bg-gray-700">
+                      <div className="size-10 rounded-full overflow-hidden relative border border-border bg-muted">
                         <Image
                           src={`https://api.dicebear.com/7.x/avataaars/svg?seed=reviewer${id}`}
                           alt="Reviewer"
@@ -363,10 +363,10 @@ const DiscoverPeopleDetails = () => {
                         />
                       </div>
                       <div>
-                        <h4 className="text-white font-bold text-sm">
+                        <h4 className="text-foreground font-bold text-sm">
                           Reviewer {id}
                         </h4>
-                        <span className="text-gray-400 text-xs">
+                        <span className="text-muted-foreground text-xs">
                           2 weeks ago
                         </span>
                       </div>
@@ -384,19 +384,19 @@ const DiscoverPeopleDetails = () => {
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     Great work by {profile.name}! Very professional and
                     creative. The attention to detail in the work is amazing.
                     Definitely recommend working with them.
                   </p>
-                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border-dark/50">
-                    <button className="text-xs text-gray-400 font-medium hover:text-white flex items-center gap-1">
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border/50">
+                    <button className="text-xs text-muted-foreground font-medium hover:text-foreground flex items-center gap-1">
                       <ThumbsUp className="h-3 w-3" /> Helpful
                     </button>
-                    <button className="text-xs text-white font-medium hover:text-white flex items-center gap-1">
+                    <button className="text-xs text-foreground font-medium hover:text-foreground flex items-center gap-1">
                       <MessageSquare className="h-3 w-3" /> Reply
                     </button>
-                    <button className="ml-auto text-gray-400 hover:text-white">
+                    <button className="ml-auto text-muted-foreground hover:text-foreground">
                       <MoreHorizontal className="h-4 w-4" />
                     </button>
                   </div>
@@ -407,16 +407,16 @@ const DiscoverPeopleDetails = () => {
 
           {activeTab === "Gifts" && (
             <div className="flex flex-col items-center justify-center py-20 animate-in fade-in duration-500">
-              <div className="w-20 h-20 rounded-full bg-surface-dark border border-border-dark flex items-center justify-center mb-4">
+              <div className="w-20 h-20 rounded-full bg-card border border-border flex items-center justify-center mb-4">
                 <Gift className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="text-white font-bold text-xl mb-2">
+              <h3 className="text-foreground font-bold text-xl mb-2">
                 No Gifts Yet
               </h3>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-muted-foreground text-sm mb-6">
                 Send a gift to show your appreciation!
               </p>
-              <Button className="bg-primary hover:bg-primary-hover text-white rounded-full h-10 px-6 font-bold shadow-glow">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full h-10 px-6 font-bold shadow-glow">
                 <Gift className="h-4 w-4 mr-2" />
                 Send Gift
               </Button>

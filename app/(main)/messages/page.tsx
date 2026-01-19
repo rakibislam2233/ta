@@ -1,15 +1,14 @@
 'use client'
-import type { Metadata } from "next";
 import {
-  CheckCheck,
-  FileText,
-  Image as ImageIcon,
-  Info,
-  Mic,
-  Phone,
-  Search,
-  Send,
-  Video,
+    CheckCheck,
+    FileText,
+    Image as ImageIcon,
+    Info,
+    Mic,
+    Phone,
+    Search,
+    Send,
+    Video,
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -77,29 +76,29 @@ export default function Messages() {
   const [selectedContact, setSelectedContact] = useState<number | null>(1); // 1 = CreativeAgency for demo
 
   return (
-    <div className="flex h-[calc(100vh-140px)] sm:h-[calc(100vh-100px)] m-0 sm:m-4 bg-surface-dark sm:rounded-3xl border-0 sm:border border-border-dark/30 overflow-hidden backdrop-blur-md shadow-2xl relative font-outfit">
+    <div className="flex h-[calc(100vh-140px)] sm:h-[calc(100vh-100px)] m-0 sm:m-4 bg-card sm:rounded-3xl border-0 sm:border border-border/30 overflow-hidden backdrop-blur-md shadow-2xl relative font-outfit">
       {/* Left Sidebar: Chat List */}
       <div
-        className={`w-full sm:w-80 border-r border-border-dark/30 flex flex-col bg-surface-dark/50 absolute sm:relative z-20 inset-0 transition-transform duration-300 ${
+        className={`w-full sm:w-80 border-r border-border/30 flex flex-col bg-card/50 absolute sm:relative z-20 inset-0 transition-transform duration-300 ${
           selectedContact && "-translate-x-full sm:translate-x-0"
         }`}
       >
-        <div className="p-4 sm:p-6 border-b border-border-dark/30">
+        <div className="p-4 sm:p-6 border-b border-border/30">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter italic">
+            <h1 className="text-xl sm:text-2xl font-black text-foreground uppercase tracking-tighter italic">
               Inbox<span className="text-primary">.</span>
             </h1>
-            <button className="text-primary hover:text-white transition-colors bg-white/5 p-2.5 rounded-xl border border-white/5">
+            <button className="text-primary hover:text-foreground transition-colors bg-accent p-2.5 rounded-xl border border-border">
               <PlusIcon />
             </button>
           </div>
 
           <div className="relative mb-6 group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 group-focus-within:text-primary transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
             <input
               type="text"
               placeholder="Search conversations..."
-              className="w-full bg-background-dark/80 border border-border-dark/30 rounded-2xl h-12 pl-11 pr-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary/50 transition-all"
+              className="w-full bg-card/80 border border-border/30 rounded-2xl h-12 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-all"
             />
           </div>
 
@@ -109,8 +108,8 @@ export default function Messages() {
                 key={filter}
                 className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
                   i === 0
-                    ? "bg-primary text-white shadow-lg shadow-primary/20"
-                    : "bg-background-dark text-gray-500 border border-border-dark/50 hover:text-white"
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                    : "bg-card text-muted-foreground border border-border/50 hover:text-foreground"
                 }`}
               >
                 {filter}

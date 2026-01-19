@@ -2,16 +2,16 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Bookmark,
-  Briefcase,
-  Gift,
-  Heart,
-  MessageCircle,
-  Pause,
-  Play,
-  Share2,
-  Volume2,
-  VolumeX,
+    Bookmark,
+    Briefcase,
+    Gift,
+    Heart,
+    MessageCircle,
+    Pause,
+    Play,
+    Share2,
+    Volume2,
+    VolumeX,
 } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -103,7 +103,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
     <>
       <article
         onClick={() => !isHome && handleOpenView()}
-        className={`relative w-full aspect-4/5 bg-surface-dark rounded-2xl overflow-hidden border border-border-dark shadow-2xl group transition-all duration-300  hover:shadow-primary/20 ${
+        className={`relative w-full aspect-4/5 bg-card rounded-2xl overflow-hidden border border-border shadow-2xl group transition-all duration-300  hover:shadow-primary/20 ${
           !isHome ? "cursor-pointer" : ""
         }`}
       >
@@ -183,7 +183,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               )}
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/90 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/90 pointer-events-none"></div>
 
           {/* Dot Indicators */}
           {mediaItems.length > 1 && (
@@ -221,16 +221,16 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           >
             <div
               className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
-                liked ? "bg-red-500/30" : "bg-white/10 hover:bg-white/20"
+                liked ? "bg-red-500/30" : "bg-accent hover:bg-accent/80"
               }`}
             >
               <Heart
                 className={`h-5 w-5 md:h-7 md:w-7 transition-colors ${
-                  liked ? "text-red-500 fill-current" : "text-white"
+                  liked ? "text-red-500 fill-current" : "text-foreground"
                 }`}
               />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
               {liked ? "1.3k" : post.likes}
             </span>
           </button>
@@ -238,10 +238,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             onClick={(e) => handleOpenView(e)}
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
-            <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
-              <MessageCircle className="h-5 w-5 md:h-7 md:w-7 text-white" />
+            <div className="p-2 md:p-3 rounded-full bg-accent backdrop-blur-sm hover:bg-accent/80 transition-all">
+              <MessageCircle className="h-5 w-5 md:h-7 md:w-7 text-foreground" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
               {post.comments}
             </span>
           </button>
@@ -253,9 +253,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
             <div className="p-2 md:p-3 rounded-full bg-primary/80 backdrop-blur-sm shadow-glow hover:scale-110 transition-all">
-              <Gift className="h-5 w-5 md:h-7 md:w-7 text-white" />
+              <Gift className="h-5 w-5 md:h-7 md:w-7 text-primary-foreground" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
               Gift
             </span>
           </button>
@@ -265,16 +265,16 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           >
             <div
               className={`p-2 md:p-3 rounded-full backdrop-blur-sm transition-all ${
-                saved ? "bg-primary/30" : "bg-white/10 hover:bg-white/20"
+                saved ? "bg-primary/30" : "bg-accent hover:bg-accent/80"
               }`}
             >
               <Bookmark
-                className={`h-5 w-5 md:h-7 md:w-7 text-white ${
+                className={`h-5 w-5 md:h-7 md:w-7 text-foreground ${
                   saved ? "fill-current" : ""
                 }`}
               />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
               Save
             </span>
           </button>
@@ -285,10 +285,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             }}
             className="flex flex-col items-center gap-1 group/icon cursor-pointer outline-none"
           >
-            <div className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all">
-              <Share2 className="h-5 w-5 md:h-7 md:w-7 text-white" />
+            <div className="p-2 md:p-3 rounded-full bg-accent backdrop-blur-sm hover:bg-accent/80 transition-all">
+              <Share2 className="h-5 w-5 md:h-7 md:w-7 text-foreground" />
             </div>
-            <span className="text-[10px] md:text-xs font-bold text-white drop-shadow-md">
+            <span className="text-[10px] md:text-xs font-bold text-foreground drop-shadow-md">
               Share
             </span>
           </button>
@@ -309,24 +309,24 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <h3 className="text-white font-bold text-sm md:text-base shadow-black drop-shadow-md">
+                <h3 className="text-foreground font-bold text-sm md:text-base shadow-black drop-shadow-md">
                   {post.username}
                 </h3>
-                <span className="text-[10px] md:text-xs text-gray-300 font-medium">
+                <span className="text-[10px] md:text-xs text-muted-foreground font-medium">
                   {post.audioName || "Original Audio"} • {post.timestamp}
                 </span>
               </div>
             </div>
-            <button className="bg-white/20 hover:bg-primary backdrop-blur-md border border-white/10 text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-lg transition-colors flex items-center gap-1">
+            <button className="bg-accent hover:bg-primary backdrop-blur-md border border-border text-foreground text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-lg transition-colors flex items-center gap-1">
               <Briefcase className="h-3 w-3 md:h-3.5 md:w-3.5" />
               Hire Me
             </button>
           </div>
-          <p className="text-white text-xs md:text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 text-left">
+          <p className="text-foreground text-xs md:text-sm leading-relaxed drop-shadow-md line-clamp-2 mb-2 text-left">
             {post.caption.split(" ").map((word, i) =>
               word.startsWith("#") ? (
                 <span key={i} className="text-primary font-bold">
-                  {word}{" "}
+                  {word}{}
                 </span>
               ) : (
                 word + " "
