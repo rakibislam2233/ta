@@ -1,5 +1,5 @@
 "use client";
-import HiringRequestModal from "@/components/HiringRequestModal";
+import HiringRequestModal from "@/components/modals/HiringRequestModal";
 import PostViewModal from "@/components/modals/PostViewModal";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";

@@ -19,9 +19,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { Post } from "@/lib/types";
 import { usePathname } from "next/navigation";
-import PostViewModal from "./modals/PostViewModal";
-import SendGiftModal from "./modals/SendGiftModal";
-import ShareModal from "./modals/ShareModal";
+import PostViewModal from "@/components/modals/PostViewModal";
+import SendGiftModal from "@/components/modals/SendGiftModal";
+import ShareModal from "@/components/modals/ShareModal";
 
 interface PostCardProps {
   post: Post;
@@ -42,7 +42,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   const mediaItems = useMemo(
     () => post.mediaItems || [{ url: post.mediaUrl, type: "image" as const }],
-    [post.mediaItems, post.mediaUrl]
+    [post.mediaItems, post.mediaUrl],
   );
 
   const handleOpenView = (e?: React.MouseEvent) => {
@@ -200,7 +200,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                       i === currentSlide ? "bg-primary w-4" : "bg-white/40"
                     }`}
                   />
-                )
+                ),
               )}
             </div>
           )}
@@ -326,11 +326,12 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             {post.caption.split(" ").map((word, i) =>
               word.startsWith("#") ? (
                 <span key={i} className="text-primary font-bold">
-                  {word}{}
+                  {word}
+                  {}
                 </span>
               ) : (
                 word + " "
-              )
+              ),
             )}
           </p>
         </div>
