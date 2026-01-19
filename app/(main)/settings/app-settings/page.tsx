@@ -5,7 +5,7 @@ import { ChevronRight, Download, Globe, Moon, RotateCcw, Sun, Volume2 } from 'lu
 
 export default function AppSettingsPage() {
   return (
-    <div className="max-w-2xl mx-auto p-4 sm:p-6 pb-20">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6 pb-20">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-foreground">App settings</h1>
       </div>

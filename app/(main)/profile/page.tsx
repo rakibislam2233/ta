@@ -60,7 +60,7 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="w-full  mx-auto pb-32">
+    <div className="w-full  mx-auto">
       {/* Cover Image */}
       <div className="relative h-72 bg-linear-to-br from-[#2d0845] to-primary overflow-hidden rounded-t-xl">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
