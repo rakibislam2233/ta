@@ -1,6 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,12 +29,12 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginForm>({
+  const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   const onSubmit = async (data: LoginForm) => {
@@ -49,91 +57,101 @@ export default function Login() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          {/* Email Field */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground/70 ml-1">
-              Email Address
-            </label>
-            <Input
-              {...register("email")}
-              type="email"
-              placeholder="Enter your email"
-              className="h-12 bg-background border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 rounded-lg"
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+            {/* Email Field */}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium text-foreground/70 ml-1">
+                    Email Address
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder="Enter your email"
+                      className="h-12 bg-background border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 rounded-lg"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-            {errors.email && (
-              <p className="text-xs text-red-500 ml-1">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
 
-          {/* Password Field */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground/70 ml-1">
-              Password
-            </label>
-            <div className="relative">
-              <Input
-                {...register("password")}
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                className="h-12 bg-background border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 pr-10 rounded-lg"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            {/* Password Field */}
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium text-foreground/70 ml-1">
+                    Password
+                  </FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        {...field}
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        className="h-12 bg-background border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 pr-10 rounded-lg"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Remember Me & Forgot Password */}
+            <div className="flex items-center justify-between text-sm">
+              <label className="flex items-center gap-2 cursor-pointer group">
+                <div className="w-4 h-4 rounded border border-border bg-background group-hover:border-primary transition-colors flex items-center justify-center">
+                  {/* Checkbox logic would go here ideally */}
+                </div>
+                <span className="text-muted-foreground group-hover:text-foreground/80">
+                  Remember me
+                </span>
+              </label>
+              <Link
+                href="/auth/forgot-password"
+                className="text-primary hover:text-primary/80 font-medium transition-colors"
               >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
+                Forgot Password?
+              </Link>
             </div>
-            {errors.password && (
-              <p className="text-xs text-red-500 ml-1">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
 
-          {/* Remember Me & Forgot Password */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2 cursor-pointer group">
-              <div className="w-4 h-4 rounded border border-border bg-background group-hover:border-primary transition-colors flex items-center justify-center">
-                {/* Checkbox logic would go here ideally */}
-              </div>
-              <span className="text-muted-foreground group-hover:text-foreground/80">
-                Remember me
-              </span>
-            </label>
-            <Link
-              href="/auth/forgot-password"
-              className="text-primary hover:text-primary/80 font-medium transition-colors"
+            <Button
+              type="submit"
+              disabled={form.formState.isSubmitting}
+              className="w-full cursor-pointer"
             >
-              Forgot Password?
-            </Link>
-          </div>
-
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full cursor-pointer"
-          >
-            {isSubmitting ? "Signing in..." : "Sign In"}
-          </Button>
-          <p className="text-center text-muted-foreground text-sm mt-8">
-            Don&apos;t have an account?{" "}
-            <Link
-              href="/auth/register"
-              className="text-primary hover:text-primary/80 font-semibold transition-colors"
-            >
-              Sign up for free
-            </Link>
-          </p>
-        </form>
+              {form.formState.isSubmitting ? "Signing in..." : "Sign In"}
+            </Button>
+            <p className="text-center text-muted-foreground text-sm mt-8">
+              Don&apos;t have an account?{" "}
+              <Link
+                href="/auth/register"
+                className="text-primary hover:text-primary/80 font-semibold transition-colors"
+              >
+                Sign up for free
+              </Link>
+            </p>
+          </form>
+        </Form>
       </div>
     </section>
   );
