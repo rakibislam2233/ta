@@ -103,7 +103,7 @@ export default function CreatePostModal({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="bg-background-dark w-full max-w-6xl h-full lg:h-[90vh] rounded-lg lg:rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl border-none lg:border border-border-dark relative"
+            className="bg-background w-full max-w-6xl h-full lg:h-[90vh] rounded-lg lg:rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl border-none lg:border border-border-dark relative"
           >
             {/* Left Column: Media (Upload/Review) */}
             <CreatePostMedia

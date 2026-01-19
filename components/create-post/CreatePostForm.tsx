@@ -20,6 +20,9 @@ import {
   Smile,
   X,
 } from "lucide-react";
+import { Input } from "../ui/input";
+import { Select } from "../ui/select";
+import { SelectTrigger } from "@radix-ui/react-select";
 
 interface CreatePostFormProps {
   onClose: () => void;
@@ -35,8 +38,6 @@ interface CreatePostFormProps {
 
 export default function CreatePostForm({
   onClose,
-  isHiring,
-  setIsHiring,
   allowComments,
   setAllowComments,
   allowDownloads,
@@ -59,64 +60,43 @@ export default function CreatePostForm({
     editorProps: {
       attributes: {
         class:
-          "bg-transparent border-none text-white focus:outline-none min-h-[120px] text-base leading-relaxed",
+          "bg-transparent border-none text-foreground focus:outline-none min-h-[120px] text-base leading-relaxed",
       },
     },
     immediatelyRender: false,
   });
 
   return (
-    <div className="w-full lg:w-[40%] bg-[#0F1313] flex flex-col flex-1 lg:h-full overflow-y-auto custom-scrollbar border-l border-[#121213] relative z-20">
+    <div className="w-full lg:w-[40%] bg-background flex flex-col flex-1 lg:h-full overflow-y-auto custom-scrollbar border-l border-border relative z-20">
       {/* Header */}
-      <div className="p-4 border-b border-[#232326] flex items-center justify-between sticky top-0 bg-[#0F1313]/95 backdrop-blur-md z-30">
+      <div className="p-4 border-b border-border flex items-center justify-between sticky top-0 bg-background backdrop-blur-md z-30">
         <div className="flex items-center gap-3">
           <button
             onClick={onClose}
-            className="lg:hidden text-gray-400 hover:text-white transition-colors"
+            className="lg:hidden text-gray-400 hover:text-foreground transition-colors"
           >
             <X className="h-6 w-6" />
           </button>
-          <h2 className="text-white font-bold text-lg">New Post</h2>
+          <h2 className="text-foreground font-bold text-lg">New Post</h2>
         </div>
-        <button
-          onClick={onClose}
-          className="text-primary font-bold text-sm hover:text-primary-hover transition-colors"
-        >
-          Save Draft
-        </button>
       </div>
 
-      <div className="p-4 md:p-6 flex flex-col gap-4 md:gap-6 flex-1">
+      <div className="p-4 flex flex-col gap-4 md:gap-6 flex-1">
         {/* User Info & Privacy Selector */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-primary to-purple-400 p-[2px]">
-              <div className="w-full h-full rounded-full bg-surface-dark relative overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white font-bold text-xs md:text-sm">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-primary to-purple-400 p-0.5">
+              <div className="w-full h-full rounded-full bg-background relative overflow-hidden">
+                <div className="w-full h-full flex items-center justify-center bg-gray-800 text-foreground font-bold text-xs md:text-sm">
                   AT
                 </div>
               </div>
             </div>
             <div>
-              <h4 className="text-white font-bold text-sm md:text-base">
+              <h4 className="text-foreground font-bold text-sm md:text-base">
                 Alex Talent
               </h4>
-              {/* Privacy Dropdown */}
-              <div className="relative mt-0.5 group">
-                <select
-                  value={privacy}
-                  onChange={(e) =>
-                    setPrivacy(
-                      e.target.value as "public" | "connections" | "private"
-                    )
-                  }
-                  className="appearance-none bg-transparent text-gray-400 text-xs font-medium pr-4 cursor-pointer focus:outline-none hover:text-white transition-colors"
-                >
-                  <option value="public">Public</option>
-                  <option value="connections">Connections</option>
-                  <option value="private">Only Me</option>
-                </select>
-              </div>
+              <p className="text-gray-400 text-xs md:text-sm">Creator</p>
             </div>
           </div>
         </div>
@@ -124,14 +104,14 @@ export default function CreatePostForm({
         {/* Rich Text Caption Editor */}
         <div className="space-y-3">
           <div
-            className="min-h-[140px] cursor-text"
+            className="min-h-35 cursor-text"
             onClick={() => editor?.commands.focus()}
           >
             <EditorContent editor={editor} />
           </div>
 
           {/* Editor Toolbar */}
-          <div className="flex items-center justify-between border-t border-border-dark pt-3">
+          <div className="flex items-center justify-between border-t border-border pt-3">
             <div className="flex gap-2">
               <ToolbarButton
                 active={editor?.isActive("bold")}
@@ -156,7 +136,7 @@ export default function CreatePostForm({
                 icon={ListOrdered}
               />
             </div>
-            <div className="flex gap-2 border-l border-border-dark pl-2">
+            <div className="flex gap-2 border-l border-border pl-2">
               <ToolbarButton onClick={() => {}} icon={Smile} active={false} />
               <ToolbarButton onClick={() => {}} icon={AtSign} active={false} />
               <ToolbarButton onClick={() => {}} icon={Hash} active={false} />
@@ -167,47 +147,17 @@ export default function CreatePostForm({
         {/* Location Input */}
         <div className="relative group">
           <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
-          <input
-            placeholder="Add Location"
-            className="bg-background-dark border border-border-dark pl-10 md:pl-12 text-white placeholder:text-gray-500 h-10 md:h-12 rounded-xl focus:border-primary/50 transition-all hover:border-gray-600 w-full text-sm"
+          <Input
+            type="text"
+            placeholder="Location"
+            className="pl-10 md:pl-12"
           />
         </div>
 
-        {/* Category Selection */}
-        <div className="relative group">
-          <Layers className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
-          <select className="w-full bg-background-dark border border-border-dark text-white rounded-xl h-10 md:h-12 pl-10 md:pl-12 pr-4 appearance-none focus:outline-none focus:border-primary/50 transition-all hover:border-gray-600 cursor-pointer text-sm font-medium">
-            <option value="" disabled className="text-gray-500">
-              Select Category
-            </option>
-            <option value="art">Digital Art</option>
-            <option value="music">Music</option>
-            <option value="video">Video</option>
-            <option value="tech">Technology</option>
-          </select>
-          <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 h-3 w-3 md:h-4 md:w-4 text-gray-400 rotate-90" />
-        </div>
-
-        {/* Hiring Switch */}
-        <div className="bg-background-dark p-4 rounded-xl flex items-center justify-between border border-border-dark hover:border-gray-600 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-purple-500/10 rounded-xl text-purple-400">
-              <Briefcase className="h-5 w-5" />
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-sm">Hiring?</h4>
-              <p className="text-xs text-gray-400 mt-0.5">
-                Add a hiring badge to this post
-              </p>
-            </div>
-          </div>
-          <Switch checked={isHiring} onChange={() => setIsHiring(!isHiring)} />
-        </div>
-
         {/* Advanced Settings */}
-        <div className="border-t border-border-dark pt-4">
+        <div className="border-t border-border pt-4">
           <details className="group">
-            <summary className="flex items-center justify-between cursor-pointer list-none text-white font-bold text-sm mb-4 hover:text-primary transition-colors">
+            <summary className="flex items-center justify-between cursor-pointer list-none text-foreground font-bold text-sm mb-4">
               <span>Advanced Settings</span>
               <ChevronRight className="h-4 w-4 text-gray-400 group-open:rotate-90 transition-transform" />
             </summary>
@@ -217,23 +167,57 @@ export default function CreatePostForm({
               animate={{ height: "auto", opacity: 1 }}
               className="flex flex-col gap-4 pl-1"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-gray-300 text-sm font-medium">
-                  Turn off commenting
-                </span>
-                <Switch
-                  checked={!allowComments}
-                  onChange={() => setAllowComments(!allowComments)}
-                />
+              {/* Instagram-style: Turn off commenting */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-foreground text-sm font-medium">
+                    Allow sharing
+                  </span>
+                  <Switch
+                    checked={allowDownloads}
+                    onChange={() => setAllowDownloads(!allowDownloads)}
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Harum molestias ea earum illo quam. Porro assumenda est
+                  voluptate accusamus quo.
+                </p>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-300 text-sm font-medium">
-                  Allow Downloads
-                </span>
-                <Switch
-                  checked={allowDownloads}
-                  onChange={() => setAllowDownloads(!allowDownloads)}
-                />
+
+              {/* Common on Instagram Reels: Allow Downloads */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-foreground text-sm font-medium">
+                    Allow sharing
+                  </span>
+                  <Switch
+                    checked={allowDownloads}
+                    onChange={() => setAllowDownloads(!allowDownloads)}
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Harum molestias ea earum illo quam. Porro assumenda est
+                  voluptate accusamus quo.
+                </p>
+              </div>
+              {/* Common on both FB & IG: Allow others to share */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-foreground text-sm font-medium">
+                    Allow sharing
+                  </span>
+                  <Switch
+                    checked={allowDownloads}
+                    onChange={() => setAllowDownloads(!allowDownloads)}
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Harum molestias ea earum illo quam. Porro assumenda est
+                  voluptate accusamus quo.
+                </p>
               </div>
             </motion.div>
           </details>
@@ -241,17 +225,17 @@ export default function CreatePostForm({
       </div>
 
       {/* Action Buttons */}
-      <div className="p-4 border-t border-[#2F2F32] bg-[#0F1313] sticky bottom-0 z-30 flex gap-3">
+      <div className="p-4 border-t border-border bg-background sticky bottom-0 z-30 flex gap-6">
         <Button
           variant="outline"
           onClick={onClose}
-          className="hidden md:flex flex-1 bg-transparent border-gray-700 text-white hover:bg-white/5 hover:text-white hover:border-gray-500 h-11 rounded-xl font-semibold transition-all hover:scale-[1.02]"
+          className="w-full cursor-pointer"
         >
           Cancel
         </Button>
-        <Button className="flex-1 bg-primary hover:bg-primary-hover text-white h-11 rounded-xl font-bold shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] active:scale-95">
+        <Button className="w-full cursor-pointer">
           Share Post
-          <ChevronRight className="ml-1 h-4 w-4" />
+          <ChevronRight />
         </Button>
       </div>
     </div>
@@ -272,7 +256,9 @@ function ToolbarButton({
     <button
       onClick={onClick}
       className={`p-2 rounded-lg transition-colors ${
-        active ? "bg-white/10 text-primary" : "text-gray-400 hover:text-white"
+        active
+          ? "bg-white/10 text-primary"
+          : "text-gray-400 hover:text-foreground"
       }`}
     >
       <Icon className="w-5 h-5" />
@@ -290,13 +276,13 @@ function Switch({
   return (
     <button
       onClick={onChange}
-      className={`w-11 h-6 rounded-full relative transition-colors duration-300 ease-in-out ${
+      className={`w-11 h-5 rounded-full relative transition-colors duration-300 ease-in-out cursor-pointer ${
         checked ? "bg-primary" : "bg-gray-600"
       }`}
     >
       <div
-        className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform duration-300 shadow-md ${
-          checked ? "left-[calc(100%-1.375rem)]" : "left-0.5"
+        className={`size-4 bg-white rounded-full absolute top-0.5 transition-transform duration-300 shadow-md ${
+          checked ? "left-[calc(100%-1.2rem)]" : "left-0.5"
         }`}
       />
     </button>

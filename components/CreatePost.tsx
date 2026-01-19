@@ -9,7 +9,7 @@ export default function CreatePost() {
   const [caption, setCaption] = useState("");
 
   return (
-    <div className="bg-[#221c26] rounded-2xl p-4 mb-6 border border-[#4a3c53]/30">
+    <div className="bg-background` rounded-2xl p-4 mb-6 border border-[#4a3c53]/30">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#9419e6] to-[#7a14c4] flex items-center justify-center">
           <span className="text-white font-semibold text-sm">AT</span>

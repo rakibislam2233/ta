@@ -52,7 +52,7 @@ export default function CreatePostMedia({
   const currentFile = selectedFiles[currentSlide];
 
   return (
-    <div className="relative w-full h-[40vh] sm:h-[50vh] lg:h-full lg:w-[60%] bg-[#0F1313] flex flex-col justify-center border border-[#18181B] group overflow-hidden">
+    <div className="relative w-full h-[40vh] sm:h-[50vh] lg:h-full lg:w-[60%] bg-background flex flex-col justify-center  group overflow-hidden">
       {selectedFiles.length > 0 ? (
         <>
           {/* Main Preview Area */}
