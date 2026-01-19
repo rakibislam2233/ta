@@ -139,9 +139,9 @@ export default function Hire() {
   return (
     <div className="flex h-full">
       {/* Inner Filter Sidebar */}
-      <div className="w-64 p-6 border-r border-border-dark/30 hidden lg:block overflow-y-auto">
+      <div className="w-64 p-6 border-r border-border/30 hidden lg:block overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-white font-black text-lg uppercase tracking-tight">
+          <h2 className="text-foreground font-black text-lg uppercase tracking-tight">
             Filters
           </h2>
           <button
@@ -155,7 +155,7 @@ export default function Hire() {
         <div className="space-y-6">
           {/* Categories */}
           <div>
-            <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wide">
+            <h3 className="text-foreground font-bold text-sm mb-4 uppercase tracking-wide">
               Categories
             </h3>
             <div className="space-y-3">
@@ -168,7 +168,7 @@ export default function Hire() {
                   />
                   <Label
                     htmlFor={cat.id}
-                    className="text-sm text-gray-400 cursor-pointer hover:text-white transition-colors font-medium"
+                    className="text-sm text-muted-foreground cursor-pointer hover:text-foreground transition-colors font-medium"
                   >
                     {cat.name}
                   </Label>
@@ -179,10 +179,10 @@ export default function Hire() {
 
           {/* Price Range */}
           <div>
-            <h3 className="text-white font-bold text-sm mb-3 uppercase tracking-wide">
+            <h3 className="text-foreground font-bold text-sm mb-3 uppercase tracking-wide">
               Price Range / Hr
             </h3>
-            <div className="flex items-center justify-between text-xs text-gray-500 mb-3 font-medium">
+            <div className="flex items-center justify-between text-xs text-muted-foreground mb-3 font-medium">
               <span>$10</span>
               <span>$500+</span>
             </div>
@@ -201,7 +201,7 @@ export default function Hire() {
 
           {/* Availability */}
           <div>
-            <h3 className="text-white font-bold text-sm mb-3 uppercase tracking-wide">
+            <h3 className="text-foreground font-bold text-sm mb-3 uppercase tracking-wide">
               Availability
             </h3>
             <Select value={availability} onValueChange={setAvailability}>
@@ -219,26 +219,26 @@ export default function Hire() {
 
           {/* Location */}
           <div>
-            <h3 className="text-white font-bold text-sm mb-3 uppercase tracking-wide">
+            <h3 className="text-foreground font-bold text-sm mb-3 uppercase tracking-wide">
               Location
             </h3>
             <div className="relative">
-              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="City or Country"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full bg-background-dark border border-border-dark/30 rounded-xl h-12 pl-10 pr-3 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
+                className="w-full bg-background border border-border/30 rounded-xl h-12 pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
               />
             </div>
           </div>
 
           {/* Verified toggle */}
-          <div className="flex items-center justify-between py-3 px-4 bg-background-dark/50 rounded-xl border border-border-dark/30">
+          <div className="flex items-center justify-between py-3 px-4 bg-background/50 rounded-xl border border-border/30">
             <Label
               htmlFor="verified"
-              className="text-white font-bold text-sm cursor-pointer"
+              className="text-foreground font-bold text-sm cursor-pointer"
             >
               Verified Only
             </Label>
@@ -249,13 +249,13 @@ export default function Hire() {
             />
           </div>
 
-          <Button className="w-full bg-primary hover:bg-primary-hover text-white font-black uppercase tracking-wider text-xs h-12 rounded-xl shadow-xl shadow-primary/20">
+          <Button className="w-full bg-primary hover:bg-primary-hover text-primary-foreground font-black uppercase tracking-wider text-xs h-12 rounded-xl shadow-xl shadow-primary/20">
             Apply Filters
           </Button>
           <Button
             onClick={handleResetFilters}
             variant="outline"
-            className="w-full border-border-dark text-white hover:bg-surface-dark bg-transparent font-bold uppercase tracking-wider text-xs h-12 rounded-xl"
+            className="w-full border-border text-foreground hover:bg-accent bg-transparent font-bold uppercase tracking-wider text-xs h-12 rounded-xl"
           >
             Clear All
           </Button>
@@ -265,15 +265,15 @@ export default function Hire() {
       {/* Main Content */}
       <div className="flex-1 p-4 sm:p-8 overflow-y-auto pb-32">
         {/* Gradient Hero Header */}
-        <div className="bg-linear-to-br from-primary via-purple-900 to-[#2e1065] rounded-3xl p-6 sm:p-10 mb-8 text-center shadow-2xl relative overflow-hidden group">
+        <div className="bg-gradient-to-br from-primary via-purple-900 to-[#2e1065] rounded-3xl p-6 sm:p-10 mb-8 text-center shadow-2xl relative overflow-hidden group">
           {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 group-hover:bg-white/10 transition-colors" />
-          <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 group-hover:bg-white/10 transition-colors" />
+          <div className="absolute top-0 left-0 w-48 h-48 bg-foreground/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 group-hover:bg-foreground/10 transition-colors" />
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-foreground/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 group-hover:bg-foreground/10 transition-colors" />
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-3 relative ">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-primary-foreground mb-3 relative ">
             Hire Top <span className="text-purple-300">Talent</span>
           </h1>
-          <p className="text-white/70 mb-8 max-w-lg mx-auto relative text-sm sm:text-base font-medium leading-relaxed">
+          <p className="text-primary-foreground/70 mb-8 max-w-lg mx-auto relative text-sm sm:text-base font-medium leading-relaxed">
             Connect with industry-leading creators for your next project.
             Premium members get priority access to vetted profiles.
           </p>
@@ -282,7 +282,7 @@ export default function Hire() {
             <input
               type="text"
               placeholder="Who are you looking for?"
-              className="w-full h-14 sm:h-16 rounded-2xl pl-6 sm:pl-8 pr-16 sm:pr-36 bg-white/10 backdrop-blur-xl border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 focus:border-white/40 transition-all shadow-2xl"
+              className="w-full h-14 sm:h-16 rounded-2xl pl-6 sm:pl-8 pr-16 sm:pr-36 bg-foreground/10 backdrop-blur-xl border border-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:bg-foreground/20 focus:border-foreground/40 transition-all shadow-2xl"
             />
             <Button className="absolute right-2 top-2 rounded-full size-10 cursor-pointer">
               <Search />
@@ -291,13 +291,13 @@ export default function Hire() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-6 sm:gap-10 mb-8 border-b border-border-dark/40 overflow-x-auto scrollbar-hide no-scrollbar">
+        <div className="flex items-center gap-6 sm:gap-10 mb-8 border-b border-border/40 overflow-x-auto scrollbar-hide no-scrollbar">
           <button
             onClick={() => handleTabChange("all")}
             className={`${
               activeTab === "all"
                 ? "text-primary border-b-2 border-primary"
-                : "text-gray-500 hover:text-white"
+                : "text-muted-foreground hover:text-foreground"
             } font-black pb-4 px-2 whitespace-nowrap text-xs sm:text-sm  tracking-widest transition-all`}
           >
             All People
@@ -307,7 +307,7 @@ export default function Hire() {
             className={`${
               activeTab === "my-requests"
                 ? "text-primary border-b-2 border-primary"
-                : "text-gray-500 hover:text-white"
+                : "text-muted-foreground hover:text-foreground"
             } font-black pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
           >
             My Hire Requests
@@ -317,7 +317,7 @@ export default function Hire() {
             className={`${
               activeTab === "hired-me"
                 ? "text-primary border-b-2 border-primary"
-                : "text-gray-500 hover:text-white"
+                : "text-muted-foreground hover:text-foreground"
             } font-black pb-4 px-2 whitespace-nowrap cursor-pointer text-xs sm:text-sm  tracking-widest transition-all`}
           >
             Who Hired Me
@@ -325,8 +325,8 @@ export default function Hire() {
         </div>
 
         {/* Mobile Filter Toggle (Visible only on small screens) */}
-        <div className="lg:hidden mb-6 flex items-center justify-between p-4 bg-surface-dark border border-border-dark rounded-2xl">
-          <span className="text-white font-bold text-sm">Advanced Filters</span>
+        <div className="lg:hidden mb-6 flex items-center justify-between p-4 bg-background border border-border rounded-2xl">
+          <span className="text-foreground font-bold text-sm">Advanced Filters</span>
           <Button
             variant="ghost"
             className="text-primary h-8 px-3 font-bold text-xs uppercase tracking-tighter hover:bg-primary/10"
@@ -341,7 +341,7 @@ export default function Hire() {
             {talents.map((talent, i) => (
               <div
                 key={i}
-                className="bg-surface-dark rounded-3xl p-5 sm:p-6 border border-border-dark/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden"
+                className="bg-background rounded-3xl p-5 sm:p-6 border border-border/40 hover:border-primary/50 transition-all group card-hover-effect relative overflow-hidden"
               >
                 <div
                   onClick={() =>
@@ -351,7 +351,7 @@ export default function Hire() {
                 >
                   <div className="flex items-center gap-4">
                     <div className="relative">
-                      <div className="size-14 sm:size-16 rounded-full overflow-hidden border-2 border-border-dark group-hover:border-primary/50 transition-colors">
+                      <div className="size-14 sm:size-16 rounded-full overflow-hidden border-2 border-border group-hover:border-primary/50 transition-colors">
                         <Image
                           src={talent.image || ""}
                           alt={talent.name}
@@ -359,16 +359,16 @@ export default function Hire() {
                           className="object-cover rounded-full"
                         />
                       </div>
-                      <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
+                      <div className="absolute -bottom-1 -right-1 size-4 bg-green-500 border-2 border-background rounded-full shadow-lg" />
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5 mb-0.5">
-                        <h3 className="text-white font-black text-base sm:text-lg tracking-tight uppercase">
+                        <h3 className="text-foreground font-black text-base sm:text-lg tracking-tight uppercase">
                           {talent.name}
                         </h3>
                         <div className="bg-blue-500 p-0.5 rounded-full">
                           <svg
-                            className="size-2.5 text-white"
+                            className="size-2.5 text-primary-foreground"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -384,7 +384,7 @@ export default function Hire() {
                           <Star className="size-2.5 fill-current" />
                           {talent.rating}
                         </span>
-                        <span className="text-gray-500 text-[10px] font-bold uppercase tracking-tighter">
+                        <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-tighter">
                           {talent.jobs} JOBS
                         </span>
                       </div>
@@ -396,37 +396,37 @@ export default function Hire() {
                   {talent.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-background-dark/80 text-gray-400 text-[10px] sm:text-xs px-3 py-1 rounded-lg border border-border-dark/50 font-bold uppercase tracking-tight"
+                      className="bg-background/80 text-muted-foreground text-[10px] sm:text-xs px-3 py-1 rounded-lg border border-border/50 font-bold uppercase tracking-tight"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed font-medium">
+                <p className="text-muted-foreground text-sm mb-8 line-clamp-2 leading-relaxed font-medium">
                   {talent.bio}
                 </p>
 
-                <div className="grid grid-cols-2 gap-4 py-6 border-t border-border-dark/30 relative z-10">
+                <div className="grid grid-cols-2 gap-4 py-6 border-t border-border/30 relative z-10">
                   <div className="text-left">
-                    <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
+                    <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
                       Audience
                     </p>
-                    <p className="text-white font-black text-lg tracking-tight">
+                    <p className="text-foreground font-black text-lg tracking-tight">
                       {talent.followers}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
+                    <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-1 leading-none">
                       Starting At
                     </p>
-                    <p className="text-white font-black text-lg tracking-tight">
+                    <p className="text-foreground font-black text-lg tracking-tight">
                       {talent.rate}
                     </p>
                   </div>
                 </div>
 
-                <Button className="w-full h-12 cursor-pointer bg-primary hover:bg-primary-hover text-white text-sm font-black tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10">
+                <Button className="w-full h-12 cursor-pointer bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-black tracking-widest rounded-xl shadow-xl shadow-primary/20 relative z-10">
                   Hire Now
                 </Button>
 
@@ -484,12 +484,12 @@ export default function Hire() {
               <div
                 key={order.id}
                 onClick={() => router.push(`/hiring/my-requests/${order.id}`)}
-                className="bg-surface-dark rounded-3xl p-6 border border-border-dark/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
+                className="bg-background rounded-3xl p-6 border border-border/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs text-gray-500 font-medium">
+                      <span className="text-xs text-muted-foreground font-medium">
                         Order #{order.id}
                       </span>
                       <span
@@ -504,17 +504,17 @@ export default function Hire() {
                         {order.status}
                       </span>
                     </div>
-                    <h3 className="text-white font-black text-lg mb-2 uppercase tracking-tight">
+                    <h3 className="text-foreground font-black text-lg mb-2 uppercase tracking-tight">
                       {order.title}
                     </h3>
-                    <p className="text-gray-500 text-xs font-medium">
+                    <p className="text-muted-foreground text-xs font-medium">
                       {order.category} • Due: {order.dueDate}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mb-4 pb-4 border-b border-border-dark/30">
-                  <div className="size-12 rounded-xl overflow-hidden border-2 border-border-dark">
+                <div className="flex items-center gap-4 mb-4 pb-4 border-b border-border/30">
+                  <div className="size-12 rounded-xl overflow-hidden border-2 border-border">
                     <Image
                       src={order.avatar}
                       alt={order.freelancer}
@@ -524,7 +524,7 @@ export default function Hire() {
                     />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-sm">
+                    <p className="text-foreground font-bold text-sm">
                       {order.freelancer}
                     </p>
                     <p className="text-primary text-xs font-medium">
@@ -535,16 +535,16 @@ export default function Hire() {
 
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-gray-400 uppercase">
+                    <span className="text-xs font-bold text-muted-foreground uppercase">
                       Progress
                     </span>
                     <span className="text-sm font-black text-primary">
                       {order.progress}%
                     </span>
                   </div>
-                  <div className="h-2 bg-background-dark rounded-full overflow-hidden">
+                  <div className="h-2 bg-background rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-linear-to-r from-primary to-purple-600 transition-all"
+                      className="h-full bg-gradient-to-r from-primary to-purple-600 transition-all"
                       style={{ width: `${order.progress}%` }}
                     />
                   </div>
@@ -552,10 +552,10 @@ export default function Hire() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-500 text-xs font-medium">
+                    <p className="text-muted-foreground text-xs font-medium">
                       Total Budget
                     </p>
-                    <p className="text-white font-black text-xl">
+                    <p className="text-foreground font-black text-xl">
                       ${order.budget}
                     </p>
                   </div>
@@ -564,7 +564,7 @@ export default function Hire() {
                       e.stopPropagation();
                       router.push(`/hiring/${order.id}`);
                     }}
-                    className="bg-white text-primary hover:bg-white/90 rounded-xl h-10 px-6 font-black uppercase text-xs"
+                    className="bg-foreground text-primary hover:bg-foreground/90 rounded-xl h-10 px-6 font-black uppercase text-xs"
                   >
                     View Details
                   </Button>
@@ -608,12 +608,12 @@ export default function Hire() {
               <div
                 key={hire.id}
                 onClick={() => router.push(`/hiring/hired-me/${hire.id}`)}
-                className="bg-surface-dark rounded-3xl p-6 border border-border-dark/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
+                className="bg-background rounded-3xl p-6 border border-border/40 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs text-gray-500 font-medium">
+                      <span className="text-xs text-muted-foreground font-medium">
                         Request #{hire.id}
                       </span>
                       <span
@@ -626,17 +626,17 @@ export default function Hire() {
                         {hire.status}
                       </span>
                     </div>
-                    <h3 className="text-white font-black text-lg mb-2 uppercase tracking-tight">
+                    <h3 className="text-foreground font-black text-lg mb-2 uppercase tracking-tight">
                       {hire.title}
                     </h3>
-                    <p className="text-gray-500 text-xs font-medium">
+                    <p className="text-muted-foreground text-xs font-medium">
                       {hire.category} • Started: {hire.startDate}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-border-dark/30">
-                  <div className="size-12 rounded-xl overflow-hidden border-2 border-border-dark">
+                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-border/30">
+                  <div className="size-12 rounded-xl overflow-hidden border-2 border-border">
                     <Image
                       src={hire.avatar}
                       alt={hire.client}
@@ -646,7 +646,7 @@ export default function Hire() {
                     />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-sm">
+                    <p className="text-foreground font-bold text-sm">
                       {hire.client}
                     </p>
                     <p className="text-primary text-xs font-medium">
@@ -657,10 +657,10 @@ export default function Hire() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-500 text-xs font-medium">
+                    <p className="text-muted-foreground text-xs font-medium">
                       Project Budget
                     </p>
-                    <p className="text-white font-black text-xl">
+                    <p className="text-foreground font-black text-xl">
                       ${hire.budget}
                     </p>
                   </div>
@@ -669,7 +669,7 @@ export default function Hire() {
                       e.stopPropagation();
                       router.push(`/hiring/hired-me/${hire.id}`);
                     }}
-                    className="bg-primary hover:bg-primary-hover text-white rounded-xl h-10 px-6 font-black uppercase text-xs shadow-lg shadow-primary/20"
+                    className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-10 px-6 font-black uppercase text-xs shadow-lg shadow-primary/20"
                   >
                     View Request
                   </Button>
@@ -684,7 +684,7 @@ export default function Hire() {
         <div className="flex justify-center mt-12 pb-12 relative z-10">
           <Button
             variant="outline"
-            className="rounded-2xl px-10 h-14 border-border-dark text-white hover:bg-surface-dark bg-transparent font-black uppercase tracking-widest text-xs"
+            className="rounded-2xl px-10 h-14 border-border text-foreground hover:bg-accent bg-transparent font-black uppercase tracking-widest text-xs"
           >
             Show More Talents
           </Button>

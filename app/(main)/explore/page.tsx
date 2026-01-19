@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import { Image as ImageIcon, TrendingUp, User, Video } from "lucide-react";
+import { Image as ImageIcon, MapPin, TrendingUp, User, Video } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -81,12 +81,12 @@ export default function Explore() {
       {/* Header & Filter Bar */}
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-8 border-b border-border-dark/30 overflow-x-auto scrollbar-hide">
+          <div className="flex items-center gap-8 border-b border-border/30 overflow-x-auto scrollbar-hide">
             {filters.map((filter, i) => (
               <button
                 key={filter}
                 className={`pb-4 text-sm font-semibold transition-colors relative ${
-                  i === 0 ? "text-white" : "text-gray-400 hover:text-white"
+                  i === 0 ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {filter}
@@ -99,7 +99,7 @@ export default function Explore() {
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
-              className="border-border-dark bg-surface-dark text-gray-300 hover:text-white hover:bg-surface-dark/80 gap-2"
+              className="border-border bg-background text-muted-foreground hover:text-foreground hover:bg-accent gap-2"
             >
               <svg
                 width="16"
@@ -115,7 +115,7 @@ export default function Explore() {
             </Button>
             <Button
               variant="ghost"
-              className="text-gray-300 hover:text-white flex items-center gap-1"
+              className="text-muted-foreground hover:text-foreground flex items-center gap-1"
             >
               Trending{" "}
               <div className="ml-1">
@@ -140,8 +140,8 @@ export default function Explore() {
               key={chip.label}
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                 chip.active
-                  ? "bg-primary text-white"
-                  : "bg-surface-dark border border-border-dark/30 text-gray-400 hover:bg-surface-dark/80 hover:text-white"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-background border border-border/30 text-muted-foreground hover:bg-accent hover:text-foreground"
               }`}
             >
               {chip.icon && <chip.icon className="h-4 w-4" />}
@@ -154,7 +154,7 @@ export default function Explore() {
       {/* Masonry Grid Simulation */}
       <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
         {/* Featured Large Card (Simulated first item spans) */}
-        <div className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border-dark/30">
+        <div className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border/30">
           <div className="relative aspect-4/5">
             <Image
               src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800"
@@ -162,14 +162,14 @@ export default function Explore() {
               fill
               className="object-cover transition-transform group-hover:scale-105"
             />
-            <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
-              <Video className="h-4 w-4 text-white" />
+            <div className="absolute top-3 right-3 bg-background/40 backdrop-blur-md p-1.5 rounded-full">
+              <Video className="h-4 w-4 text-foreground" />
             </div>
           </div>
         </div>
 
         {/* Sarah Jenkins Profile Card */}
-        <div className="break-inside-avoid relative overflow-hidden rounded-xl border border-border-dark/30 bg-surface-dark p-4">
+        <div className="break-inside-avoid relative overflow-hidden rounded-xl border border-border/30 bg-background p-4">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -183,21 +183,21 @@ export default function Explore() {
                     />
                   </div>
                 </div>
-                <div className="absolute -bottom-1 -right-1 bg-primary text-[8px] text-white px-1 rounded-sm font-bold shadow-sm">
+                <div className="absolute -bottom-1 -right-1 bg-primary text-[8px] text-primary-foreground px-1 rounded-sm font-bold shadow-sm">
                   PRO
                 </div>
               </div>
               <div>
-                <h3 className="text-white font-bold text-sm">Sarah Jenkins</h3>
+                <h3 className="text-foreground font-bold text-sm">Sarah Jenkins</h3>
                 <p className="text-primary text-xs font-semibold">
                   VOCALIST • JAZZ
                 </p>
-                <p className="text-gray-500 text-xs mt-0.5 flex items-center gap-1">
-                  <MapPinIcon /> New York, USA
+                <p className="text-muted-foreground text-xs mt-0.5 flex items-center gap-1">
+                  <MapPin className="h-3 w-3" /> New York, USA
                 </p>
               </div>
             </div>
-            <button className="text-gray-400 hover:text-white">
+            <button className="text-muted-foreground hover:text-foreground">
               <svg
                 width="16"
                 height="16"
@@ -210,7 +210,7 @@ export default function Explore() {
               </svg>
             </button>
           </div>
-          <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+          <p className="text-muted-foreground/80 text-sm mb-4 line-clamp-3">
             Professional jazz vocalist available for events and studio sessions.
             10+ years of experience performing live.
           </p>
@@ -220,7 +220,7 @@ export default function Explore() {
             </Button>
             <Button
               variant="outline"
-              className="w-9 h-9 p-0 border-border-dark bg-transparent text-gray-400 hover:text-white"
+              className="w-9 h-9 p-0 border-border bg-transparent text-muted-foreground hover:text-foreground"
             >
               <User className="h-4 w-4" />
             </Button>
@@ -231,16 +231,16 @@ export default function Explore() {
         {exploreItems.map((item, i) => (
           <div
             key={i}
-            className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border-dark/30 bg-surface-dark mb-4"
+            className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border/30 bg-background mb-4"
           >
             {item.type === "person" ? (
               <div className="p-4 flex flex-col items-center">
                 <div className="w-16 h-16 rounded-full overflow-hidden mb-2 relative">
                   <Image src={item.src} alt="" fill className="object-cover" />
                 </div>
-                <h3 className="text-white font-semibold text-sm">David Chen</h3>
-                <p className="text-gray-500 text-xs">Photographer</p>
-                <Button className="mt-3 w-full h-8 text-xs bg-surface-dark hover:bg-primary text-white rounded-full border border-border-dark/50">
+                <h3 className="text-foreground font-semibold text-sm">David Chen</h3>
+                <p className="text-muted-foreground text-xs">Photographer</p>
+                <Button className="mt-3 w-full h-8 text-xs bg-background hover:bg-primary text-primary-foreground rounded-full border border-border/50">
                   Follow
                 </Button>
               </div>
@@ -252,10 +252,10 @@ export default function Explore() {
                   fill
                   className="object-cover transition-transform group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors" />
                 <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full overflow-hidden relative border border-white">
+                    <div className="w-6 h-6 rounded-full overflow-hidden relative border border-foreground">
                       <Image
                         src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"
                         alt="Avatar"
@@ -263,21 +263,21 @@ export default function Explore() {
                         className="object-cover"
                       />
                     </div>
-                    <span className="text-white text-xs font-medium shadow-black drop-shadow-sm">
+                    <span className="text-foreground text-xs font-medium shadow-black drop-shadow-sm">
                       David Chen
                     </span>
                   </div>
                 </div>
-                <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
+                <div className="absolute top-3 right-3 bg-background/40 backdrop-blur-md p-1.5 rounded-full">
                   {item.type === "video" ? (
-                    <Video className="h-3 w-3 text-white" />
+                    <Video className="h-3 w-3 text-foreground" />
                   ) : (
-                    <ImageIcon className="h-3 w-3 text-white" />
+                    <ImageIcon className="h-3 w-3 text-foreground" />
                   )}
                 </div>
                 {item.type === "image" &&
                   i === 7 && ( // Abstract art one from design
-                    <div className="absolute bottom-3 right-3 bg-black/40 backdrop-blur-md px-2 py-1 rounded text-white text-xs font-bold">
+                    <div className="absolute bottom-3 right-3 bg-background/40 backdrop-blur-md px-2 py-1 rounded text-foreground text-xs font-bold">
                       +12
                     </div>
                   )}
@@ -289,7 +289,7 @@ export default function Explore() {
         ))}
 
         {/* Abstract Art Tile (Simulating the +12 tile from image 4) */}
-        <div className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border-dark/30 mb-4">
+        <div className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl border border-border/30 mb-4">
           <div className="relative aspect-square">
             <Image
               src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600"
@@ -298,30 +298,12 @@ export default function Explore() {
               className="object-cover"
             />
             {/* +12 Overlay card simulation */}
-            <div className="absolute right-4 bottom-4 w-16 h-16 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/20 shadow-xl">
-              <span className="text-white font-bold text-lg">+12</span>
+            <div className="absolute right-4 bottom-4 w-16 h-16 bg-foreground/20 backdrop-blur-md rounded-lg flex items-center justify-center border border-foreground/20 shadow-xl">
+              <span className="text-foreground font-bold text-lg">+12</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function MapPinIcon() {
-  return (
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
   );
 }

@@ -3,20 +3,20 @@
 import { ToastOptions, ToastType, useToast } from "@/hooks/use-toast";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  AlertCircle,
-  ArrowDownToLine,
-  Briefcase,
-  CheckCircle2,
-  Heart,
-  LogIn,
-  LogOut,
-  MessageSquare,
-  PartyPopper,
-  Smile,
-  UserCheck,
-  UserCog,
-  Wallet,
-  X,
+    AlertCircle,
+    ArrowDownToLine,
+    Briefcase,
+    CheckCircle2,
+    Heart,
+    LogIn,
+    LogOut,
+    MessageSquare,
+    PartyPopper,
+    Smile,
+    UserCheck,
+    UserCog,
+    Wallet,
+    X,
 } from "lucide-react";
 
 const toastIcons: Record<ToastType, any> = {
@@ -84,7 +84,7 @@ const ToastItem = ({
           {/* Close Button */}
           <button
             onClick={() => onDismiss(toast.id)}
-            className="shrink-0 text-[#ae9db8] hover:text-white transition-colors -mt-1 -mr-1 p-1.5 rounded-md hover:bg-white/5"
+            className="shrink-0 text-[#ae9db8] hover:text-white transition-colors -mt-1 -mr-1 p-1.5 rounded-lg hover:bg-white/5"
           >
             <X className="h-4 w-4" />
           </button>

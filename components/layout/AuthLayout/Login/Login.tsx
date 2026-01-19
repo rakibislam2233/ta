@@ -39,10 +39,10 @@ export default function Login() {
 
   return (
     <section className="w-full max-w-md mx-auto fade-in">
-      <div className="bg-transparent lg:bg-surface-dark lg:rounded-2xl lg:p-8 lg:shadow-2xl lg:border lg:border-border-dark/30">
+      <div className="bg-transparent lg:bg-background lg:rounded-2xl lg:p-8 lg:shadow-2xl lg:border lg:border-border/30">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-white mb-2">Welcome Back!</h2>
-          <p className="text-gray-400 text-sm">
+          <h2 className="text-2xl font-bold text-foreground mb-2">Welcome Back!</h2>
+          <p className="text-muted-foreground text-sm">
             Please enter your details to sign in.
           </p>
         </div>
@@ -50,14 +50,14 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Email Field */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 ml-1">
+            <label className="text-sm font-medium text-foreground/70 ml-1">
               Email Address
             </label>
             <Input
               {...register("email")}
               type="email"
               placeholder="Enter your email"
-              className="h-12 bg-background-dark border-border-dark/50 text-white placeholder:text-gray-600 focus:border-primary focus:ring-primary/20 rounded-lg"
+              className="h-12 bg-background border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 rounded-lg"
             />
             {errors.email && (
               <p className="text-xs text-red-500 ml-1">
@@ -68,7 +68,7 @@ export default function Login() {
 
           {/* Password Field */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300 ml-1">
+            <label className="text-sm font-medium text-foreground/70 ml-1">
               Password
             </label>
             <div className="relative">
@@ -76,12 +76,12 @@ export default function Login() {
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                className="h-12 bg-background-dark border-border-dark/50 text-white placeholder:text-gray-600 focus:border-primary focus:ring-primary/20 pr-10 rounded-lg"
+                className="h-12 bg-background border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 pr-10 rounded-lg"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
               >
                 {showPassword ? (
                   <EyeOff className="h-4 w-4" />
@@ -100,16 +100,16 @@ export default function Login() {
           {/* Remember Me & Forgot Password */}
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center gap-2 cursor-pointer group">
-              <div className="w-4 h-4 rounded border border-gray-600 bg-background-dark group-hover:border-primary transition-colors flex items-center justify-center">
+              <div className="w-4 h-4 rounded border border-border bg-background group-hover:border-primary transition-colors flex items-center justify-center">
                 {/* Checkbox logic would go here ideally */}
               </div>
-              <span className="text-gray-400 group-hover:text-gray-300">
+              <span className="text-muted-foreground group-hover:text-foreground/80">
                 Remember me
               </span>
             </label>
             <Link
               href="/auth/forgot-password"
-              className="text-primary hover:text-[#a824f0] font-medium transition-colors"
+              className="text-primary hover:text-primary/80 font-medium transition-colors"
             >
               Forgot Password?
             </Link>
@@ -118,15 +118,15 @@ export default function Login() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 bg-linear-to-r from-primary to-[#7a14c4] hover:from-[#7a14c4] hover:to-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/25 transition-all mt-2 cursor-pointer"
+            className="w-full h-12 bg-gradient-to-r from-primary to-[#7a14c4] hover:from-[#7a14c4] hover:to-primary text-primary-foreground font-semibold rounded-lg shadow-lg shadow-primary/25 transition-all mt-2 cursor-pointer"
           >
             {isSubmitting ? "Signing in..." : "Sign In"}
           </Button>
-          <p className="text-center text-gray-400 text-sm mt-8">
+          <p className="text-center text-muted-foreground text-sm mt-8">
             Don&apos;t have an account?{" "}
             <Link
               href="/auth/register"
-              className="text-primary hover:text-[#a824f0] font-semibold transition-colors"
+              className="text-primary hover:text-primary/80 font-semibold transition-colors"
             >
               Sign up for free
             </Link>

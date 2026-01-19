@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  ArrowLeft,
-  CheckCircle2,
-  Clock,
-  DollarSign,
-  MessageSquare,
-  Star,
+    ArrowLeft,
+    CheckCircle2,
+    Clock,
+    DollarSign,
+    MessageSquare,
+    Star,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -127,24 +127,24 @@ export default function MyHireRequestDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a161f] pb-32">
+    <div className="min-h-screen bg-background pb-32">
       {/* Header */}
-      <div className="border-b border-border-dark/30 bg-surface-dark/50 backdrop-blur-xl sticky top-0 z-50">
+      <div className="border-b border-border/30 bg-background/50 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center gap-4">
             <Link href="/hiring">
               <Button
                 variant="ghost"
-                className="text-gray-400 hover:text-white h-10 w-10 p-0"
+                className="text-muted-foreground hover:text-foreground h-10 w-10 p-0"
               >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             </Link>
             <div className="flex-1">
-              <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
                 <span>My Hire Requests</span>
                 <span>/</span>
-                <span className="text-white">Order #{hiringId}</span>
+                <span className="text-foreground">Order #{hiringId}</span>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function MyHireRequestDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 border border-border-dark/40">
+            <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 border border-border/40">
               <div className="text-center mb-6">
                 <div className="relative inline-block mb-4">
                   <div className="size-24 rounded-3xl overflow-hidden border-2 border-primary/50 shadow-xl shadow-primary/20">
@@ -166,33 +166,33 @@ export default function MyHireRequestDetailPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-1 -right-1 bg-blue-500 p-1 rounded-full border-2 border-surface-dark">
-                    <CheckCircle2 className="size-4 text-white" />
+                  <div className="absolute -bottom-1 -right-1 bg-blue-500 p-1 rounded-full border-2 border-background">
+                    <CheckCircle2 className="size-4 text-primary-foreground" />
                   </div>
                 </div>
-                <h3 className="text-xl font-black text-white uppercase tracking-tight">
+                <h3 className="text-xl font-black text-foreground uppercase tracking-tight">
                   {orderData.freelancer.name}
                 </h3>
                 <p className="text-primary text-sm font-bold">
                   {orderData.freelancer.username}
                 </p>
-                <div className="flex items-center justify-center gap-1 mt-2 text-xs font-bold text-gray-500">
+                <div className="flex items-center justify-center gap-1 mt-2 text-xs font-bold text-muted-foreground">
                   <Star className="size-3 fill-yellow-500 text-yellow-500" />
                   <span>{orderData.freelancer.rating}</span>
                   <span>({orderData.freelancer.reviews} reviews)</span>
                 </div>
               </div>
 
-              <div className="border-t border-border-dark/30 pt-6 space-y-4">
+              <div className="border-t border-border/30 pt-6 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500 text-xs font-black uppercase tracking-widest">
+                  <span className="text-muted-foreground text-xs font-black uppercase tracking-widest">
                     Pricing
                   </span>
-                  <span className="text-white font-black text-xl">
+                  <span className="text-foreground font-black text-xl">
                     ${latestOffer.amount}
                   </span>
                 </div>
-                <Button className="w-full bg-white text-black hover:bg-gray-200 rounded-xl h-12 font-black uppercase tracking-widest text-xs">
+                <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-xl h-12 font-black uppercase tracking-widest text-xs">
                   <MessageSquare className="size-4 mr-2" />
                   Message Talent
                 </Button>
@@ -202,20 +202,18 @@ export default function MyHireRequestDetailPage() {
 
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border-dark/40">
+            <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border/40">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] text-gray-500 uppercase font-black tracking-widest">
+                <span className="text-[10px] text-muted-foreground uppercase font-black tracking-widest">
                   Order #{orderData.id}
                 </span>
                 <span
-                  className={`${
-                    getStatusBadge().color
-                  } px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest`}
+                  className={`${getStatusBadge().color} px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest`}
                 >
                   {getStatusBadge().text}
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-white mb-6 uppercase tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-foreground mb-6 uppercase tracking-tight">
                 {orderData.title}
               </h1>
 
@@ -233,10 +231,10 @@ export default function MyHireRequestDetailPage() {
                           <p className="text-blue-400 font-black uppercase text-xs tracking-widest mb-1">
                             Latest Freelancer Offer
                           </p>
-                          <h4 className="text-2xl font-black text-white mb-1">
+                          <h4 className="text-2xl font-black text-foreground mb-1">
                             ${latestOffer.amount}
                           </h4>
-                          <p className="text-gray-400 text-xs">
+                          <p className="text-muted-foreground text-xs">
                             You can accept this counter-offer, reject it, or
                             send a new price.
                           </p>
@@ -247,7 +245,7 @@ export default function MyHireRequestDetailPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
                         <Button
                           onClick={handleAcceptOffer}
-                          className="bg-green-500 hover:bg-green-600 text-white rounded-xl h-11 font-black uppercase tracking-widest text-xs shadow-lg shadow-green-500/20"
+                          className="bg-green-500 hover:bg-green-600 text-primary-foreground rounded-xl h-11 font-black uppercase tracking-widest text-xs shadow-lg shadow-green-500/20"
                         >
                           Accept Offer
                         </Button>
@@ -260,7 +258,7 @@ export default function MyHireRequestDetailPage() {
                         </Button>
                         <Button
                           onClick={() => setShowNegotiation(true)}
-                          className="bg-primary hover:bg-primary-hover text-white rounded-xl h-11 font-black uppercase tracking-widest text-xs"
+                          className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-11 font-black uppercase tracking-widest text-xs"
                         >
                           Counter Offer
                         </Button>
@@ -274,7 +272,7 @@ export default function MyHireRequestDetailPage() {
                       <p className="text-primary font-black uppercase text-xs tracking-widest mb-1">
                         Waiting for Talent
                       </p>
-                      <p className="text-gray-400 text-xs">
+                      <p className="text-muted-foreground text-xs">
                         You sent a counter offer of <b>${latestOffer.amount}</b>
                         . Waiting for talent response.
                       </p>
@@ -282,8 +280,8 @@ export default function MyHireRequestDetailPage() {
                   )}
 
                   {showNegotiation && (
-                    <div className="p-6 bg-background-dark/50 rounded-2xl border border-border-dark/30 animate-in zoom-in-95 duration-200">
-                      <label className="text-white font-black uppercase text-[10px] tracking-widest mb-3 block">
+                    <div className="p-6 bg-background/50 rounded-2xl border border-border/30 animate-in zoom-in-95 duration-200">
+                      <label className="text-foreground font-black uppercase text-[10px] tracking-widest mb-3 block">
                         Your New Offer ($)
                       </label>
                       <input
@@ -291,19 +289,19 @@ export default function MyHireRequestDetailPage() {
                         value={counterOffer}
                         onChange={(e) => setCounterOffer(e.target.value)}
                         placeholder="Enter amount..."
-                        className="w-full bg-background-dark border border-border-dark/40 rounded-xl h-12 px-4 text-white focus:border-primary/50 focus:ring-1 focus:ring-primary/20 mb-4"
+                        className="w-full bg-background border border-border/40 rounded-xl h-12 px-4 text-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20 mb-4"
                       />
                       <div className="flex gap-3">
                         <Button
                           onClick={handleSendCounterOffer}
-                          className="flex-1 bg-primary text-white h-11 font-black uppercase text-xs"
+                          className="flex-1 bg-primary text-primary-foreground h-11 font-black uppercase text-xs"
                         >
                           Send Offer
                         </Button>
                         <Button
                           onClick={() => setShowNegotiation(false)}
                           variant="ghost"
-                          className="flex-1 text-gray-400 h-11 font-black uppercase text-xs"
+                          className="flex-1 text-muted-foreground h-11 font-black uppercase text-xs"
                         >
                           Cancel
                         </Button>
@@ -313,7 +311,7 @@ export default function MyHireRequestDetailPage() {
 
                   {/* Negotiation History */}
                   <div className="space-y-4">
-                    <h4 className="text-gray-500 font-black uppercase text-xs tracking-widest flex items-center gap-2">
+                    <h4 className="text-muted-foreground font-black uppercase text-xs tracking-widest flex items-center gap-2">
                       Negotiation History
                     </h4>
                     {negotiations.map((neg, i) => (
@@ -327,21 +325,21 @@ export default function MyHireRequestDetailPage() {
                           className={`p-4 rounded-2xl max-w-[80%] ${
                             neg.from === "client"
                               ? "bg-primary/20 border border-primary/30 rounded-tr-none"
-                              : "bg-surface-dark/80 border border-border-dark/40 rounded-tl-none"
+                              : "bg-background/80 border border-border/40 rounded-tl-none"
                           }`}
                         >
                           <div className="flex justify-between gap-4 mb-2">
-                            <span className="text-[10px] font-black uppercase tracking-tight text-gray-400">
+                            <span className="text-[10px] font-black uppercase tracking-tight text-muted-foreground">
                               {neg.from === "client" ? "You" : "Sarah J."}
                             </span>
-                            <span className="text-[10px] text-gray-500 font-bold">
+                            <span className="text-[10px] text-muted-foreground font-bold">
                               {neg.timestamp}
                             </span>
                           </div>
-                          <p className="text-white font-black text-lg">
+                          <p className="text-foreground font-black text-lg">
                             ${neg.amount}
                           </p>
-                          <p className="text-gray-400 text-xs mt-1">
+                          <p className="text-muted-foreground text-xs mt-1">
                             {neg.message}
                           </p>
                         </div>
@@ -360,7 +358,7 @@ export default function MyHireRequestDetailPage() {
                       <p className="text-green-500 font-black uppercase text-xs tracking-widest">
                         Order Accepted!
                       </p>
-                      <p className="text-gray-300 text-sm">
+                      <p className="text-muted-foreground text-sm">
                         The talent has accepted your offer of{" "}
                         <b>${latestOffer.amount}</b>. The project is now in
                         progress.
@@ -372,18 +370,18 @@ export default function MyHireRequestDetailPage() {
             </div>
 
             {/* Service Details Card */}
-            <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border-dark/40">
-              <h3 className="text-white font-black uppercase text-sm tracking-widest mb-4">
+            <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border/40">
+              <h3 className="text-foreground font-black uppercase text-sm tracking-widest mb-4">
                 Service Description
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {orderData.description}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {orderData.requirements.map((req, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wider bg-background-dark/50 p-3 rounded-xl border border-border-dark/30"
+                    className="flex items-center gap-2 text-muted-foreground text-xs font-bold uppercase tracking-wider bg-background/50 p-3 rounded-xl border border-border/30"
                   >
                     <CheckCircle2 className="size-3 text-primary" />
                     <span>{req}</span>

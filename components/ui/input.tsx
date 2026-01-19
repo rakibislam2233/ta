@@ -1,26 +1,24 @@
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  return (
+    <input
+      type={type}
+      data-slot="input"
+      className={cn(
+        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-12 w-full min-w-0 rounded-lg border bg-transparent px-3 py-1 text-base transition-[color,box-shadow] file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "focus-visible:outline-none",
+        "focus-visible:ring-1 ring-primary",
+        "focus-visible:ring-offset-0",
+        "aria-invalid:border-destructive aria-invalid:ring-0",
+        "no-focus-ring",
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-12 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all hover:border-primary/50 font-medium",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-Input.displayName = "Input";
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 export { Input };
-

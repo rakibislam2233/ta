@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
-  CheckCircle2,
-  Gift,
-  Heart,
-  MessageCircle,
-  UserPlus,
+    CheckCircle2,
+    Gift,
+    Heart,
+    MessageCircle,
+    UserPlus,
 } from "lucide-react";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Notifications | Talenzy",
@@ -87,10 +87,10 @@ export default function NotificationsPage() {
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 pb-32">
       <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight uppercase italic">
+          <h1 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight uppercase italic">
             Activity<span className="text-primary">.</span>
           </h1>
-          <p className="text-gray-500 text-xs font-black uppercase tracking-widest mt-1">
+          <p className="text-muted-foreground text-xs font-black uppercase tracking-widest mt-1">
             Stay updated with your community
           </p>
         </div>
@@ -108,29 +108,29 @@ export default function NotificationsPage() {
           return (
             <div
               key={notification.id}
-              className="bg-surface-dark/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-border-dark/30 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden shadow-xl"
+              className="bg-background/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-border/30 hover:border-primary/50 transition-all cursor-pointer group relative overflow-hidden"
             >
               {/* Subtle hover gradient */}
-              <div className="absolute inset-0 bg-linear-to-r from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500"></div>
 
               <div className="flex items-center gap-4 sm:gap-6 relative z-10">
                 <div
-                  className={`size-12 sm:size-14 rounded-2xl bg-linear-to-br ${notification.color} flex items-center justify-center shrink-0 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform`}
+                  className="size-12 sm:size-14 rounded-2xl bg-gradient-to-br ${notification.color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
                 >
-                  <Icon className="size-6 text-white" />
+                  <Icon className="size-6 text-foreground" />
                 </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mb-1.5">
-                    <span className="text-white font-black text-sm sm:text-base uppercase tracking-tight">
+                    <span className="text-foreground font-black text-sm sm:text-base uppercase tracking-tight">
                       {notification.user}
                     </span>
-                    <span className="text-gray-400 font-medium text-xs sm:text-sm">
+                    <span className="text-muted-foreground font-medium text-xs sm:text-sm">
                       {notification.action}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-gray-600 text-[10px] font-black uppercase tracking-widest">
+                    <span className="text-muted-foreground/60 text-[10px] font-black uppercase tracking-widest">
                       {notification.time}
                     </span>
                     {notification.type === "hire" && (
@@ -142,15 +142,15 @@ export default function NotificationsPage() {
                 </div>
 
                 <div className="relative group/avatar">
-                  <div className="size-10 sm:size-12 rounded-xl bg-linear-to-br from-primary to-purple-800 p-[1px] shadow-lg">
-                    <div className="size-full bg-surface-dark rounded-xl flex items-center justify-center">
-                      <span className="text-white font-black text-xs sm:text-sm italic">
+                  <div className="size-10 sm:size-12 rounded-xl bg-gradient-to-br from-primary to-purple-800 p-[1px]">
+                    <div className="size-full bg-background rounded-xl flex items-center justify-center">
+                      <span className="text-foreground font-black text-xs sm:text-sm italic">
                         {notification.avatar}
                       </span>
                     </div>
                   </div>
                   {notification.online && (
-                    <div className="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 border-2 border-surface-dark rounded-full shadow-lg" />
+                    <div className="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 border-2 border-background rounded-full shadow-lg" />
                   )}
                 </div>
               </div>
@@ -160,8 +160,8 @@ export default function NotificationsPage() {
       </div>
 
       <div className="mt-12 text-center relative">
-        <div className="absolute inset-x-0 top-1/2 h-px bg-border-dark/20 -z-10"></div>
-        <span className="bg-[#1a161f] px-6 text-[10px] font-black text-gray-600 uppercase tracking-[0.3em]">
+        <div className="absolute inset-x-0 top-1/2 h-px bg-border/20 -z-10"></div>
+        <span className="bg-background px-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">
           No more activity
         </span>
       </div>

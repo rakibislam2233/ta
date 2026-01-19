@@ -2,16 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  ArrowDown,
-  ArrowUp,
-  Calendar,
-  Eye,
-  EyeOff,
-  Filter,
-  Gift,
-  RefreshCw,
-  TrendingDown,
-  TrendingUp,
+    ArrowDown,
+    ArrowUp,
+    Calendar,
+    Eye,
+    EyeOff,
+    Filter,
+    Gift,
+    RefreshCw,
+    TrendingDown,
+    TrendingUp,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -68,17 +68,17 @@ export default function WalletPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-32 font-outfit">
       {/* Balance Card */}
-      <div className="bg-linear-to-br from-[#9419e6] to-[#7a14c4] rounded-2xl p-6 sm:p-8 mb-6 shadow-xl shadow-primary/20">
+      <div className="bg-gradient-to-br from-[#9419e6] to-[#7a14c4] rounded-2xl p-6 sm:p-8 mb-6">
         <div className="flex items-center justify-between mb-4 sm:mb-6">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-white/90 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em]">
+            <span className="text-primary-foreground/90 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em]">
               AVAILABLE BALANCE
             </span>
           </div>
           <button
             onClick={() => setBalanceVisible(!balanceVisible)}
-            className="p-2 bg-white/10 rounded-full text-white/80 hover:text-white transition-colors"
+            className="p-2 bg-foreground/10 rounded-full text-foreground/80 hover:text-foreground transition-colors"
           >
             {balanceVisible ? (
               <EyeOff className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -88,20 +88,20 @@ export default function WalletPage() {
           </button>
         </div>
         <div className="flex items-center gap-3 mb-8">
-          <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tighter">
+          <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tighter">
             {balanceVisible ? "$24,593.00" : "••••••"}
           </span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Button className="bg-white text-primary hover:bg-white/90 rounded-xl h-12 font-bold shadow-lg">
+          <Button className="bg-foreground text-primary hover:bg-foreground/90 rounded-xl h-12 font-bold">
             <ArrowDown className="h-5 w-5 mr-2" />
             Deposit
           </Button>
-          <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/10 backdrop-blur-md rounded-xl h-12 font-bold">
+          <Button className="bg-foreground/20 hover:bg-foreground/30 text-foreground border border-foreground/10 backdrop-blur-md rounded-xl h-12 font-bold">
             <ArrowUp className="h-5 w-5 mr-2" />
             Withdraw
           </Button>
-          <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/10 backdrop-blur-md rounded-xl h-12 font-bold">
+          <Button className="bg-foreground/20 hover:bg-foreground/30 text-foreground border border-foreground/10 backdrop-blur-md rounded-xl h-12 font-bold">
             <RefreshCw className="h-5 w-5 mr-2" />
             History
           </Button>
@@ -109,7 +109,7 @@ export default function WalletPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-6 sm:gap-10 mb-8 border-b border-border-dark overflow-x-auto scrollbar-hide scroll-smooth no-scrollbar">
+      <div className="flex gap-6 sm:gap-10 mb-8 border-b border-border overflow-x-auto scrollbar-hide scroll-smooth no-scrollbar">
         {[
           "Overview",
           "Transactions",
@@ -121,8 +121,8 @@ export default function WalletPage() {
             key={tab}
             className={`pb-4 px-1 border-b-2 transition-all whitespace-nowrap text-xs sm:text-sm font-black uppercase tracking-widest ${
               index === 0
-                ? "border-primary text-white"
-                : "border-transparent text-gray-500 hover:text-white"
+                ? "border-primary text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             {tab}
@@ -132,63 +132,63 @@ export default function WalletPage() {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-        <div className="bg-surface-dark rounded-2xl p-5 sm:p-6 border border-border-dark hover:border-primary/30 transition-colors group">
+        <div className="bg-background rounded-2xl p-5 sm:p-6 border border-border hover:border-primary/30 transition-colors group">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest">
+            <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest">
               Total Earned
             </p>
             <div className="p-2 bg-green-500/10 rounded-lg">
               <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
             </div>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-white">
+          <p className="text-2xl sm:text-3xl font-black text-foreground">
             $8,430.50
           </p>
         </div>
-        <div className="bg-surface-dark rounded-2xl p-5 sm:p-6 border border-border-dark hover:border-primary/30 transition-colors group">
+        <div className="bg-background rounded-2xl p-5 sm:p-6 border border-border hover:border-primary/30 transition-colors group">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest">
+            <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest">
               Total Spent
             </p>
             <div className="p-2 bg-red-500/10 rounded-lg">
               <TrendingDown className="h-4 w-4 sm:h-5 sm:w-5 text-red-500" />
             </div>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-white">
+          <p className="text-2xl sm:text-3xl font-black text-foreground">
             $1,240.00
           </p>
         </div>
-        <div className="bg-surface-dark rounded-2xl p-5 sm:p-6 border border-border-dark hover:border-primary/30 transition-colors group sm:col-span-2 lg:col-span-1">
+        <div className="bg-background rounded-2xl p-5 sm:p-6 border border-border hover:border-primary/30 transition-colors group sm:col-span-2 lg:col-span-1">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest">
+            <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest">
               Gifts Received
             </p>
             <div className="p-2 bg-yellow-500/10 rounded-lg">
               <Gift className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500" />
             </div>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-white">
+          <p className="text-2xl sm:text-3xl font-black text-foreground">
             450 Gifts
           </p>
         </div>
       </div>
 
       {/* Recent Transactions */}
-      <div className="bg-surface-dark rounded-3xl p-5 sm:p-8 border border-border-dark shadow-2xl">
+      <div className="bg-background rounded-3xl p-5 sm:p-8 border border-border">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
-          <h2 className="text-white font-black text-xl uppercase tracking-tight">
+          <h2 className="text-foreground font-black text-xl uppercase tracking-tight">
             Recent <span className="text-primary italic">Activity</span>
           </h2>
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
-              className="bg-background-dark border-border-dark text-gray-400 hover:text-white hover:bg-surface-dark rounded-xl h-10 w-10 p-0"
+              className="bg-background border-border text-muted-foreground hover:text-foreground hover:bg-accent rounded-xl h-10 w-10 p-0"
             >
               <Calendar className="h-5 w-5" />
             </Button>
             <Button
               variant="outline"
-              className="bg-background-dark border-border-dark text-gray-400 hover:text-white hover:bg-surface-dark rounded-xl h-10 w-10 p-0"
+              className="bg-background border-border text-muted-foreground hover:text-foreground hover:bg-accent rounded-xl h-10 w-10 p-0"
             >
               <Filter className="h-5 w-5" />
             </Button>
@@ -199,11 +199,11 @@ export default function WalletPage() {
           {transactions.map((transaction) => (
             <div
               key={transaction.id}
-              className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-background-dark/50 border border-transparent hover:border-primary/20 rounded-2xl transition-all"
+              className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-background/50 border border-transparent hover:border-primary/20 rounded-2xl transition-all"
             >
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div
-                  className={`size-12 rounded-2xl bg-linear-to-br from-surface-dark to-background-dark border border-border-dark flex items-center justify-center shrink-0 relative overflow-hidden group-hover:border-primary/40`}
+                  className={`size-12 rounded-2xl bg-gradient-to-br from-background to-background border border-border flex items-center justify-center shrink-0 relative overflow-hidden group-hover:border-primary/40`}
                 >
                   <div
                     className={`absolute inset-0 ${transaction.color} opacity-10 group-hover:opacity-20 transition-opacity`}
@@ -218,16 +218,16 @@ export default function WalletPage() {
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <p className="text-white font-bold text-sm sm:text-base mb-0.5 truncate uppercase tracking-tight">
+                  <p className="text-foreground font-bold text-sm sm:text-base mb-0.5 truncate uppercase tracking-tight">
                     {transaction.description}
                   </p>
-                  <p className="text-gray-500 text-xs sm:text-sm truncate">
+                  <p className="text-muted-foreground text-xs sm:text-sm truncate">
                     {transaction.detail}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between sm:justify-end gap-6 sm:text-right border-t border-border-dark/30 sm:border-0 pt-3 sm:pt-0">
+              <div className="flex items-center justify-between sm:justify-end gap-6 sm:text-right border-t border-border/30 sm:border-0 pt-3 sm:pt-0">
                 <div className="flex-1 sm:flex-none">
                   <p
                     className={`text-lg sm:text-xl font-black ${
@@ -237,7 +237,7 @@ export default function WalletPage() {
                     {transaction.amount > 0 ? "+" : ""}$
                     {Math.abs(transaction.amount).toFixed(2)}
                   </p>
-                  <p className="text-gray-600 text-[10px] font-bold uppercase tracking-widest">
+                  <p className="text-muted-foreground/60 text-[10px] font-bold uppercase tracking-widest">
                     {transaction.time}
                   </p>
                 </div>

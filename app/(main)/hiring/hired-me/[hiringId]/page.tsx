@@ -3,11 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  ArrowLeft,
-  CheckCircle2,
-  DollarSign,
-  MessageSquare,
-  Upload,
+    ArrowLeft,
+    CheckCircle2,
+    Clock,
+    DollarSign,
+    MessageSquare,
+    Upload,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -137,24 +138,24 @@ export default function WhoHiredMeDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a161f] pb-32">
+    <div className="min-h-screen bg-background pb-32">
       {/* Header */}
-      <div className="border-b border-border-dark/30 bg-surface-dark/50 backdrop-blur-xl sticky top-0 z-50">
+      <div className="border-b border-border/30 bg-background/50 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center gap-4">
             <Link href="/hiring">
               <Button
                 variant="ghost"
-                className="text-gray-400 hover:text-white h-10 w-10 p-0"
+                className="text-muted-foreground hover:text-foreground h-10 w-10 p-0"
               >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             </Link>
             <div className="flex-1">
-              <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
                 <span>Who Hired Me</span>
                 <span>/</span>
-                <span className="text-white">Request #{hiringId}</span>
+                <span className="text-foreground">Request #{hiringId}</span>
               </div>
             </div>
           </div>
@@ -165,7 +166,7 @@ export default function WhoHiredMeDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 border border-border-dark/40">
+            <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 border border-border/40">
               <div className="text-center mb-6">
                 <div className="relative inline-block mb-4">
                   <div className="size-24 rounded-3xl overflow-hidden border-2 border-primary/50 shadow-xl shadow-primary/20">
@@ -176,11 +177,11 @@ export default function WhoHiredMeDetailPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-1 -right-1 bg-blue-500 p-1 rounded-full border-2 border-surface-dark">
-                    <CheckCircle2 className="size-4 text-white" />
+                  <div className="absolute -bottom-1 -right-1 bg-blue-500 p-1 rounded-full border-2 border-background">
+                    <CheckCircle2 className="size-4 text-primary-foreground" />
                   </div>
                 </div>
-                <h3 className="text-xl font-black text-white uppercase tracking-tight">
+                <h3 className="text-xl font-black text-foreground uppercase tracking-tight">
                   {requestData.client.name}
                 </h3>
                 <p className="text-primary text-sm font-bold">
@@ -188,16 +189,16 @@ export default function WhoHiredMeDetailPage() {
                 </p>
               </div>
 
-              <div className="border-t border-border-dark/30 pt-6 space-y-4">
+              <div className="border-t border-border/30 pt-6 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500 text-xs font-black uppercase tracking-widest">
+                  <span className="text-muted-foreground text-xs font-black uppercase tracking-widest">
                     Current Offer
                   </span>
-                  <span className="text-white font-black text-xl">
+                  <span className="text-foreground font-black text-xl">
                     ${requestData.financials.currentOffer}
                   </span>
                 </div>
-                <Button className="w-full bg-white text-black hover:bg-gray-200 rounded-xl h-12 font-black uppercase tracking-widest text-xs">
+                <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-xl h-12 font-black uppercase tracking-widest text-xs">
                   <MessageSquare className="size-4 mr-2" />
                   Message Client
                 </Button>
@@ -206,20 +207,20 @@ export default function WhoHiredMeDetailPage() {
 
             {/* Financial Status After Acceptance */}
             {(status === "ACCEPTED" || status === "IN_PROGRESS") && (
-              <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 border border-border-dark/40">
-                <h4 className="text-white font-black uppercase text-xs tracking-widest mb-4">
+              <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 border border-border/40">
+                <h4 className="text-foreground font-black uppercase text-xs tracking-widest mb-4">
                   Escrow Status
                 </h4>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-500 text-sm">Advance (50%)</span>
+                    <span className="text-muted-foreground text-sm">Advance (50%)</span>
                     <span className="text-green-500 font-bold">
                       ${requestData.financials.advancePaid}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-500 text-sm">On Completion</span>
-                    <span className="text-white font-bold">
+                    <span className="text-muted-foreground text-sm">On Completion</span>
+                    <span className="text-foreground font-bold">
                       ${requestData.financials.remaining}
                     </span>
                   </div>
@@ -230,9 +231,9 @@ export default function WhoHiredMeDetailPage() {
 
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border-dark/40">
+            <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border/40">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs text-gray-500 uppercase font-black">
+                <span className="text-xs text-muted-foreground uppercase font-black">
                   Request #{requestData.id}
                 </span>
                 <span
@@ -243,7 +244,7 @@ export default function WhoHiredMeDetailPage() {
                   {getStatusBadge().text}
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-white mb-6 uppercase tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-foreground mb-6 uppercase tracking-tight">
                 {requestData.title}
               </h1>
 
@@ -261,10 +262,10 @@ export default function WhoHiredMeDetailPage() {
                           <p className="text-blue-400 font-black uppercase text-xs tracking-widest mb-1">
                             Latest Client Offer
                           </p>
-                          <h4 className="text-2xl font-black text-white mb-1">
+                          <h4 className="text-2xl font-black text-foreground mb-1">
                             ${latestOffer.amount}
                           </h4>
-                          <p className="text-gray-400 text-xs">
+                          <p className="text-muted-foreground text-xs">
                             You can accept this offer, reject it, or send a new
                             counter-offer.
                           </p>
@@ -275,7 +276,7 @@ export default function WhoHiredMeDetailPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
                         <Button
                           onClick={handleAcceptOffer}
-                          className="bg-green-500 hover:bg-green-600 text-white rounded-xl h-11 font-black uppercase tracking-widest text-xs shadow-lg shadow-green-500/20"
+                          className="bg-green-500 hover:bg-green-600 text-primary-foreground rounded-xl h-11 font-black uppercase tracking-widest text-xs shadow-lg shadow-green-500/20"
                         >
                           Accept Offer
                         </Button>
@@ -288,7 +289,7 @@ export default function WhoHiredMeDetailPage() {
                         </Button>
                         <Button
                           onClick={() => setShowNegotiation(true)}
-                          className="bg-primary hover:bg-primary-hover text-white rounded-xl h-11 font-black uppercase tracking-widest text-xs"
+                          className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-xl h-11 font-black uppercase tracking-widest text-xs"
                         >
                           Counter Offer
                         </Button>
@@ -302,7 +303,7 @@ export default function WhoHiredMeDetailPage() {
                       <p className="text-primary font-black uppercase text-xs tracking-widest mb-1">
                         Waiting for Client
                       </p>
-                      <p className="text-gray-400 text-xs">
+                      <p className="text-muted-foreground text-xs">
                         You sent a counter offer of <b>${latestOffer.amount}</b>
                         . Waiting for client response.
                       </p>
@@ -310,8 +311,8 @@ export default function WhoHiredMeDetailPage() {
                   )}
 
                   {showNegotiation && (
-                    <div className="p-6 bg-background-dark/50 rounded-2xl border border-border-dark/30 animate-in zoom-in-95 duration-200">
-                      <label className="text-white font-black uppercase text-[10px] tracking-widest mb-3 block">
+                    <div className="p-6 bg-background/50 rounded-2xl border border-border/30 animate-in zoom-in-95 duration-200">
+                      <label className="text-foreground font-black uppercase text-[10px] tracking-widest mb-3 block">
                         Your New Offer ($)
                       </label>
                       <input
@@ -319,19 +320,19 @@ export default function WhoHiredMeDetailPage() {
                         value={counterOffer}
                         onChange={(e) => setCounterOffer(e.target.value)}
                         placeholder="Enter amount..."
-                        className="w-full bg-background-dark border border-border-dark/40 rounded-xl h-12 px-4 text-white focus:border-primary/50 focus:ring-1 focus:ring-primary/20 mb-4"
+                        className="w-full bg-background border border-border/40 rounded-xl h-12 px-4 text-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20 mb-4"
                       />
                       <div className="flex gap-3">
                         <Button
                           onClick={handleSendCounterOffer}
-                          className="flex-1 bg-primary text-white h-11 font-black uppercase text-xs"
+                          className="flex-1 bg-primary text-primary-foreground h-11 font-black uppercase text-xs"
                         >
                           Send Offer
                         </Button>
                         <Button
                           onClick={() => setShowNegotiation(false)}
                           variant="ghost"
-                          className="flex-1 text-gray-400 h-11 font-black uppercase text-xs"
+                          className="flex-1 text-muted-foreground h-11 font-black uppercase text-xs"
                         >
                           Cancel
                         </Button>
@@ -341,7 +342,7 @@ export default function WhoHiredMeDetailPage() {
 
                   {/* Negotiation History */}
                   <div className="space-y-4 mt-8">
-                    <h4 className="text-gray-500 font-black uppercase text-xs tracking-widest">
+                    <h4 className="text-muted-foreground font-black uppercase text-xs tracking-widest">
                       Negotiation History
                     </h4>
                     {negotiations.map((neg, i) => (
@@ -355,21 +356,21 @@ export default function WhoHiredMeDetailPage() {
                           className={`p-4 rounded-2xl max-w-[80%] ${
                             neg.from === "freelancer"
                               ? "bg-primary/20 border border-primary/30 rounded-tr-none"
-                              : "bg-surface-dark/80 border border-border-dark/40 rounded-tl-none"
+                              : "bg-background/80 border border-border/40 rounded-tl-none"
                           }`}
                         >
                           <div className="flex justify-between gap-4 mb-2">
-                            <span className="text-[10px] font-black uppercase tracking-tight text-gray-400">
+                            <span className="text-[10px] font-black uppercase tracking-tight text-muted-foreground">
                               {neg.from === "client" ? "Client" : "You"}
                             </span>
-                            <span className="text-[10px] text-gray-500 font-bold">
+                            <span className="text-[10px] text-muted-foreground font-bold">
                               {neg.timestamp}
                             </span>
                           </div>
-                          <p className="text-white font-black text-lg">
+                          <p className="text-foreground font-black text-lg">
                             ${neg.amount}
                           </p>
-                          <p className="text-gray-400 text-xs mt-1">
+                          <p className="text-muted-foreground text-xs mt-1">
                             {neg.message}
                           </p>
                         </div>
@@ -389,7 +390,7 @@ export default function WhoHiredMeDetailPage() {
                         <p className="text-green-500 font-black uppercase text-xs tracking-widest">
                           Offer Accepted!
                         </p>
-                        <p className="text-gray-300 text-sm">
+                        <p className="text-muted-foreground text-sm">
                           You are officially hired for{" "}
                           <b>${latestOffer.amount}</b>. You can now submit your
                           work below.
@@ -398,23 +399,23 @@ export default function WhoHiredMeDetailPage() {
                     </div>
                   </div>
 
-                  <div className="bg-surface-dark/30 rounded-2xl p-6 border border-border-dark/20">
-                    <h3 className="text-white font-black uppercase text-sm tracking-widest mb-4">
+                  <div className="bg-background/30 rounded-2xl p-6 border border-border/20">
+                    <h3 className="text-foreground font-black uppercase text-sm tracking-widest mb-4">
                       Submit Deliverables
                     </h3>
                     <Textarea
                       placeholder="Describe your work..."
-                      className="bg-background-dark border-border-dark/40 mb-4 h-32 text-white"
+                      className="bg-background border-border mb-4 h-32 text-foreground"
                       value={workDescription}
                       onChange={(e) => setWorkDescription(e.target.value)}
                     />
-                    <div className="border-2 border-dashed border-border-dark/40 rounded-2xl p-8 text-center hover:border-primary/50 transition-all cursor-pointer">
-                      <Upload className="size-8 text-gray-600 mx-auto mb-2" />
-                      <p className="text-gray-400 text-xs font-bold">
+                    <div className="border-2 border-dashed border-border/40 rounded-2xl p-8 text-center hover:border-primary/50 transition-all cursor-pointer">
+                      <Upload className="size-8 text-muted-foreground mx-auto mb-2" />
+                      <p className="text-muted-foreground text-xs font-bold">
                         Drop files here or click to upload
                       </p>
                     </div>
-                    <Button className="w-full bg-primary hover:bg-primary-600 text-white rounded-xl h-12 font-black uppercase tracking-widest text-xs mt-6 shadow-xl shadow-primary/20">
+                    <Button className="w-full bg-primary hover:bg-primary-600 text-primary-foreground rounded-xl h-12 font-black uppercase tracking-widest text-xs mt-6 shadow-xl shadow-primary/20">
                       Submit Work for Review
                     </Button>
                   </div>
@@ -423,18 +424,18 @@ export default function WhoHiredMeDetailPage() {
             </div>
 
             {/* Description Card */}
-            <div className="bg-surface-dark/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border-dark/40">
-              <h3 className="text-white font-black uppercase text-sm tracking-widest mb-4">
+            <div className="bg-background/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-border/40">
+              <h3 className="text-foreground font-black uppercase text-sm tracking-widest mb-4">
                 Project Requirements
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {requestData.description}
               </p>
               <div className="space-y-2">
                 {requestData.requirements.map((req, i) => (
                   <div
                     key={i}
-                    className="flex items-start gap-2 text-gray-400 text-sm"
+                    className="flex items-start gap-2 text-muted-foreground text-sm"
                   >
                     <div className="size-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
                     <span>{req}</span>

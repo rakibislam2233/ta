@@ -3,12 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -66,12 +66,12 @@ export default function Register() {
 
   return (
     <section className="w-full max-w-lg mx-auto fade-in">
-      <div className="bg-transparent lg:bg-surface-dark lg:rounded-2xl lg:p-8 lg:shadow-2xl lg:border lg:border-border-dark/30">
+      <div className="bg-transparent lg:bg-background lg:rounded-2xl lg:p-8 lg:shadow-2xl lg:border lg:border-border/30">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-3xl font-bold text-foreground mb-2">
             Create your account
           </h1>
-          <p className="text-gray-400 text-sm">
+          <p className="text-muted-foreground text-sm">
             Start your journey today and join the movement.
           </p>
         </div>
@@ -83,15 +83,16 @@ export default function Register() {
               name="fullName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Full Name</FormLabel>
+                  <FormLabel className="text-foreground">Full Name</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         {...field}
                         type="text"
                         placeholder="e.g. Sarah Jenkins"
+                        className="bg-background border-border text-foreground placeholder:text-muted-foreground"
                       />
-                      <User className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                      <User className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -104,15 +105,16 @@ export default function Register() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Email Address</FormLabel>
+                  <FormLabel className="text-foreground">Email Address</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         {...field}
                         type="email"
                         placeholder="name@example.com"
+                        className="bg-background border-border text-foreground placeholder:text-muted-foreground"
                       />
-                      <Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                      <Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -125,18 +127,19 @@ export default function Register() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Password</FormLabel>
+                  <FormLabel className="text-foreground">Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         {...field}
                         type={showPassword ? "text" : "password"}
                         placeholder="••••••••"
+                        className="bg-background border-border text-foreground placeholder:text-muted-foreground"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {showPassword ? (
                           <EyeOff className="h-5 w-5" />
@@ -168,7 +171,7 @@ export default function Register() {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-foreground">
                       Confirm Password
                     </FormLabel>
                     <FormControl>
@@ -177,9 +180,19 @@ export default function Register() {
                           {...field}
                           type={showConfirmPassword ? "text" : "password"}
                           placeholder="••••••••"
+                          className="bg-background border-border text-foreground placeholder:text-muted-foreground"
                         />
-                        {/* No eye icon shown in design for confirm password? Actually it is. */}
-                        {/* Design screenshot for confirm password shows dots. */}
+                        <button
+                          type="button"
+                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                          className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {showConfirmPassword ? (
+                            <EyeOff className="h-5 w-5" />
+                          ) : (
+                            <Eye className="h-5 w-5" />
+                          )}
+                        </button>
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -197,21 +210,21 @@ export default function Register() {
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      className="border-border-dark data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                      className="border-border data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     />
                   </FormControl>
-                  <FormLabel className="text-white/70 text-sm font-normal cursor-pointer">
+                  <FormLabel className="text-foreground/70 text-sm font-normal cursor-pointer">
                     I agree to the{" "}
                     <Link
                       href="/terms"
-                      className="text-white hover:underline underline-offset-4"
+                      className="text-foreground hover:underline underline-offset-4"
                     >
                       Terms of Service
                     </Link>{" "}
                     and{" "}
                     <Link
                       href="/privacy"
-                      className="text-white hover:underline underline-offset-4"
+                      className="text-foreground hover:underline underline-offset-4"
                     >
                       Privacy Policy
                     </Link>
@@ -223,7 +236,7 @@ export default function Register() {
 
             <Button
               type="submit"
-              className="w-full h-12 bg-[#8b21de] hover:bg-[#7a1dc4] text-white rounded-lg transition-all font-semibold text-base mt-2"
+              className="w-full h-12 bg-primary hover:bg-primary-hover text-primary-foreground rounded-lg transition-all font-semibold text-base mt-2"
             >
               Create Account
             </Button>
@@ -231,7 +244,7 @@ export default function Register() {
         </Form>
 
         <div className="mt-6 text-center">
-          <p className="text-white/60 text-sm">
+          <p className="text-foreground/60 text-sm">
             Already have an account?{" "}
             <Link
               href="/auth/login"

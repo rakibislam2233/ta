@@ -1,9 +1,9 @@
 "use client";
 
-import { Heart, MessageCircle, Share2, Gift, Send } from "lucide-react";
+import Post from "@/components/Post";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Post from "@/components/Post";
+import { Gift, Share2 } from "lucide-react";
 import { useState } from "react";
 
 export default function GiftsPage() {
@@ -27,31 +27,31 @@ export default function GiftsPage() {
         />
 
         {/* Comment Section */}
-        <div className="bg-[#221c26] rounded-2xl p-4 border border-[#4a3c53]/30 mt-4">
+        <div className="bg-background rounded-2xl p-4 border border-border/30 mt-4">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#9419e6] to-[#7a14c4] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
               <span className="text-white font-semibold text-xs">AT</span>
             </div>
             <Input
               type="text"
               placeholder="Send message..."
-              className="flex-1 bg-[#2a2330] border-[#4a3c53] text-white placeholder:text-gray-500 h-10 rounded-lg focus:border-[#9419e6] focus:ring-[#9419e6]"
+              className="flex-1 bg-background border-border text-foreground placeholder:text-muted-foreground h-10 rounded-lg focus:border-primary focus:ring-primary"
             />
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-white hover:bg-transparent p-0 h-auto"
+              className="text-muted-foreground hover:text-foreground hover:bg-transparent p-0 h-auto"
             >
               <span className="text-xl">😊</span>
             </Button>
             <Button
               variant="ghost"
-              className="text-gray-400 hover:text-white hover:bg-transparent p-0 h-auto"
+              className="text-muted-foreground hover:text-foreground hover:bg-transparent p-0 h-auto"
             >
               <Share2 className="h-5 w-5" />
             </Button>
             <Button
               variant="ghost"
-              className="text-yellow-500 hover:text-yellow-400 hover:bg-transparent p-0 h-auto"
+              className="text-primary hover:text-primary/80 hover:bg-transparent p-0 h-auto"
             >
               <Gift className="h-5 w-5" />
             </Button>
@@ -61,23 +61,23 @@ export default function GiftsPage() {
 
       {/* Gift Sent Notification */}
       {showGiftModal && (
-        <div className="fixed top-4 right-4 bg-[#221c26] rounded-lg p-4 border border-[#4a3c53]/30 shadow-2xl  max-w-sm">
+        <div className="fixed top-4 right-4 bg-background rounded-lg p-4 border border-border/30 shadow-2xl  max-w-sm">
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-[#9419e6] rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
               <Gift className="h-5 w-5 text-white" />
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
-                <p className="text-white font-semibold">Gift Sent!</p>
+                <p className="text-foreground font-semibold">Gift Sent!</p>
                 <button
                   onClick={() => setShowGiftModal(false)}
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   <span className="text-xl">×</span>
                 </button>
               </div>
-              <p className="text-gray-400 text-sm">Just now</p>
-              <p className="text-white text-sm mt-1">
+              <p className="text-muted-foreground text-sm">Just now</p>
+              <p className="text-foreground text-sm mt-1">
                 You successfully sent 500 Coins to @JessicaMelody.
               </p>
             </div>

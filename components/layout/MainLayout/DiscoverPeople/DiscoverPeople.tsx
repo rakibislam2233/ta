@@ -1,14 +1,14 @@
 "use client";
+import { Input } from "@/components/ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
 import DiscoverPeopleCard from "./DiscoverPeopleCard";
-import { Input } from "@/components/ui/input";
 
 const DiscoverPeople = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -18,7 +18,7 @@ const DiscoverPeople = () => {
 
   const profiles = [
     {
-      id: 1,
+      id: "1",
       name: "GuitarMaster",
       username: "@guitarmaster",
       avatar:
@@ -33,7 +33,7 @@ const DiscoverPeople = () => {
       online: true,
     },
     {
-      id: 2,
+      id: "2",
       name: "Sarah Sterling",
       username: "@sarah_dance",
       avatar:
@@ -48,7 +48,7 @@ const DiscoverPeople = () => {
       online: false,
     },
     {
-      id: 3,
+      id: "3",
       name: "Davide Rossi",
       username: "@davide_design",
       avatar:
@@ -64,7 +64,7 @@ const DiscoverPeople = () => {
       online: true,
     },
     {
-      id: 4,
+      id: "4",
       name: "Anna Klein",
       username: "@annak_photo",
       avatar:
@@ -80,7 +80,7 @@ const DiscoverPeople = () => {
       online: false,
     },
     {
-      id: 5,
+      id: "5",
       name: "James Lee",
       username: "@james_dev",
       avatar:
@@ -96,7 +96,7 @@ const DiscoverPeople = () => {
       online: true,
     },
     {
-      id: 6,
+      id: "6",
       name: "Jenny Art",
       username: "@jenny_art",
       avatar:
@@ -112,7 +112,7 @@ const DiscoverPeople = () => {
       online: false,
     },
     {
-      id: 7,
+      id: "7",
       name: "Mike Motion",
       username: "@mike_motion",
       avatar:
@@ -128,7 +128,7 @@ const DiscoverPeople = () => {
       online: false,
     },
     {
-      id: 8,
+      id: "8",
       name: "Lisa M.",
       username: "@lisa_model",
       avatar:
@@ -150,23 +150,22 @@ const DiscoverPeople = () => {
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white  tracking-tight mb-1">
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground  tracking-tight mb-1">
             Discover <span className="text-primary">Talent</span>
           </h1>
-          <p className="text-gray-400 text-sm sm:text-base">
+          <p className="text-muted-foreground text-sm sm:text-base">
             Connect with incredible creators around the globe
           </p>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-surface-dark/50 p-4 sm:p-5 rounded-lg border  mb-10 shadow-xl backdrop-blur-md">
+      <div className="bg-background/50 p-4 sm:p-5 rounded-lg border border-border mb-10">
         <div className="flex flex-col lg:flex-row gap-5">
           <div className="flex-1 relative group">
             <Input
               type="text"
               placeholder="Search by name or username"
-              className="border"
             />
           </div>
 
