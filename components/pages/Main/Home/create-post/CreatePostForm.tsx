@@ -9,20 +9,16 @@ import { motion } from "framer-motion";
 import {
   AtSign,
   Bold,
-  Briefcase,
   ChevronRight,
   Hash,
   Italic,
-  Layers,
   List,
   ListOrdered,
   MapPin,
   Smile,
-  X,
+  X
 } from "lucide-react";
-import { Input } from "../ui/input";
-import { Select } from "../ui/select";
-import { SelectTrigger } from "@radix-ui/react-select";
+import { Input } from "../../../../ui/input";
 
 interface CreatePostFormProps {
   onClose: () => void;

@@ -1,7 +1,7 @@
 "use client";
-import CreatePostForm from "@/components/create-post/CreatePostForm";
-import CreatePostMedia from "@/components/create-post/CreatePostMedia";
-import { MediaItem } from "@/components/create-post/types";
+import CreatePostForm from "@/components/pages/Main/Home/create-post/CreatePostForm";
+import CreatePostMedia from "@/components/pages/Main/Home/create-post/CreatePostMedia";
+import { MediaItem } from "@/components/pages/Main/Home/create-post/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
